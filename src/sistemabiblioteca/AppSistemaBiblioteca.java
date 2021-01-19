@@ -1,5 +1,8 @@
 
 package sistemabiblioteca;
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 
@@ -12,7 +15,7 @@ public class AppSistemaBiblioteca {
         System.out.println("Test - Diego");
         System.out.println("commit");
         System.out.println("Soy el victorensen");
-        System.out.println("El pepe");
+        JOptionPane.showMessageDialog(null, "El PP", "Mensaje importante", JOptionPane.PLAIN_MESSAGE);
     }
     
 }

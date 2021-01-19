@@ -16,6 +16,8 @@ public class AppSistemaBiblioteca {
         System.out.println("commit");
         System.out.println("Soy el victorensen");
         JOptionPane.showMessageDialog(null, "El PP", "Mensaje importante", JOptionPane.PLAIN_MESSAGE);
+        System.out.println("Ing Software");
+        
     }
     
 }

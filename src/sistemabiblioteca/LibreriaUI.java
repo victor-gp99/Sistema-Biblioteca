@@ -22,21 +22,86 @@ public class LibreriaUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonMysqlPP = new javax.swing.JButton();
+        jButtonMysqlAndy = new javax.swing.JButton();
+        jButtonMysqlVictor = new javax.swing.JButton();
+        jButtonMysqlDiego = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButtonMysqlPP.setText("MySQL PP");
+        jButtonMysqlPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMysqlPPActionPerformed(evt);
+            }
+        });
+
+        jButtonMysqlAndy.setText("MySQL Andy");
+        jButtonMysqlAndy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMysqlAndyActionPerformed(evt);
+            }
+        });
+
+        jButtonMysqlVictor.setText("MySQL Victor");
+        jButtonMysqlVictor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMysqlVictorActionPerformed(evt);
+            }
+        });
+
+        jButtonMysqlDiego.setText("MySQL Diego");
+        jButtonMysqlDiego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMysqlDiegoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonMysqlAndy)
+                .addGap(186, 186, 186)
+                .addComponent(jButtonMysqlDiego)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                .addComponent(jButtonMysqlPP)
+                .addGap(168, 168, 168)
+                .addComponent(jButtonMysqlVictor)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonMysqlAndy)
+                    .addComponent(jButtonMysqlVictor)
+                    .addComponent(jButtonMysqlDiego)
+                    .addComponent(jButtonMysqlPP))
+                .addContainerGap(472, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonMysqlAndyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlAndyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonMysqlAndyActionPerformed
+
+    private void jButtonMysqlPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlPPActionPerformed
+        createConnection("pepon", "admin");
+    }//GEN-LAST:event_jButtonMysqlPPActionPerformed
+
+    private void jButtonMysqlVictorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlVictorActionPerformed
+        createConnection("victornsn", "admin");
+    }//GEN-LAST:event_jButtonMysqlVictorActionPerformed
+
+    private void jButtonMysqlDiegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlDiegoActionPerformed
+        createConnection("root", "root");
+    }//GEN-LAST:event_jButtonMysqlDiegoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -74,5 +139,13 @@ public class LibreriaUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonMysqlAndy;
+    private javax.swing.JButton jButtonMysqlDiego;
+    private javax.swing.JButton jButtonMysqlPP;
+    private javax.swing.JButton jButtonMysqlVictor;
     // End of variables declaration//GEN-END:variables
+    
+    public void createConnection(String user,String pass){
+        
+    }
 }

@@ -1,11 +1,17 @@
 package sistemabiblioteca;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author joefi
  */
 public class LibreriaUI extends javax.swing.JFrame {
-
+    Connection con;
     /**
      * Creates new form LibreriaUI
      */
@@ -88,7 +94,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonMysqlAndyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlAndyActionPerformed
-        // TODO add your handling code here:
+        createConnection("Andy", "prueba");
     }//GEN-LAST:event_jButtonMysqlAndyActionPerformed
 
     private void jButtonMysqlPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlPPActionPerformed
@@ -146,6 +152,17 @@ public class LibreriaUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     public void createConnection(String user,String pass){
-        
+        String db="mydb", u=user, p=pass;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://25.13.55.58:3306/"+db, u, p );
+            //jdbc:mysql://localhost:3306/?user=root
+            System.out.println("Connection MYSQL database "+db+" succesful as "+u);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LibreriaUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(LibreriaUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
 }

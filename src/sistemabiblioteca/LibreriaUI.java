@@ -94,7 +94,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonMysqlAndyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlAndyActionPerformed
-        createConnection("Andy", "prueba");
+        createConnection("andy", "prueba");
     }//GEN-LAST:event_jButtonMysqlAndyActionPerformed
 
     private void jButtonMysqlPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlPPActionPerformed

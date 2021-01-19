@@ -32,8 +32,9 @@ public class LibreriaUI extends javax.swing.JFrame {
         jButtonMysqlAndy = new javax.swing.JButton();
         jButtonMysqlVictor = new javax.swing.JButton();
         jButtonMysqlDiego = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jButtonMysqlPP.setText("MySQL PP");
         jButtonMysqlPP.addActionListener(new java.awt.event.ActionListener() {
@@ -63,19 +64,31 @@ public class LibreriaUI extends javax.swing.JFrame {
             }
         });
 
+        jButtonSalir.setText("Salir");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonMysqlAndy)
-                .addGap(186, 186, 186)
-                .addComponent(jButtonMysqlDiego)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
-                .addComponent(jButtonMysqlPP)
-                .addGap(168, 168, 168)
-                .addComponent(jButtonMysqlVictor)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonMysqlAndy)
+                        .addGap(186, 186, 186)
+                        .addComponent(jButtonMysqlDiego)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
+                        .addComponent(jButtonMysqlPP)
+                        .addGap(168, 168, 168)
+                        .addComponent(jButtonMysqlVictor))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonSalir)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -87,7 +100,9 @@ public class LibreriaUI extends javax.swing.JFrame {
                     .addComponent(jButtonMysqlVictor)
                     .addComponent(jButtonMysqlDiego)
                     .addComponent(jButtonMysqlPP))
-                .addContainerGap(472, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 444, Short.MAX_VALUE)
+                .addComponent(jButtonSalir)
+                .addContainerGap())
         );
 
         pack();
@@ -108,6 +123,15 @@ public class LibreriaUI extends javax.swing.JFrame {
     private void jButtonMysqlDiegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlDiegoActionPerformed
         createConnection("root", "root");
     }//GEN-LAST:event_jButtonMysqlDiegoActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        try {
+            con.close();
+            System.exit(0);
+        } catch (SQLException ex) {
+            Logger.getLogger(LibreriaUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,6 +173,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMysqlDiego;
     private javax.swing.JButton jButtonMysqlPP;
     private javax.swing.JButton jButtonMysqlVictor;
+    private javax.swing.JButton jButtonSalir;
     // End of variables declaration//GEN-END:variables
     
     public void createConnection(String user,String pass){

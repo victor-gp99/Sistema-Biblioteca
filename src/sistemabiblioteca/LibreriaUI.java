@@ -1,7 +1,6 @@
 package sistemabiblioteca;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,9 +13,15 @@ public class LibreriaUI extends javax.swing.JFrame {
     Connection con;
     /**
      * Creates new form LibreriaUI
+     * @param con
      */
-    public LibreriaUI() {
+    public LibreriaUI(Connection con) {
         initComponents();
+        this.con = con;
+    }
+    
+    public LibreriaUI(){
+        //No usar este constructor.
     }
 
     /**
@@ -28,41 +33,10 @@ public class LibreriaUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonMysqlPP = new javax.swing.JButton();
-        jButtonMysqlAndy = new javax.swing.JButton();
-        jButtonMysqlVictor = new javax.swing.JButton();
-        jButtonMysqlDiego = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-
-        jButtonMysqlPP.setText("MySQL PP");
-        jButtonMysqlPP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMysqlPPActionPerformed(evt);
-            }
-        });
-
-        jButtonMysqlAndy.setText("MySQL Andy");
-        jButtonMysqlAndy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMysqlAndyActionPerformed(evt);
-            }
-        });
-
-        jButtonMysqlVictor.setText("MySQL Victor");
-        jButtonMysqlVictor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMysqlVictorActionPerformed(evt);
-            }
-        });
-
-        jButtonMysqlDiego.setText("MySQL Diego");
-        jButtonMysqlDiego.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMysqlDiegoActionPerformed(evt);
-            }
-        });
 
         jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +44,10 @@ public class LibreriaUI extends javax.swing.JFrame {
                 jButtonSalirActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Interfaz Principal");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,28 +57,17 @@ public class LibreriaUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonMysqlAndy)
-                        .addGap(186, 186, 186)
-                        .addComponent(jButtonMysqlDiego)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
-                        .addComponent(jButtonMysqlPP)
-                        .addGap(168, 168, 168)
-                        .addComponent(jButtonMysqlVictor))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonSalir)))
+                        .addComponent(jButtonSalir))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonMysqlAndy)
-                    .addComponent(jButtonMysqlVictor)
-                    .addComponent(jButtonMysqlDiego)
-                    .addComponent(jButtonMysqlPP))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 444, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 441, Short.MAX_VALUE)
                 .addComponent(jButtonSalir)
                 .addContainerGap())
         );
@@ -108,28 +75,13 @@ public class LibreriaUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonMysqlAndyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlAndyActionPerformed
-        createConnection("andy", "prueba");
-    }//GEN-LAST:event_jButtonMysqlAndyActionPerformed
-
-    private void jButtonMysqlPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlPPActionPerformed
-        createConnection("pepon", "admin");
-    }//GEN-LAST:event_jButtonMysqlPPActionPerformed
-
-    private void jButtonMysqlVictorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlVictorActionPerformed
-        createConnection("victornsn", "admin");
-    }//GEN-LAST:event_jButtonMysqlVictorActionPerformed
-
-    private void jButtonMysqlDiegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMysqlDiegoActionPerformed
-        createConnection("root", "root");
-    }//GEN-LAST:event_jButtonMysqlDiegoActionPerformed
-
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         try {
-            con.close();
-            System.exit(0);
+            con.close();   
         } catch (SQLException ex) {
             Logger.getLogger(LibreriaUI.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            System.exit(0);
         }
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
@@ -169,25 +121,8 @@ public class LibreriaUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonMysqlAndy;
-    private javax.swing.JButton jButtonMysqlDiego;
-    private javax.swing.JButton jButtonMysqlPP;
-    private javax.swing.JButton jButtonMysqlVictor;
     private javax.swing.JButton jButtonSalir;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-    
-    public void createConnection(String user,String pass){
-        String db="mydb", u=user, p=pass;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://25.13.55.58:3306/"+db, u, p );
-            //jdbc:mysql://localhost:3306/?user=root
-            System.out.println("Connection MYSQL database "+db+" succesful as "+u);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LibreriaUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(LibreriaUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     
 }

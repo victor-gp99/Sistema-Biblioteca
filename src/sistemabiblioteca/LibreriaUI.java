@@ -110,7 +110,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButtonRegistrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarLibroActionPerformed
-        new FormularioLibro().setVisible(true);
+        new FormularioLibro(con).setVisible(true);
     }//GEN-LAST:event_jButtonRegistrarLibroActionPerformed
 
     /**

@@ -322,5 +322,6 @@ public class FormularioLibro extends javax.swing.JFrame {
         if(jRadioButtonPapel.isSelected())
             return "1";
         return "2";
+        //coment
     }   
 }

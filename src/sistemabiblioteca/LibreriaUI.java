@@ -1,5 +1,6 @@
 package sistemabiblioteca;
 
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -17,10 +18,21 @@ public class LibreriaUI extends javax.swing.JFrame {
      */
     public LibreriaUI(Connection con) {
         initComponents();
+        int W = Toolkit.getDefaultToolkit().getScreenSize().width/2;
+        int H = Toolkit.getDefaultToolkit().getScreenSize().height/2;
+        int x = W-this.getWidth()/2;
+        int y = H-this.getHeight()/2;
+        setLocation(x,y);
         this.con = con;
     }
     
     public LibreriaUI(){
+        initComponents();
+        int W = Toolkit.getDefaultToolkit().getScreenSize().width/2;
+        int H = Toolkit.getDefaultToolkit().getScreenSize().height/2;
+        int x = W-this.getWidth()/2;
+        int y = H-this.getHeight()/2;
+        setLocation(x,y);
         //No usar este constructor.
     }
 

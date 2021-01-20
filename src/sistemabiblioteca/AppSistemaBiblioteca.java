@@ -56,7 +56,8 @@ public class AppSistemaBiblioteca {
                         continue;
                     }               
                 case 4:
-                    new LibreriaUI().setVisible(true);
+                    //new LibreriaUI().setVisible(true);
+                    new LogIn().setVisible(true);
                     break;
                 case 5:
                     System.exit(0);
@@ -67,7 +68,9 @@ public class AppSistemaBiblioteca {
             break;
         }
         if(seleccion!=4)
-            new LibreriaUI(con).setVisible(true);
+            //new LibreriaUI(con).setVisible(true);
+            new LogIn().setVisible(true);
+
         
     }
     

@@ -72,7 +72,7 @@ public class AppSistemaBiblioteca {
     }
     
     static boolean createConnection(String user,String pass,String url){
-        String db="libreriaprueba", u=user, p=pass;
+        String db="libreriafinal", u=user, p=pass;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://"+url+"/"+db, u, p );

@@ -268,7 +268,7 @@ public class FormularioLibro extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     public void insertBook(){
         String libroNuevo [] = {jTextFieldTitulo.getText(),jTextFieldIsbn.getText(),jTextFieldAnioPub.getText(),jTextAreaDescripcion.getText(),getTipo()};
-        if(libroNuevo[0].isBlank()||libroNuevo[1].isBlank() || libroNuevo[2].isBlank() || libroNuevo[3].isBlank()){
+        if(libroNuevo[0].isEmpty()||libroNuevo[1].isEmpty()|| libroNuevo[2].isEmpty() || libroNuevo[3].isEmpty()){
             JOptionPane.showMessageDialog(this, "Asegurate de llenar todos los campos", "Campo/s Vacío/s", JOptionPane.WARNING_MESSAGE);
             return;
         }

@@ -35,7 +35,7 @@ public class AppSistemaBiblioteca {
                         continue;
                     }   
                 case 1:
-                    if(createConnection("root", "root","localhost"))
+                    if(createConnection("root", "root","localhost:3306"))
                         break;
                     else{
                         JOptionPane.showMessageDialog(null, "Te equivocaste de botón", "Error", JOptionPane.ERROR_MESSAGE);
@@ -75,7 +75,7 @@ public class AppSistemaBiblioteca {
         String db="libreriaprueba", u=user, p=pass;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://25.13.55.58:3306/"+db, u, p );
+            con = DriverManager.getConnection("jdbc:mysql://"+url+"/"+db, u, p );
             System.out.println("Connection MYSQL database "+db+" succesful as "+u);
             return true;
         } catch (ClassNotFoundException | SQLException ex) {

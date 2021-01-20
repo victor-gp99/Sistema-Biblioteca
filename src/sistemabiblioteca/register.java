@@ -476,17 +476,6 @@ public class register extends javax.swing.JFrame {
                 || usuarioNuevo[6].isEmpty() || usuarioNuevo[7].isEmpty() || usuarioNuevo[8].isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Introduzca correctamente sus datos", "Datos faltantes", JOptionPane.ERROR_MESSAGE, null);
             return;
-
-            /*
-            try {
-                Statement st = con.createStatement();
-                st.execute("INSERT INTO cliente values (null,'" + libroNuevo[0] + "','" + libroNuevo[1] + "'," + libroNuevo[2] + ",'" + libroNuevo[3] + "'," + libroNuevo[4] + ")");
-                st.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(FormularioLibro.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
-                return;
-            }*/
         }
 
         /*

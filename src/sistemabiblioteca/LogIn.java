@@ -129,6 +129,11 @@ public class LogIn extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         registrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         registrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -229,6 +234,12 @@ public class LogIn extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_registrarMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        dispose();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

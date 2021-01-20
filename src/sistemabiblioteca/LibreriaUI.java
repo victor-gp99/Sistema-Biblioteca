@@ -167,6 +167,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_mcliente;
     private javax.swing.JButton jButtonRegistrarLibro;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;

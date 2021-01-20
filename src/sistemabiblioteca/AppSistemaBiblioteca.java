@@ -24,7 +24,7 @@ public class AppSistemaBiblioteca {
         System.out.println("Ing Software");
         int seleccion;
         while(true){
-            String opciones[]={"Andy","Diego","PP","Victor","DB OFFLINE","Salir"};
+            String opciones[]={"Andy","Harry","PP","Victor","DB OFFLINE","Salir"};
             seleccion=JOptionPane.showOptionDialog(null, "¿Quién se conecta a la BD?", "MySQL", 0, JOptionPane.PLAIN_MESSAGE, null, opciones, null);
             switch(seleccion){
                 case 0:

@@ -15,13 +15,6 @@ import javax.swing.JOptionPane;
 public class AppSistemaBiblioteca {
     static Connection con;
     public static void main(String[] args) {
-        System.out.println("Hola mundo!");
-        System.out.println("Prueba actualización...");
-        System.out.println("Test - Diego");
-        System.out.println("commit");
-        System.out.println("Soy el victorensen");
-        System.out.println("PP");
-        System.out.println("Ing Software");
         int seleccion;
         while(true){
             String opciones[]={"Andy","Harry","PP","Victor","DB OFFLINE","Salir"};

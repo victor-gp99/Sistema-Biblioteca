@@ -15,6 +15,7 @@ public class FormularioLibro extends javax.swing.JFrame {
     Connection con;
     /**
      * Creates new form FormularioLibro
+     * @param con
      */
     public FormularioLibro(Connection con) {
         initComponents();

@@ -27,13 +27,14 @@ public class LibreriaUI extends javax.swing.JFrame {
     }
     
     public LibreriaUI(){
+        //Este constructor se usa para cuando se abre el sistema sin conectarse a la BD. 
         initComponents();
         int W = Toolkit.getDefaultToolkit().getScreenSize().width/2;
         int H = Toolkit.getDefaultToolkit().getScreenSize().height/2;
         int x = W-this.getWidth()/2;
         int y = H-this.getHeight()/2;
         setLocation(x,y);
-        //No usar este constructor.
+        //Este constructor se usa para cuando se abre el sistema sin conectarse a la BD. 
     }
 
     /**
@@ -47,6 +48,7 @@ public class LibreriaUI extends javax.swing.JFrame {
 
         jButtonSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButtonRegistrarLibro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -61,6 +63,13 @@ public class LibreriaUI extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Interfaz Principal");
 
+        jButtonRegistrarLibro.setText("Registrar Libro");
+        jButtonRegistrarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarLibroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,7 +78,8 @@ public class LibreriaUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonRegistrarLibro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonSalir))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE))
                 .addContainerGap())
@@ -80,7 +90,9 @@ public class LibreriaUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 441, Short.MAX_VALUE)
-                .addComponent(jButtonSalir)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSalir)
+                    .addComponent(jButtonRegistrarLibro))
                 .addContainerGap())
         );
 
@@ -96,6 +108,10 @@ public class LibreriaUI extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_jButtonSalirActionPerformed
+
+    private void jButtonRegistrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarLibroActionPerformed
+        new FormularioLibro().setVisible(true);
+    }//GEN-LAST:event_jButtonRegistrarLibroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +149,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonRegistrarLibro;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

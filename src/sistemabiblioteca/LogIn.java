@@ -5,6 +5,7 @@
  */
 package sistemabiblioteca;
 
+import java.sql.Connection;
 import javax.swing.JFrame;
 
 /**
@@ -13,12 +14,20 @@ import javax.swing.JFrame;
  */
 public class LogIn extends javax.swing.JFrame {
 
+    Connection con;
+
     /**
      * Creates new form LogIn
      */
     public LogIn() {
         initComponents();
         this.setLocationRelativeTo(null);     //Centrar logIn
+    }
+
+    public LogIn(Connection con) {
+        initComponents();
+        this.setLocationRelativeTo(null);     //Centrar logIn
+        this.con = con;
     }
 
     /**
@@ -37,8 +46,8 @@ public class LogIn extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jTextFieldUsuario = new javax.swing.JTextField();
+        jPasswordFieldContrasenia = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         registrar = new javax.swing.JLabel();
@@ -107,23 +116,28 @@ public class LogIn extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(236, 240, 241));
         jLabel5.setText("Contraseña");
 
-        jTextField1.setBackground(new java.awt.Color(108, 122, 137));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(228, 241, 254));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldUsuario.setBackground(new java.awt.Color(108, 122, 137));
+        jTextFieldUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldUsuario.setForeground(new java.awt.Color(228, 241, 254));
+        jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldUsuarioActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setBackground(new java.awt.Color(108, 122, 137));
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(228, 241, 254));
+        jPasswordFieldContrasenia.setBackground(new java.awt.Color(108, 122, 137));
+        jPasswordFieldContrasenia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPasswordFieldContrasenia.setForeground(new java.awt.Color(228, 241, 254));
 
         jButton1.setBackground(new java.awt.Color(34, 167, 240));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("LogIn");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(192, 57, 43));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -155,7 +169,7 @@ public class LogIn extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(45, 45, 45)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -164,7 +178,7 @@ public class LogIn extends javax.swing.JFrame {
                                 .addComponent(jButton2)
                                 .addGap(85, 85, 85)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPasswordFieldContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(registrar))))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
@@ -174,11 +188,11 @@ public class LogIn extends javax.swing.JFrame {
                 .addContainerGap(43, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordFieldContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,38 +222,44 @@ public class LogIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldUsuarioActionPerformed
 
     private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
-        
+
         System.exit(0);
-        
+
     }//GEN-LAST:event_exitMouseClicked
 
     private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
-       
+
         this.setState(JFrame.ICONIFIED);
-        
+
     }//GEN-LAST:event_minimizeMouseClicked
 
     private void registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarMouseClicked
-        
+
         register reg = new register();
         reg.setVisible(true);
         reg.pack();
         reg.setLocationRelativeTo(null);
         reg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-        
+
     }//GEN-LAST:event_registrarMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
         dispose();
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        new LibreriaUI().setVisible(true);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,8 +305,8 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField jPasswordFieldContrasenia;
+    private javax.swing.JTextField jTextFieldUsuario;
     private javax.swing.JLabel minimize;
     private javax.swing.JLabel registrar;
     // End of variables declaration//GEN-END:variables

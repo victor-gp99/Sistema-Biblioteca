@@ -257,7 +257,7 @@ public class LogIn extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        new LibreriaUI().setVisible(true);
+        new LibreriaUI(con).setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -49,6 +49,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         jButtonSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButtonRegistrarLibro = new javax.swing.JButton();
+        registryAutorButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -70,6 +71,13 @@ public class LibreriaUI extends javax.swing.JFrame {
             }
         });
 
+        registryAutorButton.setText("Registrar Autor");
+        registryAutorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registryAutorButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,13 +91,19 @@ public class LibreriaUI extends javax.swing.JFrame {
                         .addComponent(jButtonSalir))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(284, 284, 284)
+                .addComponent(registryAutorButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 441, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
+                .addComponent(registryAutorButton)
+                .addGap(129, 129, 129)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalir)
                     .addComponent(jButtonRegistrarLibro))
@@ -112,6 +126,10 @@ public class LibreriaUI extends javax.swing.JFrame {
     private void jButtonRegistrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarLibroActionPerformed
         new FormularioLibro(con).setVisible(true);
     }//GEN-LAST:event_jButtonRegistrarLibroActionPerformed
+
+    private void registryAutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registryAutorButtonActionPerformed
+        RegistryAutorUI raui = new RegistryAutorUI();
+    }//GEN-LAST:event_registryAutorButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,6 +170,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRegistrarLibro;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton registryAutorButton;
     // End of variables declaration//GEN-END:variables
     
 }

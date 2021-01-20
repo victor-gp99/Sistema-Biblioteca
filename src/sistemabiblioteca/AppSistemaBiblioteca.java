@@ -22,39 +22,43 @@ public class AppSistemaBiblioteca {
         System.out.println("Soy el victorensen");
         System.out.println("PP");
         System.out.println("Ing Software");
+        int seleccion;
         while(true){
-            String opciones[]={"Andy","Diego","PP","Victor","Salir"};
-            int seleccion=JOptionPane.showOptionDialog(null, "¿Quién se conecta a la BD?", "MySQL", 0, JOptionPane.PLAIN_MESSAGE, null, opciones, null);
+            String opciones[]={"Andy","Diego","PP","Victor","DB OFFLINE","Salir"};
+            seleccion=JOptionPane.showOptionDialog(null, "¿Quién se conecta a la BD?", "MySQL", 0, JOptionPane.PLAIN_MESSAGE, null, opciones, null);
             switch(seleccion){
                 case 0:
-                    if(createConnection("andy", "prueba"))
+                    if(createConnection("andy", "prueba","25.13.55.58:3306"))
                         break;
                     else{
-                        JOptionPane.showMessageDialog(null, "Te equivocaste de botón", "Errror", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Te equivocaste de botón", "Error", JOptionPane.ERROR_MESSAGE);
                         continue;
                     }   
                 case 1:
-                    if(createConnection("root", "root"))
+                    if(createConnection("root", "root","localhost"))
                         break;
                     else{
-                        JOptionPane.showMessageDialog(null, "Te equivocaste de botón", "Errror", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Te equivocaste de botón", "Error", JOptionPane.ERROR_MESSAGE);
                         continue;
                     }   
                 case 2:
-                    if(createConnection("pepon", "admin"))
+                    if(createConnection("pepon", "admin","25.13.55.58:3306"))
                         break;
                     else{
-                        JOptionPane.showMessageDialog(null, "Te equivocaste de botón", "Errror", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Te equivocaste de botón", "Error", JOptionPane.ERROR_MESSAGE);
                         continue;
                     }
                 case 3:
-                    if(createConnection("victornsn", "admin"))
+                    if(createConnection("victornsn", "admin","25.13.55.58:3306"))
                         break;
                     else{
-                        JOptionPane.showMessageDialog(null, "Te equivocaste de botón", "Errror", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Te equivocaste de botón", "Error", JOptionPane.ERROR_MESSAGE);
                         continue;
                     }               
                 case 4:
+                    new LibreriaUI().setVisible(true);
+                    break;
+                case 5:
                     System.exit(0);
                     break;
                 default:
@@ -62,12 +66,13 @@ public class AppSistemaBiblioteca {
             }
             break;
         }
-        new LibreriaUI(con).setVisible(true);
+        if(seleccion!=4)
+            new LibreriaUI(con).setVisible(true);
         
     }
     
-    static boolean createConnection(String user,String pass){
-        String db="mydb", u=user, p=pass;
+    static boolean createConnection(String user,String pass,String url){
+        String db="libreriaprueba", u=user, p=pass;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://25.13.55.58:3306/"+db, u, p );

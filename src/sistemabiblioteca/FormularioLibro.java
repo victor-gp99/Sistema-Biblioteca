@@ -1,6 +1,10 @@
 package sistemabiblioteca;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -8,13 +12,14 @@ import javax.swing.JOptionPane;
  * @author PP
  */
 public class FormularioLibro extends javax.swing.JFrame {
-
+    Connection con;
     /**
      * Creates new form FormularioLibro
      */
     public FormularioLibro(Connection con) {
         initComponents();
         setLocationRelativeTo(null);
+        this.con = con;
     }
     
     public FormularioLibro(){
@@ -111,6 +116,7 @@ public class FormularioLibro extends javax.swing.JFrame {
         jLabelDescripcion1.setText("Tipo:");
 
         jTextAreaDescripcion.setColumns(20);
+        jTextAreaDescripcion.setLineWrap(true);
         jTextAreaDescripcion.setRows(5);
         jScrollPane1.setViewportView(jTextAreaDescripcion);
 
@@ -209,8 +215,7 @@ public class FormularioLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        insertBook();
-        
+        insertBook();   
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     /**
@@ -294,12 +299,27 @@ public class FormularioLibro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ingresa un año de publicación en numeros y a 4 digitos exactos", "Formato de año", JOptionPane.WARNING_MESSAGE);
             return;
         }
-            
+        
+        try {
+            Statement st = con.createStatement();
+            st.execute("INSERT INTO libro values (null,'"+libroNuevo[0]+"','"+libroNuevo[1]+"',"+libroNuevo[2]+",'"+libroNuevo[3]+"',"+libroNuevo[4]+")");
+            st.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FormularioLibro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "¡Libro registrado exitosamente!", "¡Hecho!", JOptionPane.PLAIN_MESSAGE);
+        jTextFieldTitulo.setText("");
+        jTextFieldIsbn.setText("");
+        jTextFieldAnioPub.setText("");
+        jTextAreaDescripcion.setText("");
+        jRadioButtonPapel.setSelected(true);
     }
     
     public String getTipo(){
         if(jRadioButtonPapel.isSelected())
             return "1";
         return "2";
-    }
+    }   
 }

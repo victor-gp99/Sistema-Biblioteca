@@ -26,6 +26,8 @@ public class AdminTools extends javax.swing.JFrame {
 
         registryAutorButton = new javax.swing.JButton();
         jButtonRegistrarLibro = new javax.swing.JButton();
+        jButtonLocalidadNueva = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -43,16 +45,37 @@ public class AdminTools extends javax.swing.JFrame {
             }
         });
 
+        jButtonLocalidadNueva.setText("Registrar Localidad");
+        jButtonLocalidadNueva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLocalidadNuevaActionPerformed(evt);
+            }
+        });
+
+        jToggleButton1.setText("Registrar Editorial");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jButtonRegistrarLibro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                .addComponent(registryAutorButton)
-                .addGap(50, 50, 50))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jToggleButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonRegistrarLibro)
+                        .addGap(18, 18, 18)
+                        .addComponent(registryAutorButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonLocalidadNueva)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,8 +83,11 @@ public class AdminTools extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registryAutorButton)
-                    .addComponent(jButtonRegistrarLibro))
-                .addContainerGap(272, Short.MAX_VALUE))
+                    .addComponent(jButtonRegistrarLibro)
+                    .addComponent(jButtonLocalidadNueva))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton1)
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         pack();
@@ -74,6 +100,14 @@ public class AdminTools extends javax.swing.JFrame {
     private void jButtonRegistrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarLibroActionPerformed
         new FormularioLibro(con).setVisible(true);
     }//GEN-LAST:event_jButtonRegistrarLibroActionPerformed
+
+    private void jButtonLocalidadNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalidadNuevaActionPerformed
+        new FormularioLocalidad().setVisible(true);
+    }//GEN-LAST:event_jButtonLocalidadNuevaActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+       RegistryEditorialUI reui= new RegistryEditorialUI();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,7 +145,9 @@ public class AdminTools extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonLocalidadNueva;
     private javax.swing.JButton jButtonRegistrarLibro;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton registryAutorButton;
     // End of variables declaration//GEN-END:variables
 }

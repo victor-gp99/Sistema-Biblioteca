@@ -476,6 +476,16 @@ public class register extends javax.swing.JFrame {
                 || usuarioNuevo[6].isEmpty() || usuarioNuevo[7].isEmpty() || usuarioNuevo[8].isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Introduzca correctamente sus datos", "Datos faltantes", JOptionPane.ERROR_MESSAGE, null);
             return;
+        }else if(!(String.valueOf(jPasswordFieldContrasenia.getPassword()).equals(String.valueOf(jPasswordFieldConfirmarContrasenia.getPassword())))){
+        
+             JOptionPane.showMessageDialog(rootPane, "La contraseña no coincide", "Vuelva a introducirla", JOptionPane.ERROR_MESSAGE, null);
+             return;
+        }else if(String.valueOf(jPasswordFieldContrasenia.getPassword()).length() < 6){
+            JOptionPane.showMessageDialog(rootPane, "La contraseña debe tener al menos 6 caracteres", "Vuelva a introducirla", JOptionPane.ERROR_MESSAGE, null);
+             return;
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Usuario registrado correctamentes", "Registro exitoso", JOptionPane.OK_OPTION, null);
+             return;
         }
 
         /*

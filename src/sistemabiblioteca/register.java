@@ -34,6 +34,7 @@ public class register extends javax.swing.JFrame {
     public register(Connection con) {
         initComponents();
         this.con = con;
+        fillInComboBox();
         
     }
 
@@ -578,7 +579,7 @@ public class register extends javax.swing.JFrame {
     public void fillInComboBox(){
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT l.nombre, e.nombre FROM localidad AS l INNER JOIN estado AS e ON l.id_estado = e.id;");
+            ResultSet rs = st.executeQuery("SELECT l.nombre, e.nombre FROM localidad AS l INNER JOIN estado AS e ON l.id_estado = e.id");
             while (rs.next()){
                 jComboBoxLocalidad.addItem(rs.getString("l.nombre")+"("+rs.getString("e.nombre")+")");
             }

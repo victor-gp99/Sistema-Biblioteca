@@ -6,6 +6,9 @@
 package sistemabiblioteca;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -52,7 +55,7 @@ public class LogIn extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         registrar = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(botonX());
         setTitle("Iniciar sesion");
         setUndecorated(true);
 
@@ -214,7 +217,7 @@ public class LogIn extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -250,9 +253,12 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        dispose();
-
+        try {
+            con.close();
+        } catch (SQLException | java.lang.NullPointerException ex) {
+            System.out.println("No hay conexión con la base de datos");
+        }
+        System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -310,4 +316,13 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel minimize;
     private javax.swing.JLabel registrar;
     // End of variables declaration//GEN-END:variables
+    
+    public int botonX(){
+        try {
+            con.close();
+        } catch (java.lang.NullPointerException | SQLException ex) {
+            System.out.println("No hay conexión con la base de datos");
+        }
+        return 3;
+    }
 }

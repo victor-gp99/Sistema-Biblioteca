@@ -62,7 +62,7 @@ public class AppSistemaBiblioteca {
         }
         if(seleccion!=4)
             //new LibreriaUI(con).setVisible(true);
-            new LogIn().setVisible(true);
+            new LogIn(con).setVisible(true);
 
         
     }

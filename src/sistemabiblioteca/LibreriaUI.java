@@ -48,8 +48,8 @@ public class LibreriaUI extends javax.swing.JFrame {
 
         jButtonSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButtonRegistrarLibro = new javax.swing.JButton();
-        registryAutorButton = new javax.swing.JButton();
+        jLabelCliente = new javax.swing.JLabel();
+        jButtonAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -64,17 +64,15 @@ public class LibreriaUI extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Interfaz Principal");
 
-        jButtonRegistrarLibro.setText("Registrar Libro");
-        jButtonRegistrarLibro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegistrarLibroActionPerformed(evt);
-            }
-        });
+        jLabelCliente.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabelCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelCliente.setText("Nombre del cliente");
+        jLabelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        registryAutorButton.setText("Registrar Autor");
-        registryAutorButton.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAdmin.setText("ADMIN");
+        jButtonAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registryAutorButtonActionPerformed(evt);
+                jButtonAdminActionPerformed(evt);
             }
         });
 
@@ -85,28 +83,27 @@ public class LibreriaUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonRegistrarLibro)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonAdmin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonSalir))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE))
+                        .addComponent(jButtonSalir)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(284, 284, 284)
-                .addComponent(registryAutorButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
-                .addComponent(registryAutorButton)
-                .addGap(129, 129, 129)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 393, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalir)
-                    .addComponent(jButtonRegistrarLibro))
+                    .addComponent(jButtonAdmin))
                 .addContainerGap())
         );
 
@@ -123,13 +120,9 @@ public class LibreriaUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
-    private void jButtonRegistrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarLibroActionPerformed
-        new FormularioLibro(con).setVisible(true);
-    }//GEN-LAST:event_jButtonRegistrarLibroActionPerformed
-
-    private void registryAutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registryAutorButtonActionPerformed
-        RegistryAutorUI raui = new RegistryAutorUI();
-    }//GEN-LAST:event_registryAutorButtonActionPerformed
+    private void jButtonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdminActionPerformed
+        new AdminTools().setVisible(true);
+    }//GEN-LAST:event_jButtonAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,11 +160,10 @@ public class LibreriaUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_mcliente;
-    private javax.swing.JButton jButtonRegistrarLibro;
+    private javax.swing.JButton jButtonAdmin;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton registryAutorButton;
+    private javax.swing.JLabel jLabelCliente;
     // End of variables declaration//GEN-END:variables
     
 }

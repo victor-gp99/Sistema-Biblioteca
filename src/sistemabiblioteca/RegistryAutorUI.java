@@ -15,9 +15,9 @@ import static sistemabiblioteca.AppSistemaBiblioteca.con;
  */
 public class RegistryAutorUI extends javax.swing.JFrame {
 
-    public RegistryAutorUI() {
-        setTitle("Registra el autor");
+    public RegistryAutorUI() {     
         initComponents();
+        setTitle("Registra el autor");
         setLocationRelativeTo(new LibreriaUI());
         setVisible(true);
     }
@@ -184,13 +184,23 @@ public class RegistryAutorUI extends javax.swing.JFrame {
     
     public void insertarAutorDB(){//error llave foranea 
         String nombre, apellido1, apellido2, url , direccion, telefono, localidad;
+            
              nombre= nombreText.getText();
              apellido1= Apellido1Text.getText();
              apellido2= apellido2Text.getText();
              direccion=addressText.getText();
              url = webText.getText();
              telefono =phoneText.getText();
-             localidad = localText.getText();
+             
+             if (phoneText.getText().length()>10){ 
+                 phoneText.setText("");
+                 JOptionPane.showMessageDialog(this, "Teclea solo 10 digitos!", "ERROR", JOptionPane.ERROR_MESSAGE);
+             }
+             localidad = localText.getText();  
+             
+             if (nombre.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || direccion.isEmpty()|| url.isEmpty()|| telefono.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Hay campos vacios...", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
         try {
             Statement st;
             st = con.createStatement();

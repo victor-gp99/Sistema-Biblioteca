@@ -194,22 +194,17 @@ public class RegistryAutorUI extends javax.swing.JFrame {
         try {
             Statement st;
             st = con.createStatement();
-            st.execute("INSERT INTO autor (nombre, apellido1, apellido2, url , direccion, telefono, id_estado) "
+            st.execute("INSERT INTO autor (nombre, apellido1, apellido2, url , direccion, telefono, id_localidad) "
                     + "VALUES ('"+nombre+"','"+apellido1+"','"+apellido2+"','"+url+"','"+direccion+"','"+telefono+"','"+localidad+"')");
             JOptionPane.showMessageDialog(rootPane, "Se registro un autor exitosamente!");
+            this.dispose();
         } catch (SQLException ex) {
             Logger.getLogger(RegistryAutorUI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-                
-                
-                
-                
-            
-          
-  
-    
     }
+    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellido1Text;

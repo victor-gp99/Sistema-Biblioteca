@@ -187,7 +187,7 @@ public class FormularioLocalidad extends javax.swing.JFrame {
         String nombre = jTextFieldNombre.getText();
         int estadoId = jComboBoxEstado.getSelectedIndex() + 1;
         
-        if(nombre.isBlank() || estadoId == -1){
+        if(nombre.isEmpty()|| estadoId == -1){
             JOptionPane.showMessageDialog(this, "Asegurate de llenar todos los campos", "Campo/s Vacío/s", JOptionPane.WARNING_MESSAGE);
             return;
         }

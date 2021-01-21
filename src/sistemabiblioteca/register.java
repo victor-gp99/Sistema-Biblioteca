@@ -517,7 +517,7 @@ public class register extends javax.swing.JFrame {
         try {
             Statement st = con.createStatement();
             st.execute("INSERT INTO cliente (id, nombre, apellido1, apellido2, usuario, contrasenia, direccion, email, telefono,  id_localidad, tipoUsuario) values (null,'" + usuarioNuevo[0] + "','" + usuarioNuevo[1] + "','" + 
-                        usuarioNuevo[2] + "','" + usuarioNuevo[3] + "','" + usuarioNuevo[4] + "','" + usuarioNuevo[6] + "','" + usuarioNuevo[7] + "','" + usuarioNuevo[8] + "',"+ "'" +(int)jComboBoxLocalidad.getSelectedIndex()+"'" +", 'cliente')");
+                        usuarioNuevo[2] + "','" + usuarioNuevo[3] + "','" + usuarioNuevo[4] + "','" + usuarioNuevo[6] + "','" + usuarioNuevo[7] + "','" + usuarioNuevo[8] + "',"+ "'" +(jComboBoxLocalidad.getSelectedIndex()+1)+"'" +", 'cliente')");
             st.close();
         } catch (SQLException ex) {
             Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);

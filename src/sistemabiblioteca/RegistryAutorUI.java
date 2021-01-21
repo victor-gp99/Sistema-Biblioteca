@@ -188,13 +188,13 @@ public class RegistryAutorUI extends javax.swing.JFrame {
              apellido1= Apellido1Text.getText();
              apellido2= apellido2Text.getText();
              direccion=addressText.getText();
-             url=webText.getText();
-             telefono=phoneText.getText();
+             url = webText.getText();
+             telefono =phoneText.getText();
              localidad = localText.getText();
         try {
             Statement st;
             st = con.createStatement();
-            st.execute("INSERT INTO autor (nombre, apellido1, apellido2, url , direccion, telefono, id_localidad) "//id_localidad nececitan agrgarce localidades para añadir una localidad a un autor
+            st.execute("INSERT INTO autor (nombre, apellido1, apellido2, url , direccion, telefono, id_estado) "
                     + "VALUES ('"+nombre+"','"+apellido1+"','"+apellido2+"','"+url+"','"+direccion+"','"+telefono+"','"+localidad+"')");
             JOptionPane.showMessageDialog(rootPane, "Se registro un autor exitosamente!");
         } catch (SQLException ex) {

@@ -198,7 +198,7 @@ public class RegistryAutorUI extends javax.swing.JFrame {
              }
              localidad = localText.getText();  
              
-             if (nombre.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || direccion.isEmpty()|| url.isEmpty()|| telefono.isEmpty()) {
+             if (nombre.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || direccion.isEmpty()|| url.isEmpty()|| telefono.isEmpty() || localidad.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Hay campos vacios...", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
         try {

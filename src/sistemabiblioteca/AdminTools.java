@@ -12,6 +12,7 @@ public class AdminTools extends javax.swing.JFrame {
      */
     public AdminTools() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -26,7 +27,7 @@ public class AdminTools extends javax.swing.JFrame {
         registryAutorButton = new javax.swing.JButton();
         jButtonRegistrarLibro = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         registryAutorButton.setText("Registrar Autor");
         registryAutorButton.addActionListener(new java.awt.event.ActionListener() {

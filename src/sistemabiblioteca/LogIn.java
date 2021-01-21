@@ -6,7 +6,14 @@
 package sistemabiblioteca;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,12 +28,12 @@ public class LogIn extends javax.swing.JFrame {
      */
     public LogIn() {
         initComponents();
-        this.setLocationRelativeTo(null);     //Centrar logIn
+        this.setLocationRelativeTo(null);
     }
 
     public LogIn(Connection con) {
         initComponents();
-        this.setLocationRelativeTo(null);     //Centrar logIn
+        this.setLocationRelativeTo(null);
         this.con = con;
     }
 
@@ -119,6 +126,7 @@ public class LogIn extends javax.swing.JFrame {
         jTextFieldUsuario.setBackground(new java.awt.Color(108, 122, 137));
         jTextFieldUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldUsuario.setForeground(new java.awt.Color(228, 241, 254));
+        jTextFieldUsuario.setText("admin");
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUsuarioActionPerformed(evt);
@@ -128,6 +136,7 @@ public class LogIn extends javax.swing.JFrame {
         jPasswordFieldContrasenia.setBackground(new java.awt.Color(108, 122, 137));
         jPasswordFieldContrasenia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordFieldContrasenia.setForeground(new java.awt.Color(228, 241, 254));
+        jPasswordFieldContrasenia.setText("administrador");
 
         jButton1.setBackground(new java.awt.Color(34, 167, 240));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -214,7 +223,7 @@ public class LogIn extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -257,7 +266,28 @@ public class LogIn extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        new LibreriaUI(con).setVisible(true);
+        String user = jTextFieldUsuario.getText();
+        String pass = String.valueOf(jPasswordFieldContrasenia.getPassword());
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM cliente WHERE usuario='" + user + "' && contrasenia ='" + pass + "'");
+
+            while (rs.next()) {
+                String usr = rs.getString(5);
+                String contra = rs.getString(6);
+
+                if (user.equals(usr) && pass.equals(contra)) {
+                    new LibreriaUI(con).setVisible(true);
+                } else if (user.equals(usr) && pass.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Error");
+                }
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -295,6 +325,7 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel exit;

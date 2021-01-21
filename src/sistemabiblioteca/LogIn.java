@@ -240,7 +240,7 @@ public class LogIn extends javax.swing.JFrame {
 
     private void registrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarMouseClicked
 
-        register reg = new register();
+        register reg = new register(con);
         reg.setVisible(true);
         reg.pack();
         reg.setLocationRelativeTo(null);

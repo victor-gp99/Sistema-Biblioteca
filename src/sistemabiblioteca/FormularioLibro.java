@@ -1,6 +1,7 @@
 package sistemabiblioteca;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -21,6 +22,7 @@ public class FormularioLibro extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.con = con;
+        fillInComboBox();
     }
     
     public FormularioLibro(){
@@ -53,6 +55,8 @@ public class FormularioLibro extends javax.swing.JFrame {
         jLabelDescripcion1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDescripcion = new javax.swing.JTextArea();
+        jComboBoxEditorial = new javax.swing.JComboBox<>();
+        jLabelDescripcion2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -121,6 +125,9 @@ public class FormularioLibro extends javax.swing.JFrame {
         jTextAreaDescripcion.setRows(5);
         jScrollPane1.setViewportView(jTextAreaDescripcion);
 
+        jLabelDescripcion2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelDescripcion2.setText("Editorial:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,14 +146,6 @@ public class FormularioLibro extends javax.swing.JFrame {
                         .addComponent(jTextFieldIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelAnioPub, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldAnioPub, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButtonAceptar)
@@ -158,7 +157,17 @@ public class FormularioLibro extends javax.swing.JFrame {
                                 .addComponent(jRadioButtonPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioButtonEBook, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)))
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelDescripcion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelAnioPub, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                            .addComponent(jLabelDescripcion2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBoxEditorial, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldAnioPub, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -181,6 +190,9 @@ public class FormularioLibro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelDescripcion)
+                        .addContainerGap(383, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -189,12 +201,13 @@ public class FormularioLibro extends javax.swing.JFrame {
                             .addComponent(jLabelDescripcion1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBoxEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelDescripcion2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonAceptar)
                             .addComponent(jButtonCancelar))
-                        .addGap(0, 21, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelDescripcion)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18))))
         );
 
         pack();
@@ -217,7 +230,14 @@ public class FormularioLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        insertBook();   
+        if(insertBookToDB()){
+            jTextFieldTitulo.setText("");
+            jTextFieldIsbn.setText("");
+            jTextFieldAnioPub.setText("");
+            jTextAreaDescripcion.setText("");
+            jRadioButtonPapel.setSelected(true);
+            jComboBoxEditorial.setSelectedIndex(-1);
+        }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     /**
@@ -259,9 +279,11 @@ public class FormularioLibro extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JComboBox<String> jComboBoxEditorial;
     private javax.swing.JLabel jLabelAnioPub;
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelDescripcion1;
+    private javax.swing.JLabel jLabelDescripcion2;
     private javax.swing.JLabel jLabelIsbn;
     private javax.swing.JLabel jLabelNuevoLibro;
     private javax.swing.JLabel jLabelTitulo;
@@ -273,33 +295,34 @@ public class FormularioLibro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldIsbn;
     private javax.swing.JTextField jTextFieldTitulo;
     // End of variables declaration//GEN-END:variables
-    public void insertBook(){
+    public boolean insertBookToDB(){
         String libroNuevo [] = {jTextFieldTitulo.getText(),jTextFieldIsbn.getText(),jTextFieldAnioPub.getText(),jTextAreaDescripcion.getText(),getTipo()};
-        if(libroNuevo[0].isEmpty()||libroNuevo[1].isEmpty()|| libroNuevo[2].isEmpty() || libroNuevo[3].isEmpty()){
+        int editorialIndex = jComboBoxEditorial.getSelectedIndex();
+        if(libroNuevo[0].isEmpty()||libroNuevo[1].isEmpty()|| libroNuevo[2].isEmpty() || libroNuevo[3].isEmpty()|| editorialIndex == -1){
             JOptionPane.showMessageDialog(this, "Asegurate de llenar todos los campos", "Campo/s Vacío/s", JOptionPane.WARNING_MESSAGE);
-            return;
+            return false;
         }
         if(libroNuevo[0].length() > 45){
             JOptionPane.showMessageDialog(this, "Ingresa un título con menos de 45 caracteres", "Título demasiado grande", JOptionPane.WARNING_MESSAGE);
-            return;
+            return false;
         }
         if(libroNuevo[1].length() > 45){
             JOptionPane.showMessageDialog(this, "Ingresa un Isbn con menos de 45 caracteres", "Isbn demasiado grande", JOptionPane.WARNING_MESSAGE);
-            return;
+            return false;
         }
         if(libroNuevo[2].length() != 4){
             JOptionPane.showMessageDialog(this, "Ingresa un año de publicación en numeros y a 4 digitos exactos", "Formato de año", JOptionPane.WARNING_MESSAGE);
-            return;
+            return false;
         }
         if(libroNuevo[3].length() > 450){
             JOptionPane.showMessageDialog(this, "La descripción tiene como máximo 450 caracteres", "Formato de año", JOptionPane.WARNING_MESSAGE);
-            return;
+            return false;
         }
         try {
             Integer.parseInt(libroNuevo[2]);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingresa un año de publicación en numeros y a 4 digitos exactos", "Formato de año", JOptionPane.WARNING_MESSAGE);
-            return;
+            return false;
         }
         
         try {
@@ -309,14 +332,46 @@ public class FormularioLibro extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(FormularioLibro.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
-            return;
+            return false;
         }
-        JOptionPane.showMessageDialog(this, "¡Libro registrado exitosamente!", "¡Hecho!", JOptionPane.PLAIN_MESSAGE);
-        jTextFieldTitulo.setText("");
-        jTextFieldIsbn.setText("");
-        jTextFieldAnioPub.setText("");
-        jTextAreaDescripcion.setText("");
-        jRadioButtonPapel.setSelected(true);
+        
+        if(editorialPublicaLibro(editorialIndex+1)){
+           JOptionPane.showMessageDialog(this, "¡Libro registrado exitosamente!", "¡Hecho!", JOptionPane.PLAIN_MESSAGE);
+           return true;
+        }
+        return false;
+    }
+    
+    public boolean editorialPublicaLibro(int editorial){
+        try {
+            Statement st = con.createStatement();
+            int libro = getLastId();
+            
+            st.execute("INSERT INTO editorial_publica_libro values("+editorial+","+libro+")");
+            st.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FormularioLibro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
+    public int getLastId(){
+        int id = -1;
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT MAX(id) FROM libro");
+            while (rs.next()){
+                id=rs.getInt("MAX(id)");
+            }
+            st.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FormularioLibro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error al obtener el ultimo id", "MySQL ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        return id;
     }
     
     public String getTipo(){
@@ -324,5 +379,22 @@ public class FormularioLibro extends javax.swing.JFrame {
             return "1";
         return "2";
         //coment
-    }   
+    }  
+    
+    public void fillInComboBox(){
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT nombre FROM editorial");
+            while (rs.next()){
+                jComboBoxEditorial.addItem(rs.getString("nombre"));
+            }
+            st.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        jComboBoxEditorial.setSelectedIndex(-1);
+    }
 }

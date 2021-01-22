@@ -1,6 +1,7 @@
 
 package sistemabiblioteca;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -19,6 +20,7 @@ public class RegistryEditorialUI extends javax.swing.JFrame {
         setTitle("Registra el autor");
         setLocationRelativeTo(null);
         setVisible(true);
+        fillInComboBox();
     }
     
     public RegistryEditorialUI(Connection con) {
@@ -39,12 +41,14 @@ public class RegistryEditorialUI extends javax.swing.JFrame {
              if (phoneTextField.getText().length()>10){ 
                  phoneTextField.setText("");
                  JOptionPane.showMessageDialog(this, "Teclea solo 10 digitos en telefono!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                 return;
              }
               url =webTextField.getText();
-              localidad = localTextField.getText();
+              localidad = String.valueOf(jComboBoxLocalidad.getSelectedItem());
              
               if (nombre.isEmpty()|| url.isEmpty()||direccion.isEmpty()||telefono.isEmpty()|| localidad.isEmpty()) {
               JOptionPane.showMessageDialog(this, "Hay campos vacios...", "ERROR", JOptionPane.ERROR_MESSAGE);
+              return;
                }
              
              
@@ -60,7 +64,20 @@ public class RegistryEditorialUI extends javax.swing.JFrame {
         }
 
     }
-
+    
+     public void fillInComboBox(){
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT l.nombre, e.nombre FROM localidad AS l INNER JOIN estado AS e ON l.id_estado = e.id");
+            while (rs.next()){
+                jComboBoxLocalidad.addItem(rs.getString("l.nombre")+"("+rs.getString("e.nombre")+")");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -74,9 +91,9 @@ public class RegistryEditorialUI extends javax.swing.JFrame {
         direTextField = new javax.swing.JTextField();
         phoneTextField = new javax.swing.JTextField();
         webTextField = new javax.swing.JTextField();
-        localTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jComboBoxLocalidad = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +111,13 @@ public class RegistryEditorialUI extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jComboBoxLocalidad.setToolTipText("Selecciona una localidad");
+        jComboBoxLocalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxLocalidadActionPerformed(evt);
             }
         });
 
@@ -117,14 +141,14 @@ public class RegistryEditorialUI extends javax.swing.JFrame {
                             .addComponent(webTextField)
                             .addComponent(phoneTextField)
                             .addComponent(direTextField)
-                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(localTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jComboBoxLocalidad, 0, 200, Short.MAX_VALUE)
+                            .addComponent(nameTextField))))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -142,9 +166,9 @@ public class RegistryEditorialUI extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(localTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(39, 39, 39)
+                .addGap(33, 33, 33)
                 .addComponent(jButton1)
                 .addGap(22, 22, 22))
         );
@@ -155,6 +179,10 @@ public class RegistryEditorialUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        insertarEditorialDB();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBoxLocalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxLocalidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxLocalidadActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -191,12 +219,12 @@ public class RegistryEditorialUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField direTextField;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBoxLocalidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField localTextField;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JTextField phoneTextField;
     private javax.swing.JTextField webTextField;

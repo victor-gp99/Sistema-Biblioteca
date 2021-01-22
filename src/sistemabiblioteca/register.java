@@ -524,7 +524,7 @@ public class register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        JOptionPane.showMessageDialog(this, "Usuario registrado correctamentes", "Registro exitoso", JOptionPane.QUESTION_MESSAGE, null);
+        JOptionPane.showMessageDialog(this, "Usuario registrado correctamente", "Registro exitoso", JOptionPane.QUESTION_MESSAGE, null);
         jTextFieldNombre.setText("");
         jTextFieldApellido1.setText("");
         jTextFieldApellido2.setText("");

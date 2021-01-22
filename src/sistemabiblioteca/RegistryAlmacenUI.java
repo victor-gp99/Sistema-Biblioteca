@@ -163,7 +163,7 @@ public class RegistryAlmacenUI extends javax.swing.JFrame {
             st = con.createStatement();
             st.execute("INSERT INTO almacen ( direccion, telefono, id_localidad) "
                     + "VALUES ('"+direccion+"','"+telefono+"','"+(jComboBoxLocalidad.getSelectedIndex()+1)+"')");
-            JOptionPane.showMessageDialog(rootPane, "Se registro una editorial exitosamente!");
+            JOptionPane.showMessageDialog(rootPane, "Se registro un almacen exitosamente!");
             this.dispose();
         } catch (SQLException ex) {
             Logger.getLogger(RegistryAutorUI.class.getName()).log(Level.SEVERE, null, ex);

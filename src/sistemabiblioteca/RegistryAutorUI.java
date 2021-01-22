@@ -2,6 +2,7 @@
 package sistemabiblioteca;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -20,6 +21,7 @@ public class RegistryAutorUI extends javax.swing.JFrame {
         setTitle("Registra el autor");
         setLocationRelativeTo(new LibreriaUI());
         setVisible(true);
+        fillInComboBox();
     }
     
      public RegistryAutorUI(Connection con) {// Contructor con conexion a base de datos por si las moscas
@@ -46,8 +48,8 @@ public class RegistryAutorUI extends javax.swing.JFrame {
         addressText = new javax.swing.JTextField();
         phoneText = new javax.swing.JTextField();
         registryButton = new javax.swing.JButton();
-        localText = new javax.swing.JTextField();
         localLabel = new javax.swing.JLabel();
+        jComboBoxLocalidad = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,45 +74,48 @@ public class RegistryAutorUI extends javax.swing.JFrame {
 
         localLabel.setText("No. Localidad:");
 
+        jComboBoxLocalidad.setToolTipText("Selecciona una localidad");
+        jComboBoxLocalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxLocalidadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(registryButton))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(addressLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nombreLabel)
-                                .addGap(1, 1, 1))
-                            .addComponent(paternoLabel)
-                            .addComponent(maternoLabel)
-                            .addComponent(webLabel)
-                            .addComponent(phoneLabel)
-                            .addComponent(localLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Apellido1Text)
-                            .addComponent(apellido2Text)
-                            .addComponent(nombreText)
-                            .addComponent(addressText)
-                            .addComponent(webText)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(localText, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(237, Short.MAX_VALUE)
+                .addComponent(registryButton)
                 .addGap(20, 20, 20))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(addressLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(nombreLabel)
+                        .addGap(1, 1, 1))
+                    .addComponent(paternoLabel)
+                    .addComponent(maternoLabel)
+                    .addComponent(webLabel)
+                    .addComponent(phoneLabel)
+                    .addComponent(localLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(phoneText, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addressText, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(webText, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(apellido2Text, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Apellido1Text, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombreText, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBoxLocalidad, 0, 200, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreLabel)
                     .addComponent(nombreText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -134,11 +139,11 @@ public class RegistryAutorUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phoneLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(localText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(localLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(registryButton)
                 .addGap(17, 17, 17))
         );
@@ -149,6 +154,10 @@ public class RegistryAutorUI extends javax.swing.JFrame {
     private void registryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registryButtonActionPerformed
       insertarAutorDB();
     }//GEN-LAST:event_registryButtonActionPerformed
+
+    private void jComboBoxLocalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxLocalidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxLocalidadActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -182,6 +191,20 @@ public class RegistryAutorUI extends javax.swing.JFrame {
         });
     }
     
+     public void fillInComboBox(){
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT l.nombre, e.nombre FROM localidad AS l INNER JOIN estado AS e ON l.id_estado = e.id");
+            while (rs.next()){
+                jComboBoxLocalidad.addItem(rs.getString("l.nombre")+"("+rs.getString("e.nombre")+")");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(register.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }
+    
     public void insertarAutorDB(){//error llave foranea 
         String nombre, apellido1, apellido2, url , direccion, telefono, localidad;
             
@@ -195,11 +218,13 @@ public class RegistryAutorUI extends javax.swing.JFrame {
              if (phoneText.getText().length()>10){ 
                  phoneText.setText("");
                  JOptionPane.showMessageDialog(this, "Teclea solo 10 digitos!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                 return;
              }
-             localidad = localText.getText();  
+             localidad = String.valueOf(jComboBoxLocalidad.getSelectedItem());
              
              if (nombre.isEmpty() || apellido1.isEmpty() || apellido2.isEmpty() || direccion.isEmpty()|| url.isEmpty()|| telefono.isEmpty() || localidad.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Hay campos vacios...", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Hay campos vacios...", "ERROR", JOptionPane.ERROR_MESSAGE);
+                return;
                 }
         try {
             Statement st;
@@ -221,8 +246,8 @@ public class RegistryAutorUI extends javax.swing.JFrame {
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField addressText;
     private javax.swing.JTextField apellido2Text;
+    private javax.swing.JComboBox<String> jComboBoxLocalidad;
     private javax.swing.JLabel localLabel;
-    private javax.swing.JTextField localText;
     private javax.swing.JLabel maternoLabel;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JTextField nombreText;

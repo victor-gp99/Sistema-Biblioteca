@@ -56,7 +56,7 @@ public class RegistryEditorialUI extends javax.swing.JFrame {
             Statement st;
             st = con.createStatement();
             st.execute("INSERT INTO editorial (nombre, direccion , url, telefono, id_localidad) "
-                    + "VALUES ('"+nombre+"','"+direccion+"','"+url+"','"+telefono+"','"+localidad+"')");
+                    + "VALUES ('"+nombre+"','"+direccion+"','"+url+"','"+telefono+"','"+(jComboBoxLocalidad.getSelectedIndex()+1)+"')");
             JOptionPane.showMessageDialog(rootPane, "Se registro una editorial exitosamente!");
             this.dispose();
         } catch (SQLException ex) {

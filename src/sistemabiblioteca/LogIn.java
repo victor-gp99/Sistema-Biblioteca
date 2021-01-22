@@ -80,7 +80,7 @@ public class LogIn extends javax.swing.JFrame {
 
         minimize.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         minimize.setForeground(new java.awt.Color(255, 255, 255));
-        minimize.setText("-");
+        minimize.setText("--");
         minimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         minimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -274,29 +274,7 @@ public class LogIn extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        String user = jTextFieldUsuario.getText();
-        String pass = String.valueOf(jPasswordFieldContrasenia.getPassword());
-
-        try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM cliente WHERE usuario='" + user + "' && contrasenia ='" + pass + "'");
-
-            while (rs.next()) {
-                String usr = rs.getString(5);
-                String contra = rs.getString(6);
-
-                if (user.equals(usr) && pass.equals(contra)) {
-                    new LibreriaUI(con).setVisible(true);
-                } else if (user.equals(usr) && pass.isEmpty()) {
-                    JOptionPane.showMessageDialog(this, "Error");
-                }
-
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        verificaUsuario();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -350,7 +328,6 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel registrar;
     // End of variables declaration//GEN-END:variables
 
-    
     public int botonX() {
         try {
             con.close();
@@ -358,5 +335,50 @@ public class LogIn extends javax.swing.JFrame {
             System.out.println("No hay conexión con la base de datos");
         }
         return 3;
+    }
+
+    public void verificaUsuario() {
+        String user = jTextFieldUsuario.getText();
+        String pass = String.valueOf(jPasswordFieldContrasenia.getPassword());
+
+        
+        
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT nombre, usuario, contrasenia FROM cliente WHERE usuario='" + user + "' && contrasenia ='" + pass + "'");
+
+            
+            if (rs.next()) {
+                String name = rs.getString(1);
+                String usr = rs.getString(2);
+                String contra = rs.getString(3);
+                if (user.equals(usr) && pass.equals(contra)) {
+                    JOptionPane.showMessageDialog(this, "¡Hola de nuevo " + name + "!");
+                    dispose();
+                    new LibreriaUI(con).setVisible(true);
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrectos", "Error", HEIGHT);
+            }
+
+            /*
+            while (rs.next()) {
+                String usr = rs.getString(5);
+                String contra = rs.getString(6);
+
+                if (user.equals(usr) && pass.equals(contra)) {
+                    JOptionPane.showMessageDialog(this, "Bienvenido " + jTextFieldUsuario.getText());
+                    new LibreriaUI(con).setVisible(true);
+                }
+
+            }
+            
+             */
+            if (jTextFieldUsuario.getText().isEmpty() || String.valueOf(jPasswordFieldContrasenia.getPassword()).isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Introduzca todos los datos");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

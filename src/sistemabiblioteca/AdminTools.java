@@ -28,6 +28,7 @@ public class AdminTools extends javax.swing.JFrame {
         jButtonRegistrarLibro = new javax.swing.JButton();
         jButtonLocalidadNueva = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
+        registryAlmacenButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,6 +60,13 @@ public class AdminTools extends javax.swing.JFrame {
             }
         });
 
+        registryAlmacenButton.setText("Registrar Almacen");
+        registryAlmacenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registryAlmacenButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,16 +74,16 @@ public class AdminTools extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jToggleButton1))
+                    .addComponent(jToggleButton1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonRegistrarLibro)
-                        .addGap(18, 18, 18)
+                        .addGap(23, 23, 23)
                         .addComponent(registryAutorButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonLocalidadNueva)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(registryAlmacenButton)
+                            .addComponent(jButtonLocalidadNueva))))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,9 +93,11 @@ public class AdminTools extends javax.swing.JFrame {
                     .addComponent(registryAutorButton)
                     .addComponent(jButtonRegistrarLibro)
                     .addComponent(jButtonLocalidadNueva))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton1)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1)
+                    .addComponent(registryAlmacenButton))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
         pack();
@@ -108,6 +118,10 @@ public class AdminTools extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
        RegistryEditorialUI reui= new RegistryEditorialUI();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void registryAlmacenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registryAlmacenButtonActionPerformed
+        RegistryAlmacenUI raiui= new RegistryAlmacenUI();
+    }//GEN-LAST:event_registryAlmacenButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,6 +162,7 @@ public class AdminTools extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLocalidadNueva;
     private javax.swing.JButton jButtonRegistrarLibro;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JButton registryAlmacenButton;
     private javax.swing.JButton registryAutorButton;
     // End of variables declaration//GEN-END:variables
 }

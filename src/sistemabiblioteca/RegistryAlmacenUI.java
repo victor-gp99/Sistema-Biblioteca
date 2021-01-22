@@ -162,7 +162,7 @@ public class RegistryAlmacenUI extends javax.swing.JFrame {
             Statement st;
             st = con.createStatement();
             st.execute("INSERT INTO editorial ( direccion, telefono, id_localidad) "
-                    + "VALUES ('"+direccion+"','"+telefono+"','"+localidad+"')");
+                    + "VALUES ('"+direccion+"','"+telefono+"','"+(jComboBoxLocalidad.getSelectedIndex()+1)+"')");
             JOptionPane.showMessageDialog(rootPane, "Se registro una editorial exitosamente!");
             this.dispose();
         } catch (SQLException ex) {

@@ -236,8 +236,14 @@ public class LogIn extends javax.swing.JFrame {
 
     private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
 
-        System.exit(0);
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Conexión cerrada correctamente");
+        }
 
+        System.exit(0);
     }//GEN-LAST:event_exitMouseClicked
 
     private void minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimizeMouseClicked
@@ -343,8 +349,9 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel minimize;
     private javax.swing.JLabel registrar;
     // End of variables declaration//GEN-END:variables
+
     
-    public int botonX(){
+    public int botonX() {
         try {
             con.close();
         } catch (java.lang.NullPointerException | SQLException ex) {

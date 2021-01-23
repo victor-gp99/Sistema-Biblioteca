@@ -58,7 +58,15 @@ public class FormularioLibro extends javax.swing.JFrame {
         jComboBoxEditorial = new javax.swing.JComboBox<>();
         jLabelDescripcion2 = new javax.swing.JLabel();
         jLabelPrecio = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jSpinnerPrecio = new javax.swing.JSpinner();
+        jLabelTamaño = new javax.swing.JLabel();
+        jTextFieldTamaño = new javax.swing.JTextField();
+        jLabelFecha = new javax.swing.JLabel();
+        jTextFieldFecha = new javax.swing.JTextField();
+        jLabelLugar = new javax.swing.JLabel();
+        jTextFieldLugar = new javax.swing.JTextField();
+        jLabelDescripcion3 = new javax.swing.JLabel();
+        puzzle1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -93,11 +101,21 @@ public class FormularioLibro extends javax.swing.JFrame {
         buttonGroupTipo.add(jRadioButtonEBook);
         jRadioButtonEBook.setText("e-Book");
         jRadioButtonEBook.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jRadioButtonEBook.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButtonEBookMouseClicked(evt);
+            }
+        });
 
         buttonGroupTipo.add(jRadioButtonPapel);
         jRadioButtonPapel.setSelected(true);
         jRadioButtonPapel.setText("Papel");
         jRadioButtonPapel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jRadioButtonPapel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButtonPapelMouseClicked(evt);
+            }
+        });
 
         jLabelAnioPub.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelAnioPub.setText("Año de publicación:");
@@ -120,7 +138,7 @@ public class FormularioLibro extends javax.swing.JFrame {
         });
 
         jLabelDescripcion1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelDescripcion1.setText("Tipo:");
+        jLabelDescripcion1.setText("Tipo de libro:");
 
         jTextAreaDescripcion.setColumns(20);
         jTextAreaDescripcion.setLineWrap(true);
@@ -133,12 +151,32 @@ public class FormularioLibro extends javax.swing.JFrame {
         jLabelPrecio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelPrecio.setText("Precio:");
 
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        jSpinnerPrecio.setModel(new javax.swing.SpinnerNumberModel(-1.0f, null, null, 1.0f));
+
+        jLabelTamaño.setText("Tamaño del archivo:");
+        jLabelTamaño.setEnabled(false);
+
+        jTextFieldTamaño.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldTamaño.setEnabled(false);
+
+        jLabelFecha.setText("Fecha de impresión:");
+        jLabelFecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelFechaMouseClicked(evt);
             }
         });
+
+        jTextFieldFecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldFecha.setText("AAAA-MM-DD");
+
+        jLabelLugar.setText("Lugar de impresión:");
+
+        jTextFieldLugar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLabelDescripcion3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelDescripcion3.setText("Información del libro:");
+
+        puzzle1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Libros.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,92 +186,123 @@ public class FormularioLibro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelNuevoLibro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jRadioButtonPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAceptar))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonCancelar)
-                        .addGap(116, 116, 116))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelAnioPub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelIsbn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldAnioPub)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextFieldIsbn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabelDescripcion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
-                                .addComponent(jRadioButtonEBook, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(124, 124, 124))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelDescripcion2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
+                        .addComponent(jLabelDescripcion3, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelDescripcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jRadioButtonPapel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(86, 86, 86))
+                                    .addComponent(jRadioButtonEBook, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(50, 50, 50)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelAnioPub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelIsbn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextFieldAnioPub)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldIsbn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabelPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelDescripcion2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBoxEditorial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jSpinnerPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxEditorial, 0, 271, Short.MAX_VALUE)
-                            .addComponent(jTextField1))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelLugar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelTamaño, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(puzzle1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldLugar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(27, 27, 27)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonAceptar)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCancelar)
+                .addGap(107, 107, 107))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelNuevoLibro)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelDescripcion1)
+                    .addComponent(jLabelDescripcion3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelDescripcion1))
+                            .addComponent(jRadioButtonPapel)
+                            .addComponent(jRadioButtonEBook))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelTamaño)
+                            .addComponent(jTextFieldTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelFecha)
+                            .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelLugar)
+                            .addComponent(jTextFieldLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addComponent(puzzle1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelTitulo)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelIsbn)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelAnioPub)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelDescripcion))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextFieldIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextFieldAnioPub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jRadioButtonPapel)
-                                    .addComponent(jRadioButtonEBook))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonAceptar)
-                            .addComponent(jButtonCancelar))
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelTitulo)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelIsbn)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelAnioPub)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelDescripcion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelDescripcion2)
                             .addComponent(jComboBoxEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelPrecio)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42))))
+                            .addComponent(jSpinnerPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAceptar)
+                    .addComponent(jButtonCancelar))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -264,12 +333,41 @@ public class FormularioLibro extends javax.swing.JFrame {
             jTextAreaDescripcion.setText("");
             jRadioButtonPapel.setSelected(true);
             jComboBoxEditorial.setSelectedIndex(-1);
+            jRadioButtonPapel.setSelected(true);
+            jTextFieldTamaño.setText("");
+            jTextFieldFecha.setText("AAAA-MM-DD");
+            jTextFieldLugar.setText("");
+            jLabelTamaño.setEnabled(false);
+            jTextFieldTamaño.setEnabled(false);
+            jLabelFecha.setEnabled(true);
+            jTextFieldFecha.setEnabled(true);
+            jLabelLugar.setEnabled(true);
+            jTextFieldLugar.setEnabled(true);  
+            jSpinnerPrecio.setValue(-1f);
         }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jRadioButtonEBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonEBookMouseClicked
+        jLabelTamaño.setEnabled(true);
+        jTextFieldTamaño.setEnabled(true);
+        jLabelFecha.setEnabled(false);
+        jTextFieldFecha.setEnabled(false);
+        jLabelLugar.setEnabled(false);
+        jTextFieldLugar.setEnabled(false);
+    }//GEN-LAST:event_jRadioButtonEBookMouseClicked
+
+    private void jRadioButtonPapelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonPapelMouseClicked
+        jLabelTamaño.setEnabled(false);
+        jTextFieldTamaño.setEnabled(false);
+        jLabelFecha.setEnabled(true);
+        jTextFieldFecha.setEnabled(true);
+        jLabelLugar.setEnabled(true);
+        jTextFieldLugar.setEnabled(true);
+    }//GEN-LAST:event_jRadioButtonPapelMouseClicked
+
+    private void jLabelFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFechaMouseClicked
+        System.out.println(jTextFieldFecha.getText().charAt(4)+"\n"+jTextFieldFecha.getText().charAt(7)+"\n"+jTextFieldFecha.getText().substring(0,4)+"\n"+jTextFieldFecha.getText().substring(5,7)+"\n"+jTextFieldFecha.getText().substring(8,10));
+    }//GEN-LAST:event_jLabelFechaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -315,26 +413,64 @@ public class FormularioLibro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelDescripcion1;
     private javax.swing.JLabel jLabelDescripcion2;
+    private javax.swing.JLabel jLabelDescripcion3;
+    private javax.swing.JLabel jLabelFecha;
     private javax.swing.JLabel jLabelIsbn;
+    private javax.swing.JLabel jLabelLugar;
     private javax.swing.JLabel jLabelNuevoLibro;
     private javax.swing.JLabel jLabelPrecio;
+    private javax.swing.JLabel jLabelTamaño;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JRadioButton jRadioButtonEBook;
     private javax.swing.JRadioButton jRadioButtonPapel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinnerPrecio;
     private javax.swing.JTextArea jTextAreaDescripcion;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldAnioPub;
+    private javax.swing.JTextField jTextFieldFecha;
     private javax.swing.JTextField jTextFieldIsbn;
+    private javax.swing.JTextField jTextFieldLugar;
+    private javax.swing.JTextField jTextFieldTamaño;
     private javax.swing.JTextField jTextFieldTitulo;
+    private javax.swing.JLabel puzzle1;
     // End of variables declaration//GEN-END:variables
     public boolean insertBookToDB(){
         String libroNuevo [] = {jTextFieldTitulo.getText(),jTextFieldIsbn.getText(),jTextFieldAnioPub.getText(),jTextAreaDescripcion.getText(),getTipo()};
         int editorialIndex = jComboBoxEditorial.getSelectedIndex();
-        if(libroNuevo[0].isEmpty()||libroNuevo[1].isEmpty()|| libroNuevo[2].isEmpty() || libroNuevo[3].isEmpty()|| editorialIndex == -1){
+        float precio = (float)jSpinnerPrecio.getValue();
+        String fecha = jTextFieldFecha.getText().trim(), lugar = jTextFieldFecha.getText(), tamaño = jTextFieldTamaño.getText();
+        boolean papel = true;
+        
+        if(libroNuevo[0].isEmpty()||libroNuevo[1].isEmpty()|| libroNuevo[2].isEmpty() || libroNuevo[3].isEmpty()|| editorialIndex == -1 ||  precio== -1){
             JOptionPane.showMessageDialog(this, "Asegurate de llenar todos los campos", "Campo/s Vacío/s", JOptionPane.WARNING_MESSAGE);
             return false;
         }
+        
+        if (jRadioButtonPapel.isSelected()){
+            if (fecha.isBlank() || lugar.isBlank()){
+                JOptionPane.showMessageDialog(this, "Asegurate de llenar todos los campos", "Campo/s Vacío/s", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
+            if(fecha.length() !=10 || fecha.charAt(4) != '-' || fecha.charAt(7) != '-'){
+                JOptionPane.showMessageDialog(this, "Escribe la fecha en el siguiente formato \"AAAA-MM-DD\"", "Formato de fecha invalido", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
+            try {
+                Integer.parseInt(jTextFieldFecha.getText().substring(0,4));
+                Integer.parseInt(jTextFieldFecha.getText().substring(5,7));
+                Integer.parseInt(jTextFieldFecha.getText().substring(8,10));   
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Escribe la fecha en el siguiente formato \"AAAA-MM-DD\"", "Formato de fecha invalido", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }  
+        }else{
+            papel = false;
+            if(tamaño.isBlank()){
+                JOptionPane.showMessageDialog(this, "Asegurate de llenar todos los campos", "Campo/s Vacío/s", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
+        }
+        
         if(libroNuevo[0].length() > 45){
             JOptionPane.showMessageDialog(this, "Ingresa un título con menos de 45 caracteres", "Título demasiado grande", JOptionPane.WARNING_MESSAGE);
             return false;
@@ -370,14 +506,16 @@ public class FormularioLibro extends javax.swing.JFrame {
         
         int id = getLastId();
         editorialPublicaLibro(editorialIndex+1,id);
+        if(papel)
+            insertPapel(id, fecha, lugar, precio);
+        else
+            insertEBook(id, precio, tamaño);            
         return true;
     }
     
-    public void editorialPublicaLibro(int editorial,int lastId){
+    public void editorialPublicaLibro(int editorial,int libro){
         try {
-            Statement st = con.createStatement();
-            int libro = getLastId();
-            
+            Statement st = con.createStatement();            
             st.execute("INSERT INTO editorial_publica_libro values("+editorial+","+libro+")");
             st.close();
         } catch (SQLException ex) {
@@ -386,8 +524,26 @@ public class FormularioLibro extends javax.swing.JFrame {
         }
     }
     
-    public void insertPapel(){
-        
+    public void insertPapel(int libro,String fecha,String lugar,Float precio){
+        try {
+            Statement st = con.createStatement();
+            st.execute("INSERT INTO libro_papel values("+libro+",'"+fecha+"','"+lugar+"',"+precio+")");
+            st.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FormularioLibro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void insertEBook(int libro,Float precio,String tamaño){
+        try {
+            Statement st = con.createStatement();
+            st.execute("INSERT INTO libro_ebook values("+libro+",'"+tamaño+"',"+precio+")");
+            st.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FormularioLibro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
+        }   
     }
     
     public int getLastId(){

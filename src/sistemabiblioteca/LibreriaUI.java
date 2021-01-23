@@ -26,7 +26,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         setLocation(x,y);
         this.con = con;
         this.nombreCLiente = nombreCliente;
-        jLabelCliente.setText(nombreCliente);
+        labelCliente.setText(nombreCliente);
         this.id = id;
     }
     
@@ -54,8 +54,8 @@ public class LibreriaUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabelCliente = new javax.swing.JLabel();
         jButtonAdmin = new javax.swing.JButton();
+        labelCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(botonX());
 
@@ -63,20 +63,20 @@ public class LibreriaUI extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Interfaz Principal");
 
-        jLabelCliente.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabelCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelCliente.setText("Nombre del cliente");
-        jLabelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelClienteMouseClicked(evt);
-            }
-        });
-
         jButtonAdmin.setText("ADMIN");
         jButtonAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAdminActionPerformed(evt);
+            }
+        });
+
+        labelCliente.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        labelCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelCliente.setText("Nombre del cliente");
+        labelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        labelCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelClienteMouseClicked(evt);
             }
         });
 
@@ -89,21 +89,22 @@ public class LibreriaUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonAdmin)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(labelCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
                 .addComponent(jButtonAdmin)
                 .addContainerGap())
         );
@@ -115,9 +116,9 @@ public class LibreriaUI extends javax.swing.JFrame {
         new AdminTools().setVisible(true);
     }//GEN-LAST:event_jButtonAdminActionPerformed
 
-    private void jLabelClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelClienteMouseClicked
+    private void labelClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelClienteMouseClicked
         new Mostrar_usuario().setVisible(true);
-    }//GEN-LAST:event_jLabelClienteMouseClicked
+    }//GEN-LAST:event_labelClienteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -157,7 +158,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdmin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelCliente;
+    private javax.swing.JLabel labelCliente;
     // End of variables declaration//GEN-END:variables
    
     public int botonX(){

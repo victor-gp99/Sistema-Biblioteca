@@ -67,7 +67,7 @@ public class Mostrar_usuario extends javax.swing.JFrame {
                 datos[8] = rs.getString(9);
                 datos[9] = rs.getString(10);
                 modelo.addRow(datos);
-                
+                   
             }
             st.close();
             rs.close();

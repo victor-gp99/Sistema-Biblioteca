@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 public class LogIn extends javax.swing.JFrame {
     String name;
     Connection con;
+    int id;
 
     /**
      * Creates new form LogIn
@@ -342,41 +343,29 @@ public class LogIn extends javax.swing.JFrame {
         String pass = String.valueOf(jPasswordFieldContrasenia.getPassword());
 
         
-        
+        if (jTextFieldUsuario.getText().isEmpty() || String.valueOf(jPasswordFieldContrasenia.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Introduzca todos los datos");
+            return;
+        }
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT nombre, usuario, contrasenia FROM cliente WHERE usuario='" + user + "' && contrasenia ='" + pass + "'");
+            ResultSet rs = st.executeQuery("SELECT nombre, usuario, contrasenia,id FROM cliente WHERE usuario='" + user + "' && contrasenia ='" + pass + "'");
 
             
             if (rs.next()) {
                 name = rs.getString(1);
                 String usr = rs.getString(2);
                 String contra = rs.getString(3);
+                id = rs.getInt(4);
                 if (user.equals(usr) && pass.equals(contra)) {
                     JOptionPane.showMessageDialog(this, "¡Hola de nuevo " + name + "!");
                     dispose();
-                    new LibreriaUI(con,name).setVisible(true);
+                    new LibreriaUI(con,name,id).setVisible(true);
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrectos", "Error", HEIGHT);
             }
 
-            /*
-            while (rs.next()) {
-                String usr = rs.getString(5);
-                String contra = rs.getString(6);
-
-                if (user.equals(usr) && pass.equals(contra)) {
-                    JOptionPane.showMessageDialog(this, "Bienvenido " + jTextFieldUsuario.getText());
-                    new LibreriaUI(con).setVisible(true);
-                }
-
-            }
-            
-             */
-            if (jTextFieldUsuario.getText().isEmpty() || String.valueOf(jPasswordFieldContrasenia.getPassword()).isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Introduzca todos los datos");
-            }
         } catch (SQLException ex) {
             Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
         }

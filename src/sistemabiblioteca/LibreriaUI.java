@@ -13,11 +13,12 @@ import java.util.logging.Logger;
 public class LibreriaUI extends javax.swing.JFrame {
     Connection con;
     String nombreCLiente;
+    int id;
     /**
      * Creates new form LibreriaUI
      * @param con
      */
-    public LibreriaUI(Connection con,String nombreCliente) {
+    public LibreriaUI(Connection con,String nombreCliente,int id) {
         initComponents();
         int W = Toolkit.getDefaultToolkit().getScreenSize().width/2;
         int H = Toolkit.getDefaultToolkit().getScreenSize().height/2;
@@ -27,6 +28,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         this.con = con;
         this.nombreCLiente = nombreCliente;
         jLabelCliente.setText(nombreCliente);
+        this.id = id;
     }
     
     public LibreriaUI(){
@@ -63,6 +65,11 @@ public class LibreriaUI extends javax.swing.JFrame {
         jLabelCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCliente.setText("Nombre del cliente");
         jLabelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelClienteMouseClicked(evt);
+            }
+        });
 
         jButtonAdmin.setText("ADMIN");
         jButtonAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +112,10 @@ public class LibreriaUI extends javax.swing.JFrame {
     private void jButtonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdminActionPerformed
         new AdminTools().setVisible(true);
     }//GEN-LAST:event_jButtonAdminActionPerformed
+
+    private void jLabelClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelClienteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelClienteMouseClicked
 
     /**
      * @param args the command line arguments

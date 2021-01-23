@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  * @author Diego
  */
 public class LogIn extends javax.swing.JFrame {
+
     String name;
     Connection con;
     static int id;
@@ -342,41 +343,40 @@ public class LogIn extends javax.swing.JFrame {
         String user = jTextFieldUsuario.getText();
         String pass = String.valueOf(jPasswordFieldContrasenia.getPassword());
 
-        
         if (jTextFieldUsuario.getText().isEmpty() || String.valueOf(jPasswordFieldContrasenia.getPassword()).isEmpty()) {
             JOptionPane.showMessageDialog(this, "Introduzca todos los datos");
             return;
         }
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT nombre, usuario, contrasenia,id, tipoUsuario FROM cliente WHERE usuario='" + user + "' && contrasenia ='" + pass + "'");
+            ResultSet rs = st.executeQuery("SELECT nombre, usuario, contrasenia, id, tipoUsuario FROM cliente WHERE usuario='" + user + "' && contrasenia ='" + pass + "'");
 
-            
             if (rs.next()) {
-                LibreriaUI lui= new LibreriaUI(con, name, id);
+
                 name = rs.getString(1);
                 String usr = rs.getString(2);
                 String contra = rs.getString(3);
                 id = rs.getInt(4);
+                LibreriaUI lui = new LibreriaUI(con, name, id);
                 if (user.equals(usr) && pass.equals(contra)) {
                     JOptionPane.showMessageDialog(this, "¡Hola de nuevo " + name + "!");
                     dispose();
-                    if (usr!=null && contra != null) { 
+                    if (usr != null && contra != null) {
                         String tipo = rs.getString(5);
                         switch (tipo) {
                             case "administrador":
                                 lui.getjButtonAdmin().setEnabled(true);
                                 lui.setVisible(true);
                                 break;
-                            case"cliente":
+                            case "cliente":
                                 lui.getjButtonAdmin().setEnabled(false);
                                 lui.setVisible(true);
                                 break;
-                        default:
-                            throw new AssertionError();
-                            
+                            default:
+                                throw new AssertionError();
+
+                        }
                     }
-                }
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrectos", "Error", HEIGHT);

@@ -7,6 +7,7 @@ package sistemabiblioteca;
 
 
 import static sistemabiblioteca.AppSistemaBiblioteca.con;
+import static sistemabiblioteca.LogIn.id;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,17 +21,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Luna
  */
 public class Mostrar_usuario extends javax.swing.JFrame {
-
     
     
     public Mostrar_usuario() {
         initComponents();
-     
-        Mostrar_usuario();
-        
-        
+        Mostrar_usuario();  
     }
-    
     
     
     void Mostrar_usuario(){
@@ -49,7 +45,7 @@ public class Mostrar_usuario extends javax.swing.JFrame {
         modelo.addColumn("Id Localidad");
         tbl_Usuario.setModel(modelo);
         
-        String sql = "SELECT * FROM cliente";
+        //String sql = "SELECT * FROM cliente WHERE id = 2";
         
         String datos[] = new String [10];
         Statement st;
@@ -57,7 +53,8 @@ public class Mostrar_usuario extends javax.swing.JFrame {
         
         try {
             st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            System.out.println(id);
+            ResultSet rs = st.executeQuery("SELECT * FROM cliente WHERE id = "+id);
             while(rs.next()){
                 datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
@@ -72,7 +69,8 @@ public class Mostrar_usuario extends javax.swing.JFrame {
                 modelo.addRow(datos);
                 
             }
-            
+            st.close();
+            rs.close();
             tbl_Usuario.setModel(modelo);
             
         } catch  (SQLException ex)  {

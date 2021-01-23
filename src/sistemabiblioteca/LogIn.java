@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 public class LogIn extends javax.swing.JFrame {
     String name;
     Connection con;
-    int id;
+    static int id;
 
     /**
      * Creates new form LogIn
@@ -239,7 +239,7 @@ public class LogIn extends javax.swing.JFrame {
 
         try {
             con.close();
-        } catch (SQLException ex) {
+        } catch (SQLException | java.lang.NullPointerException ex) {
             Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Conexión cerrada correctamente");
         }
@@ -268,7 +268,7 @@ public class LogIn extends javax.swing.JFrame {
         try {
             con.close();
         } catch (SQLException | java.lang.NullPointerException ex) {
-            System.out.println("No hay conexión con la base de datos");
+            //System.out.println("No hay conexión con la base de datos");
         }
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed

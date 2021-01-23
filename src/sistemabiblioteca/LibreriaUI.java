@@ -3,8 +3,6 @@ package sistemabiblioteca;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -114,7 +112,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAdminActionPerformed
 
     private void jLabelClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelClienteMouseClicked
-        // TODO add your handling code here:
+        new Mostrar_usuario().setVisible(true);
     }//GEN-LAST:event_jLabelClienteMouseClicked
 
     /**

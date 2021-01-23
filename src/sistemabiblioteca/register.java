@@ -89,12 +89,12 @@ public class register extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(248, 148, 6));
+        jPanel1.setBackground(new java.awt.Color(92, 151, 191));
 
         exit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         exit.setForeground(new java.awt.Color(255, 255, 255));
         exit.setText("X");
-        exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         exit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exitMouseClicked(evt);
@@ -108,14 +108,14 @@ public class register extends javax.swing.JFrame {
         minimize.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         minimize.setForeground(new java.awt.Color(255, 255, 255));
         minimize.setText("--");
-        minimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        minimize.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         minimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 minimizeMouseClicked(evt);
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel2.setBackground(new java.awt.Color(34, 49, 63));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(236, 240, 241));
@@ -127,7 +127,7 @@ public class register extends javax.swing.JFrame {
 
         jTextFieldUsuario.setBackground(new java.awt.Color(108, 122, 137));
         jTextFieldUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextFieldUsuario.setForeground(new java.awt.Color(228, 241, 254));
+        jTextFieldUsuario.setForeground(new java.awt.Color(236, 240, 241));
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUsuarioActionPerformed(evt);
@@ -136,14 +136,14 @@ public class register extends javax.swing.JFrame {
 
         jPasswordFieldContrasenia.setBackground(new java.awt.Color(108, 122, 137));
         jPasswordFieldContrasenia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPasswordFieldContrasenia.setForeground(new java.awt.Color(228, 241, 254));
+        jPasswordFieldContrasenia.setForeground(new java.awt.Color(236, 240, 241));
         jPasswordFieldContrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldContraseniaActionPerformed(evt);
             }
         });
 
-        botonRegistrar.setBackground(new java.awt.Color(34, 167, 240));
+        botonRegistrar.setBackground(new java.awt.Color(137, 196, 244));
         botonRegistrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         botonRegistrar.setText("Registrar");
@@ -153,7 +153,7 @@ public class register extends javax.swing.JFrame {
             }
         });
 
-        botonCancelar.setBackground(new java.awt.Color(192, 57, 43));
+        botonCancelar.setBackground(new java.awt.Color(235, 151, 78));
         botonCancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonCancelar.setForeground(new java.awt.Color(255, 255, 255));
         botonCancelar.setText("Cancelar");
@@ -165,7 +165,7 @@ public class register extends javax.swing.JFrame {
 
         jTextFieldNombre.setBackground(new java.awt.Color(108, 122, 137));
         jTextFieldNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextFieldNombre.setForeground(new java.awt.Color(228, 241, 254));
+        jTextFieldNombre.setForeground(new java.awt.Color(236, 240, 241));
         jTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNombreActionPerformed(evt);
@@ -178,7 +178,7 @@ public class register extends javax.swing.JFrame {
 
         jTextFieldApellido1.setBackground(new java.awt.Color(108, 122, 137));
         jTextFieldApellido1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextFieldApellido1.setForeground(new java.awt.Color(228, 241, 254));
+        jTextFieldApellido1.setForeground(new java.awt.Color(236, 240, 241));
         jTextFieldApellido1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldApellido1ActionPerformed(evt);
@@ -195,7 +195,7 @@ public class register extends javax.swing.JFrame {
 
         jPasswordFieldConfirmarContrasenia.setBackground(new java.awt.Color(108, 122, 137));
         jPasswordFieldConfirmarContrasenia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPasswordFieldConfirmarContrasenia.setForeground(new java.awt.Color(228, 241, 254));
+        jPasswordFieldConfirmarContrasenia.setForeground(new java.awt.Color(236, 240, 241));
         jPasswordFieldConfirmarContrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldConfirmarContraseniaActionPerformed(evt);
@@ -208,7 +208,7 @@ public class register extends javax.swing.JFrame {
 
         jTextFieldCorreo.setBackground(new java.awt.Color(108, 122, 137));
         jTextFieldCorreo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextFieldCorreo.setForeground(new java.awt.Color(228, 241, 254));
+        jTextFieldCorreo.setForeground(new java.awt.Color(236, 240, 241));
         jTextFieldCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCorreoActionPerformed(evt);
@@ -221,7 +221,7 @@ public class register extends javax.swing.JFrame {
 
         jTextFieldDireccion.setBackground(new java.awt.Color(108, 122, 137));
         jTextFieldDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextFieldDireccion.setForeground(new java.awt.Color(228, 241, 254));
+        jTextFieldDireccion.setForeground(new java.awt.Color(236, 240, 241));
         jTextFieldDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldDireccionActionPerformed(evt);
@@ -234,7 +234,7 @@ public class register extends javax.swing.JFrame {
 
         jTextFieldApellido2.setBackground(new java.awt.Color(108, 122, 137));
         jTextFieldApellido2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextFieldApellido2.setForeground(new java.awt.Color(228, 241, 254));
+        jTextFieldApellido2.setForeground(new java.awt.Color(236, 240, 241));
         jTextFieldApellido2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldApellido2ActionPerformed(evt);
@@ -247,7 +247,7 @@ public class register extends javax.swing.JFrame {
 
         jTextFieldTelefono.setBackground(new java.awt.Color(108, 122, 137));
         jTextFieldTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextFieldTelefono.setForeground(new java.awt.Color(228, 241, 254));
+        jTextFieldTelefono.setForeground(new java.awt.Color(236, 240, 241));
         jTextFieldTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTelefonoActionPerformed(evt);
@@ -255,8 +255,8 @@ public class register extends javax.swing.JFrame {
         });
 
         jComboBoxLocalidad.setBackground(new java.awt.Color(108, 122, 137));
-        jComboBoxLocalidad.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jComboBoxLocalidad.setForeground(new java.awt.Color(228, 241, 254));
+        jComboBoxLocalidad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBoxLocalidad.setForeground(new java.awt.Color(236, 240, 241));
         jComboBoxLocalidad.setToolTipText("Selecciona una localidad");
         jComboBoxLocalidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -471,6 +471,13 @@ public class register extends javax.swing.JFrame {
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
 
         registrarUsuario();
+
+        LogIn log = new LogIn(con);
+        log.setVisible(true);
+        log.pack();
+        log.setLocationRelativeTo(null);
+        log.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
     private void jPasswordFieldContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldContraseniaActionPerformed

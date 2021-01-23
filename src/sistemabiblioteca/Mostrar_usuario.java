@@ -32,7 +32,7 @@ public class Mostrar_usuario extends javax.swing.JFrame {
     void Mostrar_usuario(){
         
         
-        DefaultTableModel modelo = new DefaultTableModel();
+        /*DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido 1");
@@ -43,7 +43,7 @@ public class Mostrar_usuario extends javax.swing.JFrame {
         modelo.addColumn("Dirección");
         modelo.addColumn("E-mail");
         modelo.addColumn("Id Localidad");
-        tbl_Usuario.setModel(modelo);
+        tbl_Usuario.setModel(modelo);*/
         
         //String sql = "SELECT * FROM cliente WHERE id = 2";
         
@@ -66,12 +66,21 @@ public class Mostrar_usuario extends javax.swing.JFrame {
                 datos[7] = rs.getString(8);
                 datos[8] = rs.getString(9);
                 datos[9] = rs.getString(10);
-                modelo.addRow(datos);
                 
+                jl_ID.setText("ID Usuario: " + datos[0]);
+                jl_Nombre.setText("Nombre: " + datos[1]);
+                jl_Ap.setText("Apellido 1: " + datos[2]);
+                jl_Am.setText("Apellido 2: " + datos[3]);
+                jl_tel.setText("Teléfono: " + datos[8]);
+                jl_usuario.setText("Usuario: " + datos[5]);
+                jl_Tusuario.setText("Tipo Usuario: " + datos[4]);
+                jl_dire.setText("Dirección: " + datos[6]);
+                jl_mail.setText("E-Mail: " + datos[7]);
+                jl_local.setText("ID Localidad: " + datos[9]);
+                   
             }
             st.close();
             rs.close();
-            tbl_Usuario.setModel(modelo);
             
         } catch  (SQLException ex)  {
             Logger.getLogger(Mostrar_usuario.class.getName()).log(Level.SEVERE, null,ex);
@@ -85,36 +94,103 @@ public class Mostrar_usuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_Usuario = new javax.swing.JTable();
+        jl_ID = new javax.swing.JLabel();
+        jl_Nombre = new javax.swing.JLabel();
+        jl_Ap = new javax.swing.JLabel();
+        jl_Am = new javax.swing.JLabel();
+        jl_tel = new javax.swing.JLabel();
+        jl_usuario = new javax.swing.JLabel();
+        jl_Tusuario = new javax.swing.JLabel();
+        jl_dire = new javax.swing.JLabel();
+        jl_mail = new javax.swing.JLabel();
+        jl_local = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tbl_Usuario.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jl_ID.setText("ID Usuario");
 
-            },
-            new String [] {
+        jl_Nombre.setText("Nombre");
 
-            }
-        ));
-        jScrollPane1.setViewportView(tbl_Usuario);
+        jl_Ap.setText("Apellido P");
+
+        jl_Am.setText("Apellido M");
+
+        jl_tel.setText("Teléfono");
+
+        jl_usuario.setText("Usuario");
+
+        jl_Tusuario.setText("Tipo de Usuario");
+
+        jl_dire.setText("Direccion");
+
+        jl_mail.setText("E-mail");
+
+        jl_local.setText("ID Localidad");
+
+        jLabel11.setText("MIS DATOS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jl_ID)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jl_Nombre, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jl_Ap)
+                            .addGap(119, 119, 119))
+                        .addComponent(jl_Am, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jl_Tusuario))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jl_local)
+                    .addComponent(jl_usuario)
+                    .addComponent(jl_dire)
+                    .addComponent(jl_mail)
+                    .addComponent(jl_tel))
+                .addGap(142, 142, 142))
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(184, 184, 184)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_ID)
+                    .addComponent(jl_usuario))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_Nombre)
+                    .addComponent(jl_dire))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jl_Ap)
+                        .addGap(39, 39, 39))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jl_mail)
+                        .addGap(42, 42, 42)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jl_Am)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addComponent(jl_tel)
+                        .addGap(40, 40, 40)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_local)
+                    .addComponent(jl_Tusuario))
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -156,8 +232,17 @@ public class Mostrar_usuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbl_Usuario;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jl_Am;
+    private javax.swing.JLabel jl_Ap;
+    private javax.swing.JLabel jl_ID;
+    private javax.swing.JLabel jl_Nombre;
+    private javax.swing.JLabel jl_Tusuario;
+    private javax.swing.JLabel jl_dire;
+    private javax.swing.JLabel jl_local;
+    private javax.swing.JLabel jl_mail;
+    private javax.swing.JLabel jl_tel;
+    private javax.swing.JLabel jl_usuario;
     // End of variables declaration//GEN-END:variables
 
     private static class ConexionBD {

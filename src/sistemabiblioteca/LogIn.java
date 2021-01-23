@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  * @author Diego
  */
 public class LogIn extends javax.swing.JFrame {
+
     String name;
     Connection con;
     static int id;
@@ -63,7 +64,7 @@ public class LogIn extends javax.swing.JFrame {
         setTitle("Iniciar sesion");
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(248, 148, 6));
+        jPanel1.setBackground(new java.awt.Color(92, 151, 191));
 
         exit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         exit.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,7 +114,7 @@ public class LogIn extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel2.setBackground(new java.awt.Color(34, 49, 63));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(236, 240, 241));
@@ -138,7 +139,7 @@ public class LogIn extends javax.swing.JFrame {
         jPasswordFieldContrasenia.setForeground(new java.awt.Color(228, 241, 254));
         jPasswordFieldContrasenia.setText("administrador");
 
-        jButton1.setBackground(new java.awt.Color(34, 167, 240));
+        jButton1.setBackground(new java.awt.Color(137, 196, 244));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("LogIn");
@@ -148,7 +149,7 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(192, 57, 43));
+        jButton2.setBackground(new java.awt.Color(235, 151, 78));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Cancelar");
@@ -194,7 +195,7 @@ public class LogIn extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -342,25 +343,40 @@ public class LogIn extends javax.swing.JFrame {
         String user = jTextFieldUsuario.getText();
         String pass = String.valueOf(jPasswordFieldContrasenia.getPassword());
 
-        
         if (jTextFieldUsuario.getText().isEmpty() || String.valueOf(jPasswordFieldContrasenia.getPassword()).isEmpty()) {
             JOptionPane.showMessageDialog(this, "Introduzca todos los datos");
             return;
         }
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT nombre, usuario, contrasenia,id FROM cliente WHERE usuario='" + user + "' && contrasenia ='" + pass + "'");
+            ResultSet rs = st.executeQuery("SELECT nombre, usuario, contrasenia, id, tipoUsuario FROM cliente WHERE usuario='" + user + "' && contrasenia ='" + pass + "'");
 
-            
             if (rs.next()) {
+
                 name = rs.getString(1);
                 String usr = rs.getString(2);
                 String contra = rs.getString(3);
                 id = rs.getInt(4);
+                LibreriaUI lui = new LibreriaUI(con, name, id);
                 if (user.equals(usr) && pass.equals(contra)) {
                     JOptionPane.showMessageDialog(this, "¡Hola de nuevo " + name + "!");
                     dispose();
-                    new LibreriaUI(con,name,id).setVisible(true);
+                    if (usr != null && contra != null) {
+                        String tipo = rs.getString(5);
+                        switch (tipo) {
+                            case "administrador":
+                                lui.getjButtonAdmin().setEnabled(true);
+                                lui.setVisible(true);
+                                break;
+                            case "cliente":
+                                lui.getjButtonAdmin().setEnabled(false);
+                                lui.setVisible(true);
+                                break;
+                            default:
+                                throw new AssertionError();
+
+                        }
+                    }
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrectos", "Error", HEIGHT);

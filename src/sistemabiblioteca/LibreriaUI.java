@@ -12,11 +12,12 @@ import java.util.logging.Logger;
  */
 public class LibreriaUI extends javax.swing.JFrame {
     Connection con;
+    String nombreCLiente;
     /**
      * Creates new form LibreriaUI
      * @param con
      */
-    public LibreriaUI(Connection con) {
+    public LibreriaUI(Connection con,String nombreCliente) {
         initComponents();
         int W = Toolkit.getDefaultToolkit().getScreenSize().width/2;
         int H = Toolkit.getDefaultToolkit().getScreenSize().height/2;
@@ -24,6 +25,8 @@ public class LibreriaUI extends javax.swing.JFrame {
         int y = H-this.getHeight()/2;
         setLocation(x,y);
         this.con = con;
+        this.nombreCLiente = nombreCliente;
+        jLabelCliente.setText(nombreCliente);
     }
     
     public LibreriaUI(){

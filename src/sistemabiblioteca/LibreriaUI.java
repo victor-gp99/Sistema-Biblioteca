@@ -59,7 +59,12 @@ public class LibreriaUI extends javax.swing.JFrame {
         jLabelCliente.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabelCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCliente.setText("Nombre del cliente");
-        jLabelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelClienteMouseClicked(evt);
+            }
+        });
 
         jButtonAdmin.setText("ADMIN");
         jButtonAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +107,11 @@ public class LibreriaUI extends javax.swing.JFrame {
     private void jButtonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdminActionPerformed
         new AdminTools().setVisible(true);
     }//GEN-LAST:event_jButtonAdminActionPerformed
+
+    private void jLabelClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelClienteMouseClicked
+        // TODO add your handling code here:
+        new Mostrar_usuario().setVisible(true);        
+    }//GEN-LAST:event_jLabelClienteMouseClicked
 
     /**
      * @param args the command line arguments

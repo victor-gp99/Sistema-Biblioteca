@@ -63,7 +63,7 @@ public class LogIn extends javax.swing.JFrame {
         setTitle("Iniciar sesion");
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(248, 148, 6));
+        jPanel1.setBackground(new java.awt.Color(92, 151, 191));
 
         exit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         exit.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,7 +113,7 @@ public class LogIn extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel2.setBackground(new java.awt.Color(34, 49, 63));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(236, 240, 241));
@@ -138,7 +138,7 @@ public class LogIn extends javax.swing.JFrame {
         jPasswordFieldContrasenia.setForeground(new java.awt.Color(228, 241, 254));
         jPasswordFieldContrasenia.setText("administrador");
 
-        jButton1.setBackground(new java.awt.Color(34, 167, 240));
+        jButton1.setBackground(new java.awt.Color(137, 196, 244));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("LogIn");
@@ -148,7 +148,7 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(192, 57, 43));
+        jButton2.setBackground(new java.awt.Color(235, 151, 78));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Cancelar");
@@ -194,7 +194,7 @@ public class LogIn extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * @author Diego
  */
 public class LogIn extends javax.swing.JFrame {
-
+    String name;
     Connection con;
 
     /**
@@ -349,13 +349,13 @@ public class LogIn extends javax.swing.JFrame {
 
             
             if (rs.next()) {
-                String name = rs.getString(1);
+                name = rs.getString(1);
                 String usr = rs.getString(2);
                 String contra = rs.getString(3);
                 if (user.equals(usr) && pass.equals(contra)) {
                     JOptionPane.showMessageDialog(this, "¡Hola de nuevo " + name + "!");
                     dispose();
-                    new LibreriaUI(con).setVisible(true);
+                    new LibreriaUI(con,name).setVisible(true);
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrectos", "Error", HEIGHT);

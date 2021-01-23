@@ -349,10 +349,11 @@ public class LogIn extends javax.swing.JFrame {
         }
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT nombre, usuario, contrasenia,id FROM cliente WHERE usuario='" + user + "' && contrasenia ='" + pass + "'");
+            ResultSet rs = st.executeQuery("SELECT nombre, usuario, contrasenia,id, tipoUsuario FROM cliente WHERE usuario='" + user + "' && contrasenia ='" + pass + "'");
 
             
             if (rs.next()) {
+                LibreriaUI lui= new LibreriaUI(con, name, id);
                 name = rs.getString(1);
                 String usr = rs.getString(2);
                 String contra = rs.getString(3);
@@ -360,7 +361,22 @@ public class LogIn extends javax.swing.JFrame {
                 if (user.equals(usr) && pass.equals(contra)) {
                     JOptionPane.showMessageDialog(this, "¡Hola de nuevo " + name + "!");
                     dispose();
-                    new LibreriaUI(con,name,id).setVisible(true);
+                    if (usr!=null && contra != null) { 
+                        String tipo = rs.getString(5);
+                        switch (tipo) {
+                            case "administrador":
+                                lui.getjButtonAdmin().setEnabled(true);
+                                lui.setVisible(true);
+                                break;
+                            case"cliente":
+                                lui.getjButtonAdmin().setEnabled(false);
+                                lui.setVisible(true);
+                                break;
+                        default:
+                            throw new AssertionError();
+                            
+                    }
+                }
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrectos", "Error", HEIGHT);

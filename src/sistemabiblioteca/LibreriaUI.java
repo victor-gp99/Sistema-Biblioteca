@@ -3,6 +3,7 @@ package sistemabiblioteca;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.SQLException;
+import javax.swing.JButton;
 
 /**
  *
@@ -40,6 +41,9 @@ public class LibreriaUI extends javax.swing.JFrame {
         //Este constructor se usa para cuando se abre el sistema sin conectarse a la BD. 
     }
 
+   public JButton getjButtonAdmin() {
+         return jButtonAdmin;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -163,5 +167,5 @@ public class LibreriaUI extends javax.swing.JFrame {
             //System.out.println("No hay conexión con la base de datos");
         }
         return 3;
-    }
+    }   
 }

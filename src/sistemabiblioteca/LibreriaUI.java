@@ -184,12 +184,21 @@ public class LibreriaUI extends javax.swing.JFrame {
         String[] info = new String[libreriaTable.getColumnCount()];   
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st. executeQuery("SELECT titulo, descripcion, tipo, e.precio, p.precio  FROM libro AS l\n" +
-                                            "LEFT JOIN libro_ebook AS e ON l.id = e.id\n" +
-                                            "LEFT JOIN libro_papel AS p ON l.id = p.id; ");
+            ResultSet rs = st. executeQuery("SELECT titulo, descripcion, tipo, e.precio, p.precio  FROM libro AS l LEFT JOIN libro_ebook AS e ON l.id = e.id "
+                    + "LEFT JOIN libro_papel AS p ON l.id = p.id ");
+            while(rs.next()){
+                info[0] = rs.getString(1);
+                info[1] = rs.getString(2);
+                info[2] = rs.getString(3);
+                if(info[2].equals("Papel"))
+                    info[3] = rs.getString(5);
+                else
+                    info[3] = rs.getString(4);
+                model.addRow(info);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(LibreriaUI.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrectos", "Error", HEIGHT);
+            JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
         }
         
         

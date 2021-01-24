@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -25,11 +25,12 @@ public class Mostrar_usuario extends javax.swing.JFrame {
     
     public Mostrar_usuario() {
         initComponents();
-        Mostrar_usuario();  
+        Show_info_usuario();
+        setLocationRelativeTo(new LibreriaUI());
     }
     
     
-    void Mostrar_usuario(){
+    void Show_info_usuario(){
         
         
         /*DefaultTableModel modelo = new DefaultTableModel();

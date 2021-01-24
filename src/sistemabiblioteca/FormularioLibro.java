@@ -466,7 +466,7 @@ public class FormularioLibro extends javax.swing.JFrame {
         }
         
         if (jRadioButtonPapel.isSelected()){
-            if (fecha.isBlank() || lugar.isBlank()){
+            if (fecha.isEmpty()|| lugar.isEmpty()){
                 JOptionPane.showMessageDialog(this, "Asegurate de llenar todos los campos", "Campo/s Vacío/s", JOptionPane.WARNING_MESSAGE);
                 return false;
             }
@@ -484,7 +484,7 @@ public class FormularioLibro extends javax.swing.JFrame {
             }  
         }else{
             papel = false;
-            if(tamaño.isBlank()){
+            if(tamaño.isEmpty()){
                 JOptionPane.showMessageDialog(this, "Asegurate de llenar todos los campos", "Campo/s Vacío/s", JOptionPane.WARNING_MESSAGE);
                 return false;
             }

@@ -361,6 +361,7 @@ public class FormularioLibro extends javax.swing.JFrame {
             jLabelLugar.setEnabled(true);
             jTextFieldLugar.setEnabled(true);  
             jSpinnerPrecio.setValue(-1f);
+            jComboBoxAutor.setSelectedIndex(-1);
         }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 

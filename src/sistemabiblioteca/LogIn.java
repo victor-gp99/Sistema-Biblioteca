@@ -334,7 +334,7 @@ public class LogIn extends javax.swing.JFrame {
         try {
             con.close();
         } catch (java.lang.NullPointerException | SQLException ex) {
-            System.out.println("No hay conexión con la base de datos");
+            //System.out.println("No hay conexión con la base de datos");
         }
         return 3;
     }

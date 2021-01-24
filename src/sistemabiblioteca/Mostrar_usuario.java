@@ -107,7 +107,7 @@ public class Mostrar_usuario extends javax.swing.JFrame {
         jl_local = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jl_ID.setText("ID Usuario");
 

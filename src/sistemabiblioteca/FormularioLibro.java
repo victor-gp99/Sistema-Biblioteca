@@ -458,7 +458,7 @@ public class FormularioLibro extends javax.swing.JFrame {
         String libroNuevo [] = {jTextFieldTitulo.getText(),jTextFieldIsbn.getText(),jTextFieldAnioPub.getText(),jTextAreaDescripcion.getText(),getTipo()};
         int editorialIndex = jComboBoxEditorial.getSelectedIndex() + 1, autorIndex = jComboBoxAutor.getSelectedIndex() + 1;
         float precio = (float)jSpinnerPrecio.getValue();
-        String fecha = jTextFieldFecha.getText().trim(), lugar = jTextFieldFecha.getText(), tamaño = jTextFieldTamaño.getText();
+        String fecha = jTextFieldFecha.getText().trim(), lugar = jTextFieldLugar.getText(), tamaño = jTextFieldTamaño.getText();
         boolean papel = true;
         
         if(libroNuevo[0].isEmpty()||libroNuevo[1].isEmpty()|| libroNuevo[2].isEmpty() || libroNuevo[3].isEmpty()|| editorialIndex == 0 ||  precio== -1 || autorIndex == 0){

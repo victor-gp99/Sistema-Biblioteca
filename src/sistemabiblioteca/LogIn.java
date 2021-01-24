@@ -69,7 +69,7 @@ public class LogIn extends javax.swing.JFrame {
         exit.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         exit.setForeground(new java.awt.Color(255, 255, 255));
         exit.setText("X");
-        exit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         exit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exitMouseClicked(evt);
@@ -83,7 +83,7 @@ public class LogIn extends javax.swing.JFrame {
         minimize.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         minimize.setForeground(new java.awt.Color(255, 255, 255));
         minimize.setText("--");
-        minimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        minimize.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         minimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 minimizeMouseClicked(evt);
@@ -162,7 +162,7 @@ public class LogIn extends javax.swing.JFrame {
         registrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         registrar.setForeground(new java.awt.Color(255, 255, 255));
         registrar.setText("Crear cuenta nueva");
-        registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         registrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registrarMouseClicked(evt);

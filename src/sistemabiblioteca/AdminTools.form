@@ -26,7 +26,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="surtirAlmacenButton1" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Component id="jButtonRegistrarLibro" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
@@ -38,7 +42,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="11" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,6 +59,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jToggleButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="registryAlmacenButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="surtirAlmacenButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="222" max="32767" attributes="0"/>
           </Group>
@@ -100,6 +105,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registryAlmacenButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="surtirAlmacenButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Surtir almac&#xe9;n"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="surtirAlmacenButton1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

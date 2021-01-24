@@ -29,6 +29,7 @@ public class AdminTools extends javax.swing.JFrame {
         jButtonLocalidadNueva = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         registryAlmacenButton = new javax.swing.JButton();
+        surtirAlmacenButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -67,6 +68,13 @@ public class AdminTools extends javax.swing.JFrame {
             }
         });
 
+        surtirAlmacenButton1.setText("Surtir almacén");
+        surtirAlmacenButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                surtirAlmacenButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,7 +82,10 @@ public class AdminTools extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jToggleButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(surtirAlmacenButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonRegistrarLibro)
                         .addGap(23, 23, 23)
@@ -83,7 +94,7 @@ public class AdminTools extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(registryAlmacenButton)
                             .addComponent(jButtonLocalidadNueva))))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +107,8 @@ public class AdminTools extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButton1)
-                    .addComponent(registryAlmacenButton))
+                    .addComponent(registryAlmacenButton)
+                    .addComponent(surtirAlmacenButton1))
                 .addContainerGap(222, Short.MAX_VALUE))
         );
 
@@ -122,6 +134,10 @@ public class AdminTools extends javax.swing.JFrame {
     private void registryAlmacenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registryAlmacenButtonActionPerformed
         RegistryAlmacenUI raiui= new RegistryAlmacenUI();
     }//GEN-LAST:event_registryAlmacenButtonActionPerformed
+
+    private void surtirAlmacenButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surtirAlmacenButton1ActionPerformed
+        new SurtirAlmacen(con).setVisible(true);
+    }//GEN-LAST:event_surtirAlmacenButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,5 +180,6 @@ public class AdminTools extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton registryAlmacenButton;
     private javax.swing.JButton registryAutorButton;
+    private javax.swing.JButton surtirAlmacenButton1;
     // End of variables declaration//GEN-END:variables
 }

@@ -168,5 +168,6 @@ public class LibreriaUI extends javax.swing.JFrame {
             //System.out.println("No hay conexión con la base de datos");
         }
         return 3;
-    }   
+    }
+    
 }

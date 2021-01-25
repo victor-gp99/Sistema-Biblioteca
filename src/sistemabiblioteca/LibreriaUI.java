@@ -1,6 +1,5 @@
 package sistemabiblioteca;
 
-import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -22,6 +21,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     int id;
     DefaultTableModel model,model2;
     CarritoUI cui;
+    MostrarLibro ml;
      
     public LibreriaUI(Connection con,String nombreCliente,int id) {
         initComponents();
@@ -37,8 +37,8 @@ public class LibreriaUI extends javax.swing.JFrame {
         leerLibrosDB();
         System.out.println(labelCarrito.getIcon().getClass().getName());
         labelCarrito.setIconTextGap(0);
-        cui= new CarritoUI();
-        
+        this.cui= new CarritoUI();
+        this.ml=new MostrarLibro();
     }   
     public LibreriaUI(){
         //Este constructor se usa para cuando se abre el sistema sin conectarse a la BD. 
@@ -63,9 +63,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         labelCliente = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         libreriaTable = new javax.swing.JTable();
-        addCarButton = new javax.swing.JButton();
         labelCarrito = new javax.swing.JLabel();
-        cantidadCarSpinner = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(botonX());
 
@@ -79,7 +77,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         labelCliente.setFont(new java.awt.Font("Bookman Old Style", 3, 24)); // NOI18N
         labelCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCliente.setText("Nombre del cliente");
-        labelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        labelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         labelCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelClienteMouseClicked(evt);
@@ -102,7 +100,7 @@ public class LibreriaUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        libreriaTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        libreriaTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         libreriaTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 libreriaTableMouseClicked(evt);
@@ -115,26 +113,17 @@ public class LibreriaUI extends javax.swing.JFrame {
             libreriaTable.getColumnModel().getColumn(0).setMaxWidth(0);
         }
 
-        addCarButton.setText("Añadir a Cesta");
-        addCarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addCarButtonActionPerformed(evt);
-            }
-        });
-
         labelCarrito.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelCarrito.setForeground(new java.awt.Color(255, 0, 51));
         labelCarrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/PicsArt_01-24-07.11.52.png"))); // NOI18N
         labelCarrito.setText("0");
-        labelCarrito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        labelCarrito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         labelCarrito.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelCarritoMouseClicked(evt);
             }
         });
-
-        cantidadCarSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,17 +133,12 @@ public class LibreriaUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(cantidadCarSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addCarButton))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButtonAdmin)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jButtonAdmin)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addComponent(labelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -171,11 +155,7 @@ public class LibreriaUI extends javax.swing.JFrame {
                     .addComponent(jButtonAdmin))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addCarButton)
-                    .addComponent(cantidadCarSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -189,13 +169,8 @@ public class LibreriaUI extends javax.swing.JFrame {
         new Mostrar_usuario().setVisible(true);
     }//GEN-LAST:event_labelClienteMouseClicked
 
-    private void addCarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCarButtonActionPerformed
-        operarUnitStocks();
-    }//GEN-LAST:event_addCarButtonActionPerformed
-
     private void labelCarritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCarritoMouseClicked
-      
-        cui.setVisible(true);
+       cui.setVisible(true);
     }//GEN-LAST:event_labelCarritoMouseClicked
 
     private void libreriaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_libreriaTableMouseClicked
@@ -211,8 +186,6 @@ public class LibreriaUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addCarButton;
-    private javax.swing.JSpinner cantidadCarSpinner;
     private javax.swing.JButton jButtonAdmin;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCarrito;
@@ -267,15 +240,15 @@ public class LibreriaUI extends javax.swing.JFrame {
             info[2] = libreriaTable.getValueAt(seleccionf, 2).toString();
             info[3] = libreriaTable.getValueAt(seleccionf, 3).toString();
             info[4] = libreriaTable.getValueAt(seleccionf, 4).toString();
-            info[5] = cantidadCarSpinner.getValue().toString();//cantidad           
+            info[5] = ml.getCantidadCarSpinner().getValue().toString();//cantidad           
     return  info;
     }
     
-    private void operarUnitStocks(){      
+    public void operarUnitStocks(){      
         int seleccionf = libreriaTable.getSelectedRow();
         if (seleccionf >= 0) {
         int ofert = Integer.valueOf(libreriaTable.getValueAt(seleccionf, 5).toString());
-        int demand = (int) cantidadCarSpinner.getValue();
+        int demand = (int) ml.getCantidadCarSpinner().getValue();
         
         if (demand<=ofert || demand>0) {
            int sales=ofert-demand;

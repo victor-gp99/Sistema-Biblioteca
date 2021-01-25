@@ -153,11 +153,7 @@ public class MostrarLibro extends javax.swing.JFrame {
 
     private void buttonCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCarritoActionPerformed
        //lui.operarUnitStocks();
-       DefaultTableModel model =(DefaultTableModel)cui.getCarshopTable().getModel();
-       int cantidad = (int)(cantidadCarSpinner.getValue());
-       float precio = Float.parseFloat(libro[7]), pagar = precio * cantidad;
-       String row [] = {libro[0],libro[1],libro[3],libro[4],libro[7],String.valueOf(cantidad),String.valueOf(pagar)};
-       model.addRow(row);
+       
        
     }//GEN-LAST:event_buttonCarritoActionPerformed
 
@@ -186,6 +182,11 @@ public class MostrarLibro extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     public boolean addToCart(){
-        return false;
+        DefaultTableModel model =(DefaultTableModel)cui.getCarshopTable().getModel();
+        int cantidad = (int)(cantidadCarSpinner.getValue());
+        float precio = Float.parseFloat(libro[7]), pagar = precio * cantidad;
+        String row [] = {libro[0],libro[1],libro[3],libro[4],libro[7],String.valueOf(cantidad),String.valueOf(pagar)};
+        model.addRow(row);
+        return true;
     }
 }

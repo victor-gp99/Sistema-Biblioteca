@@ -82,7 +82,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="X"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -110,7 +110,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="--"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -136,10 +136,7 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabelEstado" max="32767" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabelEstado" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="jComboBoxEstado" min="-2" pref="205" max="-2" attributes="0"/>
@@ -172,10 +169,12 @@
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jComboBoxEstado" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabelEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace pref="68" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">

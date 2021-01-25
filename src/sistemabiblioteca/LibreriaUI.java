@@ -1,5 +1,6 @@
 package sistemabiblioteca;
 
+
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,7 +20,9 @@ public class LibreriaUI extends javax.swing.JFrame {
     Connection con;
     String nombreCLiente;
     int id;
-    DefaultTableModel model, model2;
+    DefaultTableModel model,model2;
+      CarritoUI cui;
+     
     public LibreriaUI(Connection con,String nombreCliente,int id) {
         initComponents();
         int W = Toolkit.getDefaultToolkit().getScreenSize().width/2;
@@ -34,6 +37,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         leerLibrosDB();
         System.out.println(labelCarrito.getIcon().getClass().getName());
         labelCarrito.setIconTextGap(0);
+        cui= new CarritoUI();
         
     }   
     public LibreriaUI(){
@@ -61,6 +65,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         libreriaTable = new javax.swing.JTable();
         labelCarrito = new javax.swing.JLabel();
+        cantidadCarSpinner = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(botonX());
 
@@ -78,7 +83,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         labelCliente.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         labelCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCliente.setText("Nombre del cliente");
-        labelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        labelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         labelCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelClienteMouseClicked(evt);
@@ -90,21 +95,28 @@ public class LibreriaUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Titulo", "Descripcion", "Tipo", "Precio"
+                "ID", "Titulo", "Descripcion", "Tipo", "Precio", "Stocks"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        libreriaTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        libreriaTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                libreriaTableMouseClicked(evt);
+        jScrollPane1.setViewportView(libreriaTable);
+        if (libreriaTable.getColumnModel().getColumnCount() > 0) {
+            libreriaTable.getColumnModel().getColumn(0).setMinWidth(0);
+            libreriaTable.getColumnModel().getColumn(0).setPreferredWidth(0);
+            libreriaTable.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
+
+        addCarButton.setText("Añadir a Cesta");
+        addCarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCarButtonActionPerformed(evt);
             }
         });
         jScrollPane1.setViewportView(libreriaTable);
@@ -113,40 +125,58 @@ public class LibreriaUI extends javax.swing.JFrame {
         labelCarrito.setForeground(new java.awt.Color(255, 0, 51));
         labelCarrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/PicsArt_01-24-07.11.52.png"))); // NOI18N
-        labelCarrito.setText("8");
-        labelCarrito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        labelCarrito.setText("0");
+        labelCarrito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelCarrito.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelCarritoMouseClicked(evt);
+            }
+        });
+
+        cantidadCarSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jButtonAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 379, Short.MAX_VALUE)
+                .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonAdmin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(labelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(cantidadCarSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addCarButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addComponent(jLabelPrincipal)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCliente)
                     .addComponent(jButtonAdmin)
                     .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addCarButton)
+                    .addComponent(cantidadCarSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -160,9 +190,14 @@ public class LibreriaUI extends javax.swing.JFrame {
         new Mostrar_usuario().setVisible(true);
     }//GEN-LAST:event_labelClienteMouseClicked
 
-    private void libreriaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_libreriaTableMouseClicked
-        new MostrarLibro().setVisible(true);
-    }//GEN-LAST:event_libreriaTableMouseClicked
+    private void addCarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCarButtonActionPerformed
+        operarUnitStocks();
+    }//GEN-LAST:event_addCarButtonActionPerformed
+
+    private void labelCarritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCarritoMouseClicked
+      
+        cui.setVisible(true);
+    }//GEN-LAST:event_labelCarritoMouseClicked
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -173,6 +208,8 @@ public class LibreriaUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addCarButton;
+    private javax.swing.JSpinner cantidadCarSpinner;
     private javax.swing.JButton jButtonAdmin;
     private javax.swing.JLabel jLabelPrincipal;
     private javax.swing.JScrollPane jScrollPane1;
@@ -195,56 +232,75 @@ public class LibreriaUI extends javax.swing.JFrame {
         String[] info = new String[libreriaTable.getColumnCount()];   
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st. executeQuery("SELECT titulo, descripcion, tipo, e.precio, p.precio  FROM libro AS l LEFT JOIN libro_ebook AS e ON l.id = e.id "
-                    + "LEFT JOIN libro_papel AS p ON l.id = p.id ");
+            ResultSet rs = st. executeQuery("SELECT l.id, titulo, descripcion, tipo, e.precio, p.precio, stock "
+                    + " FROM libro AS l LEFT JOIN libro_ebook AS e ON l.id = e.id "
+                    + "LEFT JOIN libro_papel AS p ON l.id = p.id INNER JOIN almacen_almacena_libro");
             while(rs.next()){
                 info[0] = rs.getString(1);
                 info[1] = rs.getString(2);
                 info[2] = rs.getString(3);
+               
                 if(info[2].equals("Papel"))
                     info[3] = rs.getString(5);
                 else
                     info[3] = rs.getString(4);
+                
+                info[4]= rs.getString(6);
+                info[5]=rs.getString(7);
+                
                 model.addRow(info);
             }
         } catch (SQLException ex) {
             Logger.getLogger(LibreriaUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
-        /*try {  
-             Statement st = con.createStatement();
-             ResultSet rs = st. executeQuery("SELECT id,titulo,descripcion,tipo FROM libro");
-             
-             while (rs.next()) {          
-                info[0]= rs.getString(2);//titulo
-                info[1]= rs.getString(3);//descripcion
-                info[2]= rs.getString(4);//tipo    
-             }  
-                 
-             rs.close();
        
-             ResultSet rs3= st. executeQuery("SELECT le.precio FROM libro_ebook AS le INNER JOIN libro AS l ON l.id = le.id");
-             while (rs3.next())              
-                if (info[2].equalsIgnoreCase("Ebook")) //precio ebook
-                    info[3]= rs3.getString(1);  
-              
-             rs3.close(); 
-             
-             ResultSet rs4= st. executeQuery("SELECT lp.precio FROM libro_papel AS lp INNER JOIN libro AS l ON l.id = lp.id");
-               while (rs4.next())                
-                if (info[2].equalsIgnoreCase("Papel")) //precio papel
-                    info[3]= rs4.getString(1);   
-               rs4.close();
-
-            model.addRow(info);   
-            st.close();
-    
-         } catch (SQLException ex) {
-             Logger.getLogger(LibreriaUI.class.getName()).log(Level.SEVERE, null, ex);
-         }*/
     }
+    
+    private String[] addLibreriaInfo(){
+        int seleccionf = libreriaTable.getSelectedRow();
+        String[] info = new String[libreriaTable.getColumnCount()];
+            info[0] = libreriaTable.getValueAt(seleccionf, 0).toString();
+            info[1] = libreriaTable.getValueAt(seleccionf, 1).toString();
+            info[2] = libreriaTable.getValueAt(seleccionf, 2).toString();
+            info[3] = libreriaTable.getValueAt(seleccionf, 3).toString();
+            info[4] = libreriaTable.getValueAt(seleccionf, 4).toString();
+            info[5] = cantidadCarSpinner.getValue().toString();//cantidad           
+    
+    return  info;
+    }
+    
+    private void operarUnitStocks(){      
+        int seleccionf = libreriaTable.getSelectedRow();
+        if (seleccionf >= 0) {
+        int ofert = Integer.valueOf(libreriaTable.getValueAt(seleccionf, 5).toString());
+        int demand = (int) cantidadCarSpinner.getValue();
+        
+        if (demand<=ofert || demand>0) {
+           int sales=ofert-demand;
+           if (sales>=0) {
+                String ventas= Integer.toString(sales);
+                libreriaTable.setValueAt(ventas,seleccionf , 5);
+                
+                model2 =(DefaultTableModel) cui.getCarshopTable().getModel();
+                model2.addRow(addLibreriaInfo());//añadimos la info a la tabla carshop
+            }else
+                JOptionPane.showMessageDialog(this, "No hay existencias suficientes!");
+           
+        }else{
+            
+            if (demand>ofert) 
+                JOptionPane.showMessageDialog(this, "No hay existencias suficientes!");
+            
+            if (demand<=0) 
+                JOptionPane.showMessageDialog(this, "La cantidad a pedir es invalida!");
+             }
+      
+    }else
+       JOptionPane.showMessageDialog(this, "Selecciona un libro para agregar al carrito...");     
+     
+    
+}   
 }
 
  

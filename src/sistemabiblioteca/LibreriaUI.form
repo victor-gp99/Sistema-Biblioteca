@@ -25,22 +25,29 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jLabelPrincipal" alignment="0" max="32767" attributes="0"/>
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jLabelPrincipal" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButtonAdmin" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="379" max="32767" attributes="0"/>
+              <Component id="labelCarrito" min="-2" pref="62" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="labelCliente" min="-2" pref="137" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jButtonAdmin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="labelCarrito" min="-2" pref="62" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="labelCliente" min="-2" pref="137" max="-2" attributes="0"/>
+                      <Component id="cantidadCarSpinner" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="addCarButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jScrollPane1" pref="718" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane1" min="-2" pref="655" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -48,16 +55,22 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="jLabelPrincipal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelCarrito" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="400" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="366" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="addCarButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cantidadCarSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,7 +101,7 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Nombre del cliente"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Hand Cursor"/>
+          <Color id="Cursor Por defecto"/>
         </Property>
       </Properties>
       <Events>
@@ -105,15 +118,27 @@
         <Component class="javax.swing.JTable" name="libreriaTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="0">
+              <Table columnCount="6" rowCount="0">
+                <Column editable="false" title="ID" type="java.lang.Object"/>
                 <Column editable="false" title="Titulo" type="java.lang.Object"/>
                 <Column editable="false" title="Descripcion" type="java.lang.Object"/>
                 <Column editable="false" title="Tipo" type="java.lang.Object"/>
                 <Column editable="false" title="Precio" type="java.lang.Object"/>
+                <Column editable="false" title="Stocks" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="0" minWidth="0" prefWidth="0" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -149,6 +174,14 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="addCarButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="A&#xf1;adir a Cesta"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addCarButtonActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JLabel" name="labelCarrito">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -161,9 +194,19 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imgs/PicsArt_01-24-07.11.52.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="8"/>
+        <Property name="text" type="java.lang.String" value="0"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Hand Cursor"/>
+          <Color id="Cursor Por defecto"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelCarritoMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="cantidadCarSpinner">
+      <Properties>
+        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+          <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
         </Property>
       </Properties>
     </Component>

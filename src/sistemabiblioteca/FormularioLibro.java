@@ -243,6 +243,7 @@ public class FormularioLibro extends javax.swing.JFrame {
         jButtonCancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonCancelar.setForeground(new java.awt.Color(236, 240, 241));
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
@@ -253,6 +254,7 @@ public class FormularioLibro extends javax.swing.JFrame {
         jButtonAceptar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonAceptar.setForeground(new java.awt.Color(236, 240, 241));
         jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAceptarActionPerformed(evt);

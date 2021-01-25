@@ -14,7 +14,7 @@ public class CarritoUI extends javax.swing.JFrame {
     public CarritoUI() {
         initComponents();
         setTitle("Tu carrito de compras");
-        setLocationRelativeTo(new LibreriaUI());    
+        setLocationRelativeTo(new LibreriaUI()); 
     }
     public JTable getCarshopTable() {
         return carshopTable;
@@ -26,6 +26,7 @@ public class CarritoUI extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         carshopTable = new javax.swing.JTable();
+        labelCarrito = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -34,17 +35,18 @@ public class CarritoUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Titulo", "Descripcion", "Tipo", "Precio", "Cantidad"
+                "ID", "Titulo", "Descripcion", "Tipo", "Precio Unitario", "Cantidad", "Pagar"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        carshopTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(carshopTable);
         if (carshopTable.getColumnModel().getColumnCount() > 0) {
             carshopTable.getColumnModel().getColumn(0).setMinWidth(0);
@@ -52,21 +54,28 @@ public class CarritoUI extends javax.swing.JFrame {
             carshopTable.getColumnModel().getColumn(0).setMaxWidth(0);
         }
 
+        labelCarrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelCarrito.setText("Carrito de compras.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelCarrito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap()
+                .addComponent(labelCarrito)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
@@ -81,5 +90,6 @@ public class CarritoUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable carshopTable;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelCarrito;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,7 +21,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     String nombreCLiente;
     int id;
     DefaultTableModel model,model2;
-      CarritoUI cui;
+    CarritoUI cui;
      
     public LibreriaUI(Connection con,String nombreCliente,int id) {
         initComponents();
@@ -84,7 +84,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         labelCliente.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         labelCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCliente.setText("Nombre del cliente");
-        labelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelClienteMouseClicked(evt);
@@ -107,6 +107,12 @@ public class LibreriaUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        libreriaTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        libreriaTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                libreriaTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(libreriaTable);
         if (libreriaTable.getColumnModel().getColumnCount() > 0) {
             libreriaTable.getColumnModel().getColumn(0).setMinWidth(0);
@@ -126,7 +132,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         labelCarrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/PicsArt_01-24-07.11.52.png"))); // NOI18N
         labelCarrito.setText("0");
-        labelCarrito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelCarrito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelCarrito.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelCarritoMouseClicked(evt);
@@ -198,6 +204,10 @@ public class LibreriaUI extends javax.swing.JFrame {
       
         cui.setVisible(true);
     }//GEN-LAST:event_labelCarritoMouseClicked
+
+    private void libreriaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_libreriaTableMouseClicked
+        new MostrarLibro();
+    }//GEN-LAST:event_libreriaTableMouseClicked
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -298,9 +308,12 @@ public class LibreriaUI extends javax.swing.JFrame {
       
     }else
        JOptionPane.showMessageDialog(this, "Selecciona un libro para agregar al carrito...");     
-     
-    
-}   
+    }   
+    public String [] showBook(){
+        String book [] = {"Hola","Mundo"};
+        
+        return book;
+    }
 }
 
  

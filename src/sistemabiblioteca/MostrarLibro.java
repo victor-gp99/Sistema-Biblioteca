@@ -3,6 +3,8 @@ package sistemabiblioteca;
 
 import javax.swing.ImageIcon;
 import javax.swing.JSpinner;
+import javax.swing.table.DefaultTableModel;
+import static sistemabiblioteca.LibreriaUI.cui;
 
 /**
  *
@@ -24,6 +26,14 @@ public class MostrarLibro extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.libro = libro;
         labelImagen.setIcon(new ImageIcon("src/imgs/"+libro[0]+".jpg"));
+        labelTitulo.setText(libro[1]);
+        labelAutor.setText(libro[2]);
+        labelDescripcion.setText("<html>"+libro[3]+"</html>");
+        labelTipo.setText(libro[4]);
+        labelsbn.setText("ISBN: "+libro[5]);
+        labeAño.setText("Año de publicación: "+libro[6].substring(0,4));
+        labelPrecio.setText("$ "+libro[7]);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -51,7 +61,6 @@ public class MostrarLibro extends javax.swing.JFrame {
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTitulo.setText("Titulo del libro.");
 
-        labelDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelDescripcion.setText("<html>Descripcion ");
 
         labelAutor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -121,14 +130,14 @@ public class MostrarLibro extends javax.swing.JFrame {
                         .addComponent(labelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(labelTipo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(labelPrecio))
                     .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(labelsbn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                         .addComponent(labeAño)
                         .addGap(36, 36, 36))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -143,7 +152,13 @@ public class MostrarLibro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCarritoActionPerformed
-       lui.operarUnitStocks();
+       //lui.operarUnitStocks();
+       DefaultTableModel model =(DefaultTableModel)cui.getCarshopTable().getModel();
+       int cantidad = (int)(cantidadCarSpinner.getValue());
+       float precio = Float.parseFloat(libro[7]), pagar = precio * cantidad;
+       String row [] = {libro[0],libro[1],libro[3],libro[4],libro[7],String.valueOf(cantidad),String.valueOf(pagar)};
+       model.addRow(row);
+       
     }//GEN-LAST:event_buttonCarritoActionPerformed
 
     public static void main(String args[]) {

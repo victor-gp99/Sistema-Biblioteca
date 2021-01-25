@@ -70,7 +70,7 @@
                       <Component id="labelDescripcion" min="-2" pref="204" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="labelTipo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="labelPrecio" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="labelImagen" min="-2" pref="360" max="-2" attributes="0"/>
@@ -79,7 +79,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="labelsbn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                       <Component id="labeAño" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
@@ -117,7 +117,6 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelDescripcion">
       <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;Descripcion "/>
       </Properties>
     </Component>

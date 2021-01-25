@@ -2,6 +2,7 @@
 package sistemabiblioteca;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import static sistemabiblioteca.LibreriaUI.cui;
@@ -152,9 +153,9 @@ public class MostrarLibro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCarritoActionPerformed
-       //lui.operarUnitStocks();
-       
-       
+       //lui.operarUnitStocks(); 
+       addToCart();
+       cantidadCarSpinner.setValue(1);
     }//GEN-LAST:event_buttonCarritoActionPerformed
 
     public static void main(String args[]) {
@@ -181,12 +182,21 @@ public class MostrarLibro extends javax.swing.JFrame {
     private javax.swing.JLabel labelsbn;
     // End of variables declaration//GEN-END:variables
     
-    public boolean addToCart(){
-        DefaultTableModel model =(DefaultTableModel)cui.getCarshopTable().getModel();
+    public void addToCart(){
         int cantidad = (int)(cantidadCarSpinner.getValue());
         float precio = Float.parseFloat(libro[7]), pagar = precio * cantidad;
+        
+        if(Integer.parseInt(libro[8]) < cantidad){
+            JOptionPane.showMessageDialog(this, "No hay suficientes existencias del producto", "Existencia insuficiente", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+            
+        
+        DefaultTableModel model =(DefaultTableModel)cui.getCarshopTable().getModel();
+        
         String row [] = {libro[0],libro[1],libro[3],libro[4],libro[7],String.valueOf(cantidad),String.valueOf(pagar)};
         model.addRow(row);
-        return true;
+        
+        JOptionPane.showMessageDialog(this, "¡Libro agregado al carrito!", "¡Hecho!", JOptionPane.PLAIN_MESSAGE);
     }
 }

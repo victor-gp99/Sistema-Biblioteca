@@ -184,5 +184,8 @@ public class MostrarLibro extends javax.swing.JFrame {
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel labelsbn;
     // End of variables declaration//GEN-END:variables
-
+    
+    public boolean addToCart(){
+        return false;
+    }
 }

@@ -1,6 +1,6 @@
 package sistemabiblioteca;
 
-
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -64,6 +64,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         labelCliente = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         libreriaTable = new javax.swing.JTable();
+        addCarButton = new javax.swing.JButton();
         labelCarrito = new javax.swing.JLabel();
         cantidadCarSpinner = new javax.swing.JSpinner();
 
@@ -119,7 +120,6 @@ public class LibreriaUI extends javax.swing.JFrame {
                 addCarButtonActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(libreriaTable);
 
         labelCarrito.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelCarrito.setForeground(new java.awt.Color(255, 0, 51));
@@ -239,13 +239,13 @@ public class LibreriaUI extends javax.swing.JFrame {
                 info[0] = rs.getString(1);
                 info[1] = rs.getString(2);
                 info[2] = rs.getString(3);
-               
-                if(info[2].equals("Papel"))
-                    info[3] = rs.getString(5);
-                else
-                    info[3] = rs.getString(4);
+                info[3] = rs.getString(4);
                 
-                info[4]= rs.getString(6);
+                if(info[3].equals("Papel"))
+                    info[4] = rs.getString(6);
+                else
+                    info[4] = rs.getString(5);
+               
                 info[5]=rs.getString(7);
                 
                 model.addRow(info);

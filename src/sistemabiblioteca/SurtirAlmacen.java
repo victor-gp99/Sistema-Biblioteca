@@ -68,6 +68,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jSpinnerAgregar = new javax.swing.JSpinner();
         jButtonAgregar = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(92, 151, 191));
 
@@ -155,7 +156,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(236, 240, 241));
         jLabel1.setText("Almacén");
 
-        jComboBoxAlmacen.setBackground(new java.awt.Color(34, 49, 63));
+        jComboBoxAlmacen.setBackground(new java.awt.Color(108, 122, 137));
         jComboBoxAlmacen.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBoxAlmacen.setForeground(new java.awt.Color(236, 240, 241));
 
@@ -163,7 +164,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(236, 240, 241));
         jLabel2.setText("Libro");
 
-        jComboBoxLibro.setBackground(new java.awt.Color(34, 49, 63));
+        jComboBoxLibro.setBackground(new java.awt.Color(108, 122, 137));
         jComboBoxLibro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBoxLibro.setForeground(new java.awt.Color(236, 240, 241));
 
@@ -174,7 +175,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
         jSpinnerAgregar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jSpinnerAgregar.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
-        jButtonAgregar.setBackground(new java.awt.Color(235, 151, 78));
+        jButtonAgregar.setBackground(new java.awt.Color(137, 196, 244));
         jButtonAgregar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonAgregar.setForeground(new java.awt.Color(236, 240, 241));
         jButtonAgregar.setText("Agregar");
@@ -184,49 +185,62 @@ public class SurtirAlmacen extends javax.swing.JFrame {
             }
         });
 
+        Cancelar.setBackground(new java.awt.Color(235, 151, 78));
+        Cancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Cancelar.setForeground(new java.awt.Color(236, 240, 241));
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(46, 46, 46)
-                        .addComponent(jComboBoxAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSpinnerAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(113, 113, 113)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(63, 63, 63)))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinnerAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButtonAgregar))
-                .addContainerGap(54, Short.MAX_VALUE))
+                                .addComponent(Cancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                                .addComponent(jButtonAgregar))
+                            .addComponent(jComboBoxLibro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(68, 68, 68))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(60, 60, 60)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jComboBoxAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(40, 40, 40)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBoxLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jSpinnerAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButtonAgregar)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAgregar)
+                    .addComponent(Cancelar))
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -236,14 +250,12 @@ public class SurtirAlmacen extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addGap(65, 65, 65)
+                .addGap(104, 104, 104)
                 .addComponent(minimize1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(exit1)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,8 +265,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
                     .addComponent(minimize1)
                     .addComponent(exit1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -290,14 +301,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
 
     private void exit1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit1MouseClicked
 
-        try {
-            con.close();
-        } catch (SQLException | java.lang.NullPointerException ex) {
-            Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Conexión cerrada correctamente");
-        }
-
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_exit1MouseClicked
 
     private void minimize1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimize1MouseClicked
@@ -310,6 +314,10 @@ public class SurtirAlmacen extends javax.swing.JFrame {
         agregarStock();
 
     }//GEN-LAST:event_jButtonAgregarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -347,6 +355,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancelar;
     private javax.swing.JLabel exit;
     private javax.swing.JLabel exit1;
     private javax.swing.JButton jButtonAgregar;

@@ -102,6 +102,11 @@ public class LibreriaUI extends javax.swing.JFrame {
             }
         });
         libreriaTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        libreriaTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                libreriaTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(libreriaTable);
 
         labelCarrito.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -154,6 +159,10 @@ public class LibreriaUI extends javax.swing.JFrame {
     private void labelClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelClienteMouseClicked
         new Mostrar_usuario().setVisible(true);
     }//GEN-LAST:event_labelClienteMouseClicked
+
+    private void libreriaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_libreriaTableMouseClicked
+        new MostrarLibro().setVisible(true);
+    }//GEN-LAST:event_libreriaTableMouseClicked
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

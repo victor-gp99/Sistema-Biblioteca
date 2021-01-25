@@ -5,18 +5,29 @@
  */
 package sistemabiblioteca;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author joefi
  */
 public class MostrarLibro extends javax.swing.JFrame {
-
+    String libro[];
     /**
      * Creates new form MostrarLibro
      */
     public MostrarLibro() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+    
+    public MostrarLibro(String libro[]) {
+        initComponents();
+        
+        
+        setLocationRelativeTo(null);
+        this.libro = libro;
+        labelImagen.setIcon(new ImageIcon("src/imgs/"+libro[0]+".jpg"));
     }
 
     /**
@@ -172,4 +183,5 @@ public class MostrarLibro extends javax.swing.JFrame {
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel labelsbn;
     // End of variables declaration//GEN-END:variables
+
 }

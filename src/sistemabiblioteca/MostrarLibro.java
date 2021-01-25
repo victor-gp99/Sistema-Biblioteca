@@ -1,4 +1,3 @@
-
 package sistemabiblioteca;
 
 import javax.swing.ImageIcon;
@@ -6,35 +5,44 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import static sistemabiblioteca.LibreriaUI.cui;
+import static sistemabiblioteca.LibreriaUI.labelcart;
 
 /**
  *
  * @author joefi & Victor
  */
 public class MostrarLibro extends javax.swing.JFrame {
+
     String libro[];
     LibreriaUI lui;
+
     public MostrarLibro() {
         initComponents();
         setLocationRelativeTo(null);
-        this.lui= new LibreriaUI();
+        this.lui = new LibreriaUI();
+        cantidadCarSpinner.setEnabled(false);
+        buttonCarrito.setEnabled(false);
     }
-    
+
     public MostrarLibro(String libro[]) {
         initComponents();
-        
-        
+
         setLocationRelativeTo(null);
         this.libro = libro;
-        labelImagen.setIcon(new ImageIcon("src/imgs/"+libro[0]+".jpg"));
+        labelImagen.setIcon(new ImageIcon("src/imgs/" + libro[0] + ".jpg"));
         labelTitulo.setText(libro[1]);
         labelAutor.setText(libro[2]);
-        labelDescripcion.setText("<html>"+libro[3]+"</html>");
+        labelDescripcion.setText("<html>" + libro[3] + "</html>");
         labelTipo.setText(libro[4]);
-        labelsbn.setText("ISBN: "+libro[5]);
-        labeAño.setText("Año de publicación: "+libro[6].substring(0,4));
-        labelPrecio.setText("$ "+libro[7]);
-        
+        labelsbn.setText("ISBN: " + libro[5]);
+        labeAño.setText("Año de publicación: " + libro[6].substring(0, 4));
+        if (isAvailable()) {
+            labelPrecio.setText("$ " + libro[7]);
+        } else {
+            labelPrecio.setText("<html> Lo sentimos, este producto se encuentra agotado actualmente. Vuelve más tarde ");
+            cantidadCarSpinner.setEnabled(false);
+            buttonCarrito.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -153,9 +161,11 @@ public class MostrarLibro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCarritoActionPerformed
-       //lui.operarUnitStocks(); 
-       addToCart();
-       cantidadCarSpinner.setValue(1);
+        //lui.operarUnitStocks(); 
+        addToCart();
+        int suma = (int)cantidadCarSpinner.getValue() + Integer.parseInt(labelcart.getText());
+        labelcart.setText(String.valueOf(suma));
+        cantidadCarSpinner.setValue(1);
     }//GEN-LAST:event_buttonCarritoActionPerformed
 
     public static void main(String args[]) {
@@ -167,8 +177,8 @@ public class MostrarLibro extends javax.swing.JFrame {
     public JSpinner getCantidadCarSpinner() {
         return cantidadCarSpinner;
     }
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCarrito;
     private javax.swing.JSpinner cantidadCarSpinner;
@@ -181,22 +191,25 @@ public class MostrarLibro extends javax.swing.JFrame {
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel labelsbn;
     // End of variables declaration//GEN-END:variables
-    
-    public void addToCart(){
-        int cantidad = (int)(cantidadCarSpinner.getValue());
+
+    public void addToCart() {
+        int cantidad = (int) (cantidadCarSpinner.getValue());
         float precio = Float.parseFloat(libro[7]), pagar = precio * cantidad;
-        
-        if(Integer.parseInt(libro[8]) < cantidad){
+
+        if (Integer.parseInt(libro[8]) < cantidad) {
             JOptionPane.showMessageDialog(this, "No hay suficientes existencias del producto", "Existencia insuficiente", JOptionPane.WARNING_MESSAGE);
             return;
         }
-            
-        
-        DefaultTableModel model =(DefaultTableModel)cui.getCarshopTable().getModel();
-        
-        String row [] = {libro[0],libro[1],libro[3],libro[4],libro[7],String.valueOf(cantidad),String.valueOf(pagar)};
+
+        DefaultTableModel model = (DefaultTableModel) cui.getCarshopTable().getModel();
+
+        String row[] = {libro[0], libro[1], libro[3], libro[4], libro[7], String.valueOf(cantidad), String.valueOf(pagar)};
         model.addRow(row);
-        
+
         JOptionPane.showMessageDialog(this, "¡Libro agregado al carrito!", "¡Hecho!", JOptionPane.PLAIN_MESSAGE);
+    }
+
+    public boolean isAvailable() {
+        return Integer.parseInt(libro[8]) > 0;
     }
 }

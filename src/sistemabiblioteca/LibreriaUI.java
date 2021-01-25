@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,6 +22,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     int id;
     DefaultTableModel model,model2;
     static CarritoUI cui;
+    static JLabel labelcart;
     MostrarLibro ml;
      
     public LibreriaUI(Connection con,String nombreCliente,int id) {
@@ -39,6 +41,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         labelCarrito.setIconTextGap(0);
         this.cui= new CarritoUI();
         this.ml=new MostrarLibro();
+        labelcart = labelCarrito;
     }   
     public LibreriaUI(){
         //Este constructor se usa para cuando se abre el sistema sin conectarse a la BD. 
@@ -64,6 +67,8 @@ public class LibreriaUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         libreriaTable = new javax.swing.JTable();
         labelCarrito = new javax.swing.JLabel();
+        labelLogOut = new javax.swing.JLabel();
+        jLabelPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(botonX());
 
@@ -74,10 +79,10 @@ public class LibreriaUI extends javax.swing.JFrame {
             }
         });
 
-        labelCliente.setFont(new java.awt.Font("Bookman Old Style", 3, 24)); // NOI18N
+        labelCliente.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         labelCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCliente.setText("Nombre del cliente");
-        labelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelClienteMouseClicked(evt);
@@ -100,7 +105,7 @@ public class LibreriaUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        libreriaTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        libreriaTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         libreriaTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 libreriaTableMouseClicked(evt);
@@ -118,44 +123,68 @@ public class LibreriaUI extends javax.swing.JFrame {
         labelCarrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/PicsArt_01-24-07.11.52.png"))); // NOI18N
         labelCarrito.setText("0");
-        labelCarrito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelCarrito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelCarrito.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelCarritoMouseClicked(evt);
             }
         });
 
+        labelLogOut.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        labelLogOut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelLogOut.setText("Cerrar sesión.");
+        labelLogOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        labelLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelLogOutMouseClicked(evt);
+            }
+        });
+
+        jLabelPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/AHPV Books.jpg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 837, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jButtonAdmin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonAdmin)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addComponent(labelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 16, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(labelLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(labelCliente)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelCliente)
+                            .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jButtonAdmin)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAdmin))
-                .addGap(18, 18, 18)
+                .addComponent(labelLogOut)
+                .addGap(15, 15, 15)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -177,6 +206,11 @@ public class LibreriaUI extends javax.swing.JFrame {
         new MostrarLibro(showBook(String.valueOf(libreriaTable.getValueAt(libreriaTable.getSelectedRow(), 0)))).setVisible(true);
     }//GEN-LAST:event_libreriaTableMouseClicked
 
+    private void labelLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLogOutMouseClicked
+        new LogIn(con).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_labelLogOutMouseClicked
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -187,9 +221,11 @@ public class LibreriaUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdmin;
+    private javax.swing.JLabel jLabelPrincipal;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCarrito;
     private javax.swing.JLabel labelCliente;
+    private javax.swing.JLabel labelLogOut;
     private javax.swing.JTable libreriaTable;
     // End of variables declaration//GEN-END:variables
    
@@ -309,7 +345,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) libreriaTable.getModel();
         modelo.setRowCount(0);
         leerLibrosDB();
-    }
+    }       
 }
 
  

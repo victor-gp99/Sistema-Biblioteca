@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import static sistemabiblioteca.LogIn.lui;
 
 /**
  *
@@ -451,7 +452,6 @@ public class FormularioLibro extends javax.swing.JFrame {
                             .addComponent(jLabelPrecio))
                         .addContainerGap(27, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -535,6 +535,7 @@ public class FormularioLibro extends javax.swing.JFrame {
             jSpinnerPrecio.setValue(-1f);
             jComboBoxAutor.setSelectedIndex(-1);
             labelImagen.setText("Seleccionar imagen...");
+            lui.refill();
         }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 

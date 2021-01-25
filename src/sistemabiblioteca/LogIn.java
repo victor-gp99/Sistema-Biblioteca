@@ -23,7 +23,8 @@ public class LogIn extends javax.swing.JFrame {
     String name;
     Connection con;
     static int id;
-
+    static LibreriaUI lui;
+    
     /**
      * Creates new form LogIn
      */
@@ -359,7 +360,7 @@ public class LogIn extends javax.swing.JFrame {
                 String usr = rs.getString(2);
                 String contra = rs.getString(3);
                 id = rs.getInt(4);
-                LibreriaUI lui = new LibreriaUI(con, name, id);
+                lui = new LibreriaUI(con, name, id);
                 if (user.equals(usr) && pass.equals(contra)) {
                     JOptionPane.showMessageDialog(this, "¡Hola de nuevo " + name + "!");
                     dispose();

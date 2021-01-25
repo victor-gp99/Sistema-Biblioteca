@@ -202,7 +202,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         return 3;
     }
      
-    private void leerLibrosDB(){ 
+    public void leerLibrosDB(){ 
         model =(DefaultTableModel) libreriaTable.getModel();
         String[] info = new String[libreriaTable.getColumnCount()];   
         try {
@@ -303,6 +303,12 @@ public class LibreriaUI extends javax.swing.JFrame {
             Logger.getLogger(LibreriaUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         return book;
+    }
+    
+    public void refill(){
+        DefaultTableModel modelo = (DefaultTableModel) libreriaTable.getModel();
+        modelo.setRowCount(0);
+        leerLibrosDB();
     }
 }
 

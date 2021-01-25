@@ -147,6 +147,7 @@ public class register extends javax.swing.JFrame {
         botonRegistrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         botonRegistrar.setText("Registrar");
+        botonRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegistrarActionPerformed(evt);
@@ -157,6 +158,7 @@ public class register extends javax.swing.JFrame {
         botonCancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonCancelar.setForeground(new java.awt.Color(255, 255, 255));
         botonCancelar.setText("Cancelar");
+        botonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActionPerformed(evt);

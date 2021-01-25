@@ -75,7 +75,6 @@ public class CarritoUI extends javax.swing.JFrame {
                 .addComponent(labelCarrito)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
@@ -88,6 +87,7 @@ public class CarritoUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buyButton;
     private javax.swing.JTable carshopTable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCarrito;

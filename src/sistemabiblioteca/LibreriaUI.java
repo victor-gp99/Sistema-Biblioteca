@@ -114,7 +114,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         labelCarrito.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelCarrito.setForeground(new java.awt.Color(255, 0, 51));
         labelCarrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/shopping-cart--v2.png"))); // NOI18N
+        labelCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/PicsArt_01-24-07.11.52.png"))); // NOI18N
         labelCarrito.setText("8");
         labelCarrito.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 

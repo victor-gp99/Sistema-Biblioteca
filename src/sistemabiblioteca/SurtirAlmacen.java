@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
+import static sistemabiblioteca.LogIn.lui;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -313,9 +313,8 @@ public class SurtirAlmacen extends javax.swing.JFrame {
     }//GEN-LAST:event_minimize1MouseClicked
 
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
-
-        verificarStock();
-
+        if(verificarStock())
+            lui.refill();
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
@@ -433,24 +432,26 @@ public class SurtirAlmacen extends javax.swing.JFrame {
         }
     }
 
-    public void verificarStock() {
+    public boolean verificarStock() {
+        boolean vrf = false;
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM almacen_almacena_libro");
+            ResultSet rs = st.executeQuery("SELECT stock FROM almacen_almacena_libro WHERE id_libro = "+(jComboBoxLibro.getSelectedIndex() + 1));
             while (rs.next()) {
-                if (Integer.valueOf(rs.getString(3)) > 0) {
-                    stockExistente = stockExistente + Integer.valueOf(rs.getString(3));
-                    actualizarStock();
-                } else{
-                    agregarStock();
-                }
+                vrf = true;
+                stockExistente = stockExistente + Integer.valueOf(rs.getString(1));
+                actualizarStock();
             }
+            if(!vrf)
+                agregarStock();
             st.close();
             rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(SurtirAlmacen.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
+        return true;
     }
 
     public void actualizarStock() {

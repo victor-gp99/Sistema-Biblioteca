@@ -3,6 +3,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import static sistemabiblioteca.LibreriaUI.cui;
 import static sistemabiblioteca.LibreriaUI.labelcart;
+import static sistemabiblioteca.LogIn.lui;
 /**
  *
  * @author victor
@@ -182,6 +183,8 @@ public class CreditCardPayUI extends javax.swing.JFrame {
             }
             cui = new CarritoUI();
             labelcart.setText("0");
+            
+            lui.refill();
             dispose();
        }
        

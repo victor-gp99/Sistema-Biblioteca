@@ -92,8 +92,10 @@ public class CarritoUI extends javax.swing.JFrame {
                         .addGap(198, 198, 198)
                         .addComponent(buttonPagar)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(labelEnvio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(labelEnvio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(35, 35, 35)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -105,9 +107,9 @@ public class CarritoUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelSubtotal)
-                .addGap(30, 30, 30)
+                .addGap(33, 33, 33)
                 .addComponent(labelEnvio)
-                .addGap(34, 34, 34)
+                .addGap(31, 31, 31)
                 .addComponent(labelTotal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(buttonPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,14 +119,13 @@ public class CarritoUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagarActionPerformed
-         CheckOut co = new CheckOut();
-         
-         dispose();
-    }//GEN-LAST:event_buttonPagarActionPerformed
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     new CreditCardPayUI();
+    
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void buttonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagarActionPerformed
+       new CreditCardPayUI();
+    }//GEN-LAST:event_buttonPagarActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {

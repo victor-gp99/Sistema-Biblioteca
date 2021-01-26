@@ -1,5 +1,6 @@
 
 package sistemabiblioteca;
+import javax.swing.JFrame;
 import static sistemabiblioteca.AppSistemaBiblioteca.con;
 /**
  *
@@ -24,14 +25,74 @@ public class AdminTools extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        registryAutorButton = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        exit1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        minimize1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        Cancelar = new javax.swing.JButton();
         jButtonRegistrarLibro = new javax.swing.JButton();
+        registryAutorButton = new javax.swing.JButton();
         jButtonLocalidadNueva = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
         registryAlmacenButton = new javax.swing.JButton();
         surtirAlmacenButton1 = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
+
+        jPanel2.setBackground(new java.awt.Color(92, 151, 191));
+
+        exit1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        exit1.setForeground(new java.awt.Color(255, 255, 255));
+        exit1.setText("X");
+        exit1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        exit1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exit1MouseClicked(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Surtir almacén");
+
+        minimize1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        minimize1.setForeground(new java.awt.Color(255, 255, 255));
+        minimize1.setText("--");
+        minimize1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        minimize1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                minimize1MouseClicked(evt);
+            }
+        });
+
+        jPanel3.setBackground(new java.awt.Color(34, 49, 63));
+
+        Cancelar.setBackground(new java.awt.Color(235, 151, 78));
+        Cancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Cancelar.setForeground(new java.awt.Color(236, 240, 241));
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+
+        jButtonRegistrarLibro.setBackground(new java.awt.Color(34, 49, 63));
+        jButtonRegistrarLibro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonRegistrarLibro.setForeground(new java.awt.Color(236, 240, 241));
+        jButtonRegistrarLibro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/addBook.png"))); // NOI18N
+        jButtonRegistrarLibro.setText("Registrar Libro");
+        jButtonRegistrarLibro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonRegistrarLibro.setContentAreaFilled(false);
+        jButtonRegistrarLibro.setFocusPainted(false);
+        jButtonRegistrarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarLibroActionPerformed(evt);
+            }
+        });
 
         registryAutorButton.setText("Registrar Autor");
         registryAutorButton.addActionListener(new java.awt.event.ActionListener() {
@@ -40,24 +101,10 @@ public class AdminTools extends javax.swing.JFrame {
             }
         });
 
-        jButtonRegistrarLibro.setText("Registrar Libro");
-        jButtonRegistrarLibro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegistrarLibroActionPerformed(evt);
-            }
-        });
-
         jButtonLocalidadNueva.setText("Registrar Localidad");
         jButtonLocalidadNueva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLocalidadNuevaActionPerformed(evt);
-            }
-        });
-
-        jToggleButton1.setText("Registrar Editorial");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
             }
         });
 
@@ -75,41 +122,94 @@ public class AdminTools extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton1.setText("Registrar Editorial");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(Cancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jToggleButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(surtirAlmacenButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(registryAlmacenButton))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(registryAutorButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonLocalidadNueva)))
+                .addGap(60, 60, 60))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonRegistrarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(registryAutorButton)
+                    .addComponent(jButtonLocalidadNueva))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1)
+                    .addComponent(registryAlmacenButton)
+                    .addComponent(surtirAlmacenButton1))
+                .addGap(42, 42, 42)
+                .addComponent(jButtonRegistrarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(Cancelar)
+                .addGap(40, 40, 40))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(104, 104, 104)
+                .addComponent(minimize1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(exit1)
+                .addContainerGap())
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(minimize1)
+                    .addComponent(exit1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(surtirAlmacenButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonRegistrarLibro)
-                        .addGap(23, 23, 23)
-                        .addComponent(registryAutorButton)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(registryAlmacenButton)
-                            .addComponent(jButtonLocalidadNueva))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(168, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(registryAutorButton)
-                    .addComponent(jButtonRegistrarLibro)
-                    .addComponent(jButtonLocalidadNueva))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(registryAlmacenButton)
-                    .addComponent(surtirAlmacenButton1))
-                .addGap(60, 60, 60))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -138,6 +238,20 @@ public class AdminTools extends javax.swing.JFrame {
     private void surtirAlmacenButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surtirAlmacenButton1ActionPerformed
         new SurtirAlmacen(con).setVisible(true);
     }//GEN-LAST:event_surtirAlmacenButton1ActionPerformed
+
+    private void exit1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit1MouseClicked
+
+        this.dispose();
+    }//GEN-LAST:event_exit1MouseClicked
+
+    private void minimize1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimize1MouseClicked
+
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_minimize1MouseClicked
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,9 +289,15 @@ public class AdminTools extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancelar;
+    private javax.swing.JLabel exit1;
     private javax.swing.JButton jButtonLocalidadNueva;
     private javax.swing.JButton jButtonRegistrarLibro;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel minimize1;
     private javax.swing.JButton registryAlmacenButton;
     private javax.swing.JButton registryAutorButton;
     private javax.swing.JButton surtirAlmacenButton1;

@@ -14,6 +14,8 @@ public class CarritoUI extends javax.swing.JFrame {
         initComponents();
         setTitle("Tu carrito de compras");
         setLocationRelativeTo(new LibreriaUI());
+        tabla = carshopTable;
+        calcularTotal();
     }
 
     public JTable getCarshopTable() {
@@ -116,10 +118,12 @@ public class CarritoUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagarActionPerformed
-       
+         CheckOut co = new CheckOut();
+         
+         dispose();
     }//GEN-LAST:event_buttonPagarActionPerformed
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+     new CreditCardPayUI();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {

@@ -1,13 +1,16 @@
 package sistemabiblioteca;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.naming.spi.DirStateFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import static sistemabiblioteca.AppSistemaBiblioteca.con;
 import static sistemabiblioteca.LibreriaUI.cui;
 import static sistemabiblioteca.LibreriaUI.labelcart;
+import static sistemabiblioteca.LogIn.lui;
 import static sistemabiblioteca.LibreriaUI.id;
 /**
  *
@@ -187,9 +190,12 @@ public class CreditCardPayUI extends javax.swing.JFrame {
                 String otro [] = {"","ENVIO","","","100","","100"};
                 co.addToTable(otro);
             }
-            cui = new CarritoUI();
+            
             labelcart.setText("0");
             insertVentasDB();
+            updateStock();
+            cui = new CarritoUI();
+            lui.refill();
             dispose();
        }
        
@@ -235,17 +241,16 @@ public class CreditCardPayUI extends javax.swing.JFrame {
   
    }
    public void insertVentasDB(){
-    try{
-        try (Statement st = con.createStatement()) {
-            st.execute("INSERT INTO ventas (fecha_compra, id_cliente) "
+        try{
+            try (Statement st = con.createStatement()) {
+                st.execute("INSERT INTO ventas (fecha_compra, id_cliente) "
                     + "VALUES (current_date(),"+id+")");
-            st.close();
-        }
+                st.close();
+            }
             JOptionPane.showMessageDialog(null, "Venta registrada correctamente!");
-    } catch (SQLException ex) {
-        Logger.getLogger(CreditCardPayUI.class.getName()).log(Level.SEVERE, null, ex);
-    }
-   
+        } catch (SQLException ex) {
+            Logger.getLogger(CreditCardPayUI.class.getName()).log(Level.SEVERE, null, ex);
+        }   
    }
    
 
@@ -270,4 +275,29 @@ public class CreditCardPayUI extends javax.swing.JFrame {
     private javax.swing.JTextField numText;
     private javax.swing.JTextField titularText;
     // End of variables declaration//GEN-END:variables
+    
+    public void updateStock(){
+        try {
+            Statement st = con.createStatement();
+            Statement st2 = con.createStatement();
+            int id;
+            ResultSet rs=null;
+            for(byte i = 0; i<carshopTable.getRowCount();i++){
+                id = Integer.parseInt(carshopTable.getValueAt(i, 0).toString());
+                rs = st.executeQuery("SELECT stock FROM almacen_almacena_libro WHERE id_libro = " + id);
+                while(rs.next()){
+                    int stock = rs.getInt(1);
+                    int cantidad = Integer.parseInt(carshopTable.getValueAt(i, 5).toString()) ;
+                    st2.execute("UPDATE almacen_almacena_libro SET stock = "+(stock - cantidad)+" WHERE id_libro = " + id);
+                }
+            }    
+            st.close();
+            st2.close();
+            rs.close();
+        } catch (SQLException e) {
+            Logger.getLogger(CreditCardPayUI.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, "Error en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    }
 }

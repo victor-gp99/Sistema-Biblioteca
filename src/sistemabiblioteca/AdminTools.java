@@ -94,35 +94,52 @@ public class AdminTools extends javax.swing.JFrame {
             }
         });
 
+        registryAutorButton.setBackground(new java.awt.Color(34, 49, 63));
+        registryAutorButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         registryAutorButton.setText("Registrar Autor");
+        registryAutorButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         registryAutorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registryAutorButtonActionPerformed(evt);
             }
         });
 
+        jButtonLocalidadNueva.setBackground(new java.awt.Color(34, 49, 63));
+        jButtonLocalidadNueva.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonLocalidadNueva.setText("Registrar Localidad");
+        jButtonLocalidadNueva.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonLocalidadNueva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLocalidadNuevaActionPerformed(evt);
             }
         });
 
+        registryAlmacenButton.setBackground(new java.awt.Color(34, 49, 63));
+        registryAlmacenButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         registryAlmacenButton.setText("Registrar Almacen");
+        registryAlmacenButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         registryAlmacenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registryAlmacenButtonActionPerformed(evt);
             }
         });
 
+        surtirAlmacenButton1.setBackground(new java.awt.Color(34, 49, 63));
+        surtirAlmacenButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        surtirAlmacenButton1.setForeground(new java.awt.Color(236, 240, 241));
+        surtirAlmacenButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/addStock.png"))); // NOI18N
         surtirAlmacenButton1.setText("Surtir almacén");
+        surtirAlmacenButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         surtirAlmacenButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 surtirAlmacenButton1ActionPerformed(evt);
             }
         });
 
+        jToggleButton1.setBackground(new java.awt.Color(34, 49, 63));
+        jToggleButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jToggleButton1.setText("Registrar Editorial");
+        jToggleButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
@@ -136,43 +153,43 @@ public class AdminTools extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(182, 182, 182)
                 .addComponent(Cancelar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jToggleButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(surtirAlmacenButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(registryAlmacenButton))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(registryAutorButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonLocalidadNueva)))
-                .addGap(60, 60, 60))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonRegistrarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
+                .addGap(45, 45, 45))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(surtirAlmacenButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addComponent(registryAutorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jButtonLocalidadNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(registryAlmacenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(registryAutorButton)
-                    .addComponent(jButtonLocalidadNueva))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(registryAlmacenButton)
-                    .addComponent(surtirAlmacenButton1))
-                .addGap(42, 42, 42)
-                .addComponent(jButtonRegistrarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(Cancelar)
+                    .addComponent(surtirAlmacenButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(registryAutorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonLocalidadNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(registryAlmacenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(67, 67, 67)
+                        .addComponent(Cancelar))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(jButtonRegistrarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
         );
 

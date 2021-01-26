@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package sistemabiblioteca;
+import javax.swing.table.DefaultTableModel;
 import static sistemabiblioteca.CarritoUI.tabla;
 
 /**
@@ -16,7 +17,10 @@ public class CheckOut extends javax.swing.JFrame {
      */
     public CheckOut() {
         initComponents();
-        tableCO.setModel(tabla.getModel());
+        setLocationRelativeTo(null);
+        setVisible(true);
+        DefaultTableModel model =(DefaultTableModel)tabla.getModel();
+        tableCO.setModel(model);  
     }
 
     /**
@@ -33,7 +37,7 @@ public class CheckOut extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCO = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelCheckOut.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         labelCheckOut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -44,16 +48,26 @@ public class CheckOut extends javax.swing.JFrame {
 
         tableCO.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Titulo", "Descripcion", "Tipo", "Precio Unitario", "Cantidad", "Pagar"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tableCO);
+        if (tableCO.getColumnModel().getColumnCount() > 0) {
+            tableCO.getColumnModel().getColumn(0).setMinWidth(0);
+            tableCO.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tableCO.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,12 +77,9 @@ public class CheckOut extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelCheckOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,8 +89,8 @@ public class CheckOut extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(labelCompra)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,5 +138,7 @@ public class CheckOut extends javax.swing.JFrame {
     private javax.swing.JTable tableCO;
     // End of variables declaration//GEN-END:variables
     
-    //public void 
+    public void addToTable(){
+        
+    } 
 }

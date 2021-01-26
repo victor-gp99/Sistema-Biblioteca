@@ -172,6 +172,7 @@ public class MostrarLibro extends javax.swing.JFrame {
         int suma = (int)cantidadCarSpinner.getValue() + Integer.parseInt(labelcart.getText());
         labelcart.setText(String.valueOf(suma));
         cantidadCarSpinner.setValue(1);
+        dispose();
     }//GEN-LAST:event_buttonCarritoActionPerformed
 
     public static void main(String args[]) {

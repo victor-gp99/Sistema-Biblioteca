@@ -43,7 +43,7 @@ public class CarritoUI extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -154,9 +154,6 @@ public class CarritoUI extends javax.swing.JFrame {
             total = sub + envio;
         }    
         labelSubtotal.setText("Subtotal: $ "+sub);
-        labelTotal.setText("Total: $ "+total);
-        
-        
-        
+        labelTotal.setText("Total: $ "+total);    
     }
 }

@@ -120,21 +120,7 @@ public class CarritoUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagarActionPerformed
-        CheckOut co = new CheckOut(onlyEbooks, papel, both,total,"1245645213454512");
-        String row [] = new String[carshopTable.getColumnCount()];
-        for(byte i = 0;i<carshopTable.getRowCount();i++){
-            for(byte j = 0; j < carshopTable.getColumnCount();j++){
-                row[j] = carshopTable.getValueAt(i, j).toString();
-            }
-            co.addToTable(row);
-        }
-        if (sub < 499 && !onlyEbooks) {
-            String otro [] = {"","ENVIO","","","100","","100"};
-            co.addToTable(otro);
-        }
-        cui = new CarritoUI();
-        labelcart.setText("0");
-        dispose();
+        
     }//GEN-LAST:event_buttonPagarActionPerformed
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        

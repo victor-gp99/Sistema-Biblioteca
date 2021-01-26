@@ -219,6 +219,7 @@ public class FormularioLocalidad extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        new AdminTools().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 

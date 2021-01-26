@@ -222,7 +222,8 @@ public class RegistryAlmacenUI extends javax.swing.JFrame {
     }//GEN-LAST:event_minimize1MouseClicked
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-         this.dispose();
+        new AdminTools().setVisible(true); 
+        this.dispose();
     }//GEN-LAST:event_CancelarActionPerformed
 
     public static void main(String args[]) {

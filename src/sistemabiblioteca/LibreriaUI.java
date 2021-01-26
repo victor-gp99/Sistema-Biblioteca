@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class LibreriaUI extends javax.swing.JFrame {
     Connection con;
     String nombreCLiente;
-    int id;
+    static int id;
     DefaultTableModel model,model2;
     static CarritoUI cui;
     static JLabel labelcart;

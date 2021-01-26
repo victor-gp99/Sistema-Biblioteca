@@ -1,13 +1,20 @@
 package sistemabiblioteca;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import static sistemabiblioteca.AppSistemaBiblioteca.con;
 import static sistemabiblioteca.LibreriaUI.cui;
 import static sistemabiblioteca.LibreriaUI.labelcart;
+import static sistemabiblioteca.LibreriaUI.id;
 /**
  *
  * @author victor
  */
 public class CreditCardPayUI extends javax.swing.JFrame {
+    
     JTable carshopTable;
     boolean onlyEbooks, papel, both;
     float total, sub;
@@ -182,6 +189,7 @@ public class CreditCardPayUI extends javax.swing.JFrame {
             }
             cui = new CarritoUI();
             labelcart.setText("0");
+            insertVentasDB();
             dispose();
        }
        
@@ -225,6 +233,19 @@ public class CreditCardPayUI extends javax.swing.JFrame {
      // JOptionPane.showMessageDialog(this, imprimirTicket());
               
   
+   }
+   public void insertVentasDB(){
+    try{
+        try (Statement st = con.createStatement()) {
+            st.execute("INSERT INTO ventas (fecha_compra, id_cliente) "
+                    + "VALUES (current_date(),"+id+")");
+            st.close();
+        }
+            JOptionPane.showMessageDialog(null, "Venta registrada correctamente!");
+    } catch (SQLException ex) {
+        Logger.getLogger(CreditCardPayUI.class.getName()).log(Level.SEVERE, null, ex);
+    }
+   
    }
    
 

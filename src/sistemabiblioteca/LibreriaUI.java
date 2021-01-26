@@ -205,55 +205,58 @@ public class LibreriaUI extends javax.swing.JFrame {
                 .addComponent(jLabelNombre3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(65, 65, 65)
                 .addComponent(jLabelEstado3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                            .addComponent(jLabelPrincipal)
-                            .addGap(20, 20, 20))
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addGap(27, 27, 27)
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel9Layout.createSequentialGroup()
-                                    .addComponent(jButtonAdmin)
-                                    .addGap(371, 371, 371)
-                                    .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel9Layout.createSequentialGroup()
-                                            .addGap(28, 28, 28)
-                                            .addComponent(labelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel9Layout.createSequentialGroup()
-                                            .addGap(67, 67, 67)
-                                            .addComponent(labelLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabelPrincipal1))
-                .addGap(115, 115, 115))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelPrincipal1)))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addComponent(jButtonAdmin)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addGap(28, 28, 28)
+                                        .addComponent(labelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addGap(67, 67, 67)
+                                        .addComponent(labelLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(135, 135, 135))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabelNombre3)
-                .addGap(91, 91, 91)
-                .addComponent(jLabelEstado3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabelPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButtonAdmin)
-                        .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(labelCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelLogOut)))
-                .addGap(90, 90, 90)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabelNombre3)
+                        .addGap(91, 91, 91)
+                        .addComponent(jLabelEstado3))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabelPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jButtonAdmin))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addComponent(labelCliente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(labelLogOut)))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addComponent(jLabelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -279,7 +282,7 @@ public class LibreriaUI extends javax.swing.JFrame {
                     .addComponent(exit4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -336,59 +339,20 @@ public class LibreriaUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel exit1;
-    private javax.swing.JLabel exit2;
-    private javax.swing.JLabel exit3;
     private javax.swing.JLabel exit4;
-    private javax.swing.JButton jButtonAceptar;
-    private javax.swing.JButton jButtonAceptar1;
-    private javax.swing.JButton jButtonAceptar2;
     private javax.swing.JButton jButtonAdmin;
-    private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JButton jButtonCancelar1;
-    private javax.swing.JButton jButtonCancelar2;
-    private javax.swing.JComboBox<String> jComboBoxEstado;
-    private javax.swing.JComboBox<String> jComboBoxEstado1;
-    private javax.swing.JComboBox<String> jComboBoxEstado2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelEstado;
-    private javax.swing.JLabel jLabelEstado1;
-    private javax.swing.JLabel jLabelEstado2;
     private javax.swing.JLabel jLabelEstado3;
-    private javax.swing.JLabel jLabelNombre;
-    private javax.swing.JLabel jLabelNombre1;
-    private javax.swing.JLabel jLabelNombre2;
     private javax.swing.JLabel jLabelNombre3;
     private javax.swing.JLabel jLabelPrincipal;
     private javax.swing.JLabel jLabelPrincipal1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldNombre1;
-    private javax.swing.JTextField jTextFieldNombre2;
     private javax.swing.JLabel labelCarrito;
     private javax.swing.JLabel labelCliente;
     private javax.swing.JLabel labelLogOut;
     private javax.swing.JTable libreriaTable;
-    private javax.swing.JLabel minimize1;
-    private javax.swing.JLabel minimize2;
-    private javax.swing.JLabel minimize3;
     private javax.swing.JLabel minimize4;
     // End of variables declaration//GEN-END:variables
    

@@ -98,8 +98,8 @@ public class AdminTools extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(168, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registryAutorButton)
                     .addComponent(jButtonRegistrarLibro)
@@ -109,7 +109,7 @@ public class AdminTools extends javax.swing.JFrame {
                     .addComponent(jToggleButton1)
                     .addComponent(registryAlmacenButton)
                     .addComponent(surtirAlmacenButton1))
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addGap(60, 60, 60))
         );
 
         pack();

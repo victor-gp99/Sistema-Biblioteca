@@ -322,7 +322,13 @@ public class LibreriaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_labelLogOutMouseClicked
 
     private void exit4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit4MouseClicked
-        this.dispose();
+        try {
+            con.close();
+        } catch (SQLException | java.lang.NullPointerException ex) {
+            //Logger.getLogger(LibreriaUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.exit(0);
+        
     }//GEN-LAST:event_exit4MouseClicked
 
     private void minimize4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minimize4MouseClicked

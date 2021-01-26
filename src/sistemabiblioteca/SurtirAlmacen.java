@@ -24,6 +24,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
     Connection con;
     int id_almacen;
     int id_libro;
+    int stockExistente;
 
     /**
      * Creates new form SurtirAlmacen
@@ -179,6 +180,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
         jButtonAgregar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonAgregar.setForeground(new java.awt.Color(236, 240, 241));
         jButtonAgregar.setText("Agregar");
+        jButtonAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAgregarActionPerformed(evt);
@@ -189,6 +191,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
         Cancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Cancelar.setForeground(new java.awt.Color(236, 240, 241));
         Cancelar.setText("Cancelar");
+        Cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelarActionPerformed(evt);
@@ -238,8 +241,8 @@ public class SurtirAlmacen extends javax.swing.JFrame {
                     .addComponent(jSpinnerAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAgregar)
-                    .addComponent(Cancelar))
+                    .addComponent(jButtonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
 
@@ -311,7 +314,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
 
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
 
-        agregarStock();
+        verificarStock();
 
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
@@ -396,9 +399,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT id, titulo FROM libro");
             while (rs.next()) {
-
                 jComboBoxLibro.addItem(rs.getString(2));
-               // System.out.println(id_libro);
             }
             st.close();
             rs.close();
@@ -406,14 +407,22 @@ public class SurtirAlmacen extends javax.swing.JFrame {
             Logger.getLogger(SurtirAlmacen.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
         }
-       // id_libro = jComboBoxLibro.getSelectedIndex()+1;
-        //System.out.println(id_libro);
     }
 
     public void agregarStock() {
+        
+        System.out.println("Agregar stock");
+
+        if (jSpinnerAgregar.getValue().equals(0)) {
+            JOptionPane.showMessageDialog(this, "Introduzca stock válido", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         try {
             Statement st = con.createStatement();
-            st.execute("INSERT INTO almacen_almacena_libro (id_almacen, id_libro, stock) values (" + (jComboBoxLibro.getSelectedIndex()+1) + ", " + (jComboBoxAlmacen.getSelectedIndex()+1) + ", " + jSpinnerAgregar.getValue() + ")");
+            st.execute("INSERT INTO almacen_almacena_libro (id_almacen, id_libro, stock) values (" + (jComboBoxAlmacen.getSelectedIndex() + 1) + ", " + (jComboBoxLibro.getSelectedIndex() + 1) + ", " + jSpinnerAgregar.getValue() + ")");
+            JOptionPane.showMessageDialog(this, "Se agregó stock correctamente");
+            jSpinnerAgregar.setValue(0);
             st.close();
         } catch (SQLException ex) {
             Logger.getLogger(SurtirAlmacen.class.getName()).log(Level.SEVERE, null, ex);
@@ -421,4 +430,42 @@ public class SurtirAlmacen extends javax.swing.JFrame {
             return;
         }
     }
+
+    public void verificarStock() {
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM almacen_almacena_libro");
+            while (rs.next()) {
+                if (Integer.valueOf(rs.getString(3)) > 0) {
+                    stockExistente = stockExistente + Integer.valueOf(rs.getString(3));
+                    actualizarStock();
+                } else{
+                    agregarStock();
+                }
+            }
+            st.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SurtirAlmacen.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void actualizarStock() {
+        System.out.println("Actualizar");
+        try {
+            Statement st = con.createStatement();
+            stockExistente = stockExistente + (int)jSpinnerAgregar.getValue();
+            System.out.println(stockExistente);
+            st.executeUpdate("UPDATE almacen_almacena_libro SET stock = '" + stockExistente + "' WHERE (id_almacen = " + (jComboBoxAlmacen.getSelectedIndex()+1) + " and id_libro = " + (jComboBoxLibro.getSelectedIndex()+1)+ ")");
+            JOptionPane.showMessageDialog(this, "Se actualizó stock correctamente");
+            st.close();
+            jSpinnerAgregar.setValue(0);
+        } catch (SQLException ex) {
+            Logger.getLogger(SurtirAlmacen.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    }
+
 }

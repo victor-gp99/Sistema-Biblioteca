@@ -87,15 +87,14 @@ public class AdminTools extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(surtirAlmacenButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
                         .addComponent(jButtonRegistrarLibro)
-                        .addGap(18, 18, 18)
+                        .addGap(23, 23, 23)
                         .addComponent(registryAutorButton)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(registryAlmacenButton)
                             .addComponent(jButtonLocalidadNueva))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

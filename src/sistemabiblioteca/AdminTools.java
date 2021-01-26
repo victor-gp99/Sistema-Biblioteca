@@ -249,26 +249,32 @@ public class AdminTools extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registryAutorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registryAutorButtonActionPerformed
+        this.hide();
         RegistryAutorUI raui = new RegistryAutorUI();
     }//GEN-LAST:event_registryAutorButtonActionPerformed
 
     private void jButtonRegistrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarLibroActionPerformed
+        this.hide();
         new FormularioLibro(con).setVisible(true);
     }//GEN-LAST:event_jButtonRegistrarLibroActionPerformed
 
     private void jButtonLocalidadNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLocalidadNuevaActionPerformed
+        this.hide();
         new FormularioLocalidad().setVisible(true);
     }//GEN-LAST:event_jButtonLocalidadNuevaActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-       RegistryEditorialUI reui= new RegistryEditorialUI();
+       this.hide();
+        RegistryEditorialUI reui= new RegistryEditorialUI();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void registryAlmacenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registryAlmacenButtonActionPerformed
+        this.hide();
         RegistryAlmacenUI raiui= new RegistryAlmacenUI();
     }//GEN-LAST:event_registryAlmacenButtonActionPerformed
 
     private void surtirAlmacenButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surtirAlmacenButton1ActionPerformed
+        this.hide();
         new SurtirAlmacen(con).setVisible(true);
     }//GEN-LAST:event_surtirAlmacenButton1ActionPerformed
 

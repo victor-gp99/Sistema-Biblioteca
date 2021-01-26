@@ -310,6 +310,7 @@ public class RegistryEditorialUI extends javax.swing.JFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.dispose();
+        new AdminTools().setVisible(true);
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked

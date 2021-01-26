@@ -7,7 +7,7 @@ import javax.swing.JTable;
  * @author Victor
  */
 public class CarritoUI extends javax.swing.JFrame {
-
+    static JTable tabla;
     float sub = 0, envio = 100, total;
 
     public CarritoUI() {
@@ -30,7 +30,7 @@ public class CarritoUI extends javax.swing.JFrame {
         labelSubtotal = new javax.swing.JLabel();
         labelEnvio = new javax.swing.JLabel();
         labelTotal = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        buttonPagar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,10 +69,10 @@ public class CarritoUI extends javax.swing.JFrame {
         labelTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTotal.setText("Total: $ 0.0");
 
-        jButton1.setText("Completar orden.");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonPagar.setText("Completar orden.");
+        buttonPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonPagarActionPerformed(evt);
             }
         });
 
@@ -88,7 +88,7 @@ public class CarritoUI extends javax.swing.JFrame {
                     .addComponent(labelSubtotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(198, 198, 198)
-                        .addComponent(jButton1)
+                        .addComponent(buttonPagar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(labelEnvio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -108,16 +108,16 @@ public class CarritoUI extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(labelTotal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buttonPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagarActionPerformed
        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonPagarActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
@@ -126,8 +126,8 @@ public class CarritoUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonPagar;
     private javax.swing.JTable carshopTable;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCarrito;
     private javax.swing.JLabel labelEnvio;
@@ -156,4 +156,5 @@ public class CarritoUI extends javax.swing.JFrame {
         labelSubtotal.setText("Subtotal: $ "+sub);
         labelTotal.setText("Total: $ "+total);    
     }
+    
 }

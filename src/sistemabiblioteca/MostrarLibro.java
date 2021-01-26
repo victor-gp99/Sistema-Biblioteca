@@ -1,11 +1,17 @@
 package sistemabiblioteca;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import static sistemabiblioteca.LibreriaUI.cui;
 import static sistemabiblioteca.LibreriaUI.labelcart;
+import static sistemabiblioteca.AppSistemaBiblioteca.con;
 
 /**
  *
@@ -24,11 +30,11 @@ public class MostrarLibro extends javax.swing.JFrame {
         buttonCarrito.setEnabled(false);
     }
 
-    public MostrarLibro(String libro[]) {
+    public MostrarLibro(String id) {
         initComponents();
-
         setLocationRelativeTo(null);
-        this.libro = libro;
+        
+        libro = showBook(id);
         labelImagen.setIcon(new ImageIcon("src/imgs/" + libro[0] + ".jpg"));
         labelTitulo.setText(libro[1]);
         labelAutor.setText(libro[2]);
@@ -213,5 +219,35 @@ public class MostrarLibro extends javax.swing.JFrame {
         if(libro[8] != null)
             return Integer.parseInt(libro[8]) > 0;
         else return false;
+    }
+    
+    public String [] showBook(String libroID){
+        String book [] = new String[9];
+        book[0] = libroID;
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT l.titulo, concat(a.nombre,' ',a.apellido1,' ',a.apellido2),l.descripcion, l.tipo, l.isbn, l.anio_publicacion, "
+                    + "p.precio, e.precio,stock FROM libro AS l LEFT JOIN libro_papel AS p ON  l.id = p.id LEFT JOIN libro_ebook AS e ON l.id = e.id inner JOIN autor_escribe_libro as al"
+                    + " ON l.id = al.id_libro join autor as a ON al.id_autor = a.id LEFT JOIN almacen_almacena_libro AS alm ON alm.id_libro = l.id WHERE l.id ="+libroID);
+            while(rs.next()){
+                book[1] = rs.getString(1);
+                book[2] = rs.getString(2);
+                book[3] = rs.getString(3);
+                book[4] = rs.getString(4);
+                book[5] = rs.getString(5);
+                book[6] = rs.getString(6);
+                if(book[4].equals("Papel"))
+                    book[7] = rs.getString(7);
+                else
+                    book[7] = rs.getString(8);
+                book[8] = rs.getString(9);
+            }
+            st.close();
+            rs.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error en la base de datos", "MySQL", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(LibreriaUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return book;
     }
 }

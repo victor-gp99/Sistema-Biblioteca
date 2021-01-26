@@ -29,6 +29,9 @@
                   <Component id="labelCheckOut" alignment="1" max="32767" attributes="0"/>
                   <Component id="labelCompra" alignment="0" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" alignment="0" pref="688" max="32767" attributes="0"/>
+                  <Component id="labelPago" alignment="1" max="32767" attributes="0"/>
+                  <Component id="labelDireccion" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Gracias" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -43,7 +46,13 @@
               <Component id="labelCompra" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="375" max="-2" attributes="0"/>
-              <EmptySpace pref="135" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="labelPago" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="labelDireccion" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="Gracias" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,7 +70,7 @@
     <Component class="javax.swing.JLabel" name="labelCompra">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Hola cliente"/>
+        <Property name="text" type="java.lang.String" value="Hola"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -79,9 +88,9 @@
                 <Column editable="false" title="Titulo" type="java.lang.Object"/>
                 <Column editable="false" title="Descripcion" type="java.lang.Object"/>
                 <Column editable="false" title="Tipo" type="java.lang.Object"/>
-                <Column editable="false" title="Precio Unitario" type="java.lang.Object"/>
+                <Column editable="false" title="Precio" type="java.lang.Object"/>
                 <Column editable="false" title="Cantidad" type="java.lang.Object"/>
-                <Column editable="false" title="Pagar" type="java.lang.Object"/>
+                <Column editable="false" title="Pagaste" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -96,7 +105,7 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="0" minWidth="0" prefWidth="0" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -130,5 +139,23 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="labelPago">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Pagaste $ 0.0 "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelDireccion">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt; Tus libros fisicos se enviar&#xe1;n a"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Gracias">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Gracias por tu compra."/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

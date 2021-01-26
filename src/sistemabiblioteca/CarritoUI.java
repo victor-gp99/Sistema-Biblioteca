@@ -1,20 +1,20 @@
 package sistemabiblioteca;
 
 import javax.swing.JTable;
+import static sistemabiblioteca.LibreriaUI.cui;
+import static sistemabiblioteca.LibreriaUI.labelcart;
 
 /**
  *
  * @author Victor
  */
 public class CarritoUI extends javax.swing.JFrame {
-    static JTable tabla;
-    float sub = 0, envio = 100, total;
-
+    float sub = 0, envio = 100, total=0;
+    boolean papel = false, eBook = false, onlyEbooks = false, both = false;
     public CarritoUI() {
         initComponents();
         setTitle("Tu carrito de compras");
-        setLocationRelativeTo(new LibreriaUI());
-        tabla = carshopTable;
+        setLocationRelativeTo(null);
     }
 
     public JTable getCarshopTable() {
@@ -56,6 +56,9 @@ public class CarritoUI extends javax.swing.JFrame {
             carshopTable.getColumnModel().getColumn(0).setMinWidth(0);
             carshopTable.getColumnModel().getColumn(0).setPreferredWidth(0);
             carshopTable.getColumnModel().getColumn(0).setMaxWidth(0);
+            carshopTable.getColumnModel().getColumn(2).setMinWidth(0);
+            carshopTable.getColumnModel().getColumn(2).setPreferredWidth(0);
+            carshopTable.getColumnModel().getColumn(2).setMaxWidth(0);
         }
 
         labelCarrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -117,9 +120,21 @@ public class CarritoUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagarActionPerformed
-         CheckOut co = new CheckOut();
-         
-         dispose();
+        CheckOut co = new CheckOut(onlyEbooks, papel, both,total,"1245645213454512");
+        String row [] = new String[carshopTable.getColumnCount()];
+        for(byte i = 0;i<carshopTable.getRowCount();i++){
+            for(byte j = 0; j < carshopTable.getColumnCount();j++){
+                row[j] = carshopTable.getValueAt(i, j).toString();
+            }
+            co.addToTable(row);
+        }
+        if (sub < 499 && !onlyEbooks) {
+            String otro [] = {"","ENVIO","","","100","","100"};
+            co.addToTable(otro);
+        }
+        cui = new CarritoUI();
+        labelcart.setText("0");
+        dispose();
     }//GEN-LAST:event_buttonPagarActionPerformed
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
@@ -143,15 +158,28 @@ public class CarritoUI extends javax.swing.JFrame {
 
     public void calcularTotal() {
         int rows= carshopTable.getRowCount();
-        boolean onlyEbooks = true;
-    
+        if(rows == 0)
+            return;
+        sub = 0;
+        envio = 100;
+        total = 0;
         for (byte i = 0; i < rows; i++) {
-            if(carshopTable.getValueAt(i, 3).equals("Papel"))
-                onlyEbooks = false;
-            sub += (float) carshopTable.getValueAt(i, 6);
+            System.out.println(carshopTable.getValueAt(i, 3).toString());
+            if(!papel){
+                if(carshopTable.getValueAt(i, 3).equals("Papel"))
+                    papel = true;
+            }   
+            if(!carshopTable.getValueAt(i, 3).equals("Papel"))
+                eBook = true;
+            sub += Float.parseFloat(carshopTable.getValueAt(i, 6).toString());
         }
         
-        if (sub > 499 || onlyEbooks){
+        if(!papel)
+            onlyEbooks = true;
+        else if(eBook)
+            both = true;
+        
+        if (sub >= 499 || onlyEbooks){
             labelEnvio.setText("Envío gratis");
             envio = 0;
             total = sub;
@@ -160,7 +188,7 @@ public class CarritoUI extends javax.swing.JFrame {
             total = sub + envio;
         }    
         labelSubtotal.setText("Subtotal: $ "+sub);
-        labelTotal.setText("Total: $ "+total);    
+        labelTotal.setText("Total: $ "+total);  
     }
     
 }

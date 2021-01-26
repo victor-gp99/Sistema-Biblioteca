@@ -4,8 +4,14 @@
  * and open the template in the editor.
  */
 package sistemabiblioteca;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-import static sistemabiblioteca.CarritoUI.tabla;
+import static sistemabiblioteca.LogIn.id;
+import static sistemabiblioteca.AppSistemaBiblioteca.con;
 
 /**
  *
@@ -15,12 +21,25 @@ public class CheckOut extends javax.swing.JFrame {
     /**
      * Creates new form CheckOut
      */
+    boolean onlyEbooks, papel,both;
+    float total;
+    String card;
     public CheckOut() {
         initComponents();
         setLocationRelativeTo(null);
-        setVisible(true);
-        DefaultTableModel model =(DefaultTableModel)tabla.getModel();
-        tableCO.setModel(model);  
+        setVisible(true);      
+    }
+    
+    public CheckOut(boolean onlyEbooks, boolean papel, boolean both, float total,String card) {
+        initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);   
+        this.onlyEbooks = onlyEbooks;
+        this.papel = papel;
+        this.both = both;
+        this.total = total;
+        this.card = card;
+        printMsg();
     }
 
     /**
@@ -36,6 +55,9 @@ public class CheckOut extends javax.swing.JFrame {
         labelCompra = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCO = new javax.swing.JTable();
+        labelPago = new javax.swing.JLabel();
+        labelDireccion = new javax.swing.JLabel();
+        Gracias = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -44,14 +66,14 @@ public class CheckOut extends javax.swing.JFrame {
         labelCheckOut.setText("CHECK OUT");
 
         labelCompra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelCompra.setText("Hola cliente");
+        labelCompra.setText("Hola");
 
         tableCO.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Titulo", "Descripcion", "Tipo", "Precio Unitario", "Cantidad", "Pagar"
+                "ID", "Titulo", "Descripcion", "Tipo", "Precio", "Cantidad", "Pagaste"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -67,7 +89,19 @@ public class CheckOut extends javax.swing.JFrame {
             tableCO.getColumnModel().getColumn(0).setMinWidth(0);
             tableCO.getColumnModel().getColumn(0).setPreferredWidth(0);
             tableCO.getColumnModel().getColumn(0).setMaxWidth(0);
+            tableCO.getColumnModel().getColumn(2).setMinWidth(0);
+            tableCO.getColumnModel().getColumn(2).setPreferredWidth(0);
+            tableCO.getColumnModel().getColumn(2).setMaxWidth(0);
         }
+
+        labelPago.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelPago.setText("Pagaste $ 0.0 ");
+
+        labelDireccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelDireccion.setText("<html> Tus libros fisicos se enviarán a");
+
+        Gracias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Gracias.setText("Gracias por tu compra.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,7 +112,10 @@ public class CheckOut extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelCheckOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+                    .addComponent(labelPago, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelDireccion)
+                    .addComponent(Gracias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -90,7 +127,13 @@ public class CheckOut extends javax.swing.JFrame {
                 .addComponent(labelCompra)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(labelPago)
+                .addGap(18, 18, 18)
+                .addComponent(labelDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Gracias)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -132,13 +175,41 @@ public class CheckOut extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Gracias;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCheckOut;
     private javax.swing.JLabel labelCompra;
+    private javax.swing.JLabel labelDireccion;
+    private javax.swing.JLabel labelPago;
     private javax.swing.JTable tableCO;
     // End of variables declaration//GEN-END:variables
     
-    public void addToTable(){
+    public void addToTable(String row []){
+        DefaultTableModel model =(DefaultTableModel)tableCO.getModel();
+        model.addRow(row);
+        tableCO.setModel(model);
+    }
+    
+    public void printMsg(){
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT nombre,direccion,email FROM cliente WHERE id = "+id);
+            while(rs.next()){
+                labelCompra.setText("Hola "+rs.getString(1) +"compraste los siguientes articulos");
+                if (onlyEbooks)
+                    labelDireccion.setText("Tus libros digitales se enviarán a tu email "+rs.getString(3));
+                else if(both)
+                    labelDireccion.setText("<html> Tus libros fisicos se enviaran a tu dieccion "+rs.getString(2)+" "
+                            + "y tus libros digitales se enviarán a tu email "+rs.getString(3));
+                else if (papel)
+                    labelDireccion.setText("Tus libros fisicos se enviaran a tu dieccion "+rs.getString(2));
+            }
+            st.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CheckOut.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        labelPago.setText("Pagaste $ "+total+" con MASTERCARD **** **** **** "+card.substring(12, 16));
         
-    } 
+    }
 }

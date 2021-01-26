@@ -212,6 +212,7 @@ public class MostrarLibro extends javax.swing.JFrame {
 
         String row[] = {libro[0], libro[1], libro[3], libro[4], libro[7], String.valueOf(cantidad), String.valueOf(pagar)};
         model.addRow(row);
+        cui.getCarshopTable().setModel(model);
 
         JOptionPane.showMessageDialog(this, "¡Libro agregado al carrito!", "¡Hecho!", JOptionPane.PLAIN_MESSAGE);
     }

@@ -209,7 +209,8 @@ public class LibreriaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_labelClienteMouseClicked
 
     private void labelCarritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCarritoMouseClicked
-       cui.setVisible(true);
+        cui.calcularTotal();
+        cui.setVisible(true);
     }//GEN-LAST:event_labelCarritoMouseClicked
 
     private void libreriaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_libreriaTableMouseClicked

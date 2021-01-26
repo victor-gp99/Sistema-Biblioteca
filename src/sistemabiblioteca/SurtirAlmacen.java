@@ -413,7 +413,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
     public void agregarStock() {
         try {
             Statement st = con.createStatement();
-            st.execute("INSERT INTO almacen_almacena_libro (id_almacen, id_libro, stock) values ('" + (jComboBoxLibro.getSelectedIndex()+1) + "', '" + (jComboBoxAlmacen.getSelectedIndex()+1) + "', '" + jSpinnerAgregar.getValue() + "')");
+            st.execute("INSERT INTO almacen_almacena_libro (id_almacen, id_libro, stock) values (" + (jComboBoxLibro.getSelectedIndex()+1) + ", " + (jComboBoxAlmacen.getSelectedIndex()+1) + ", " + jSpinnerAgregar.getValue() + ")");
             st.close();
         } catch (SQLException ex) {
             Logger.getLogger(SurtirAlmacen.class.getName()).log(Level.SEVERE, null, ex);

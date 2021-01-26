@@ -1,16 +1,31 @@
 package sistemabiblioteca;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import static sistemabiblioteca.LibreriaUI.cui;
+import static sistemabiblioteca.LibreriaUI.labelcart;
 /**
  *
  * @author victor
  */
 public class CreditCardPayUI extends javax.swing.JFrame {
-
-    public CreditCardPayUI() {
+    JTable carshopTable;
+    boolean onlyEbooks, papel, both;
+    float total, sub;
+    String numero;
+    public CreditCardPayUI(boolean onlyEbooks, boolean papel,boolean both,float total,float sub) {
         initComponents();
-        setLocationRelativeTo(new CarritoUI());
+        setLocationRelativeTo(null);
         setTitle("Ingresa tu informacion");  
         setVisible(true);
+        carshopTable = cui.getCarshopTable();
+        this.onlyEbooks = onlyEbooks;
+        this.papel = papel;
+        this.both = both;
+        this.total = total;
+        this.sub = sub;
+    }
+    public CreditCardPayUI(){
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -152,7 +167,24 @@ public class CreditCardPayUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       checarTxt();
+       if (checarTxt()){
+           CheckOut co = new CheckOut(onlyEbooks, papel, both,total,numero);
+            String row [] = new String[carshopTable.getColumnCount()];
+            for(byte i = 0;i<carshopTable.getRowCount();i++){
+                for(byte j = 0; j < carshopTable.getColumnCount();j++){
+                    row[j] = carshopTable.getValueAt(i, j).toString();
+                }
+                co.addToTable(row);
+            }
+            if (sub < 499 && !onlyEbooks) {
+                String otro [] = {"","ENVIO","","","100","","100"};
+                co.addToTable(otro);
+            }
+            cui = new CarritoUI();
+            labelcart.setText("0");
+            dispose();
+       }
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
@@ -162,25 +194,34 @@ public class CreditCardPayUI extends javax.swing.JFrame {
         });
     }
     
-   private void checarTxt(){
-       if (numText.getText().length() != 16 ) {
-            try {
-           Integer.parseInt(numText.getText()); 
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Ingresa el numero de la tarjeta en numeros y a 16 digitos exactos","Formato numero tarjeta", JOptionPane.WARNING_MESSAGE);
-        }  
-           numText.setText("");
-       }
+   public boolean checarTxt(){
+        numero = numText.getText();
+        try{
+            Long.parseLong(numero);
+        } catch(NumberFormatException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Ingresa solo numeros y 16 digitos","Formato numero tarjeta", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        
+        if (numText.getText().length() != 16 ){
+            JOptionPane.showMessageDialog(this, "IF","Formato numero tarjeta", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        numText.setText("");
+        
        
        if (codeText.getText().length() != 3) {
           try {
            Integer.parseInt(codeText.getText()); 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingresa el codigo en numeros y a 3 digitos exactos","Formato codigo tarjeta", JOptionPane.WARNING_MESSAGE);
+            return false;
         }  
            numText.setText("");
        }
-       
+       cui.dispose();
+       return true;
      // JOptionPane.showMessageDialog(this, imprimirTicket());
               
   

@@ -419,6 +419,8 @@ public class SurtirAlmacen extends javax.swing.JFrame {
         try {
             Statement st = con.createStatement();
             st.execute("INSERT INTO almacen_almacena_libro (id_almacen, id_libro, stock) values (" + (jComboBoxAlmacen.getSelectedIndex() + 1) + ", " + (jComboBoxLibro.getSelectedIndex() + 1) + ", " + jSpinnerAgregar.getValue() + ")");
+            JOptionPane.showMessageDialog(this, "Se agregó stock correctamente");
+            jSpinnerAgregar.setValue(0);
             st.close();
         } catch (SQLException ex) {
             Logger.getLogger(SurtirAlmacen.class.getName()).log(Level.SEVERE, null, ex);
@@ -454,8 +456,9 @@ public class SurtirAlmacen extends javax.swing.JFrame {
             stockExistente = stockExistente + (int)jSpinnerAgregar.getValue();
             System.out.println(stockExistente);
             st.executeUpdate("UPDATE almacen_almacena_libro SET stock = '" + stockExistente + "' WHERE (id_almacen = " + (jComboBoxAlmacen.getSelectedIndex()+1) + " and id_libro = " + (jComboBoxLibro.getSelectedIndex()+1)+ ")");
+            JOptionPane.showMessageDialog(this, "Se actualizó stock correctamente");
             st.close();
-            //agregarStock();
+            jSpinnerAgregar.setValue(0);
         } catch (SQLException ex) {
             Logger.getLogger(SurtirAlmacen.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Error en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);

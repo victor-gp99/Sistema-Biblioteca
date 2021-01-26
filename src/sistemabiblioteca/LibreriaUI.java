@@ -69,6 +69,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         labelCarrito = new javax.swing.JLabel();
         labelLogOut = new javax.swing.JLabel();
         jLabelPrincipal = new javax.swing.JLabel();
+        jLabelPrincipal1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(botonX());
 
@@ -141,7 +142,10 @@ public class LibreriaUI extends javax.swing.JFrame {
         });
 
         jLabelPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/AHPV Books.jpg"))); // NOI18N
+        jLabelPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Oferta.png"))); // NOI18N
+
+        jLabelPrincipal1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPrincipal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/AHPV Books.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,26 +169,35 @@ public class LibreriaUI extends javax.swing.JFrame {
                                 .addGap(40, 40, 40)
                                 .addComponent(labelLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabelPrincipal1, javax.swing.GroupLayout.DEFAULT_SIZE, 837, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(117, Short.MAX_VALUE)
+                .addComponent(jLabelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelCliente)
+                        .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelCliente)
-                            .addComponent(labelCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(19, 19, 19)
                         .addComponent(jButtonAdmin)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelLogOut)
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabelPrincipal1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(569, Short.MAX_VALUE)))
         );
 
         pack();
@@ -222,6 +235,7 @@ public class LibreriaUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdmin;
     private javax.swing.JLabel jLabelPrincipal;
+    private javax.swing.JLabel jLabelPrincipal1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCarrito;
     private javax.swing.JLabel labelCliente;

@@ -1,9 +1,6 @@
-
 package sistemabiblioteca;
 
-
 import javax.swing.JTable;
-
 
 /**
  *
@@ -11,11 +8,14 @@ import javax.swing.JTable;
  */
 public class CarritoUI extends javax.swing.JFrame {
 
+    float sub = 0, envio = 100, total;
+
     public CarritoUI() {
         initComponents();
         setTitle("Tu carrito de compras");
-        setLocationRelativeTo(new LibreriaUI());    
+        setLocationRelativeTo(new LibreriaUI());
     }
+
     public JTable getCarshopTable() {
         return carshopTable;
     }
@@ -26,6 +26,11 @@ public class CarritoUI extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         carshopTable = new javax.swing.JTable();
+        labelCarrito = new javax.swing.JLabel();
+        labelSubtotal = new javax.swing.JLabel();
+        labelEnvio = new javax.swing.JLabel();
+        labelTotal = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -34,11 +39,11 @@ public class CarritoUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Titulo", "Descripcion", "Tipo", "Precio", "Cantidad"
+                "ID", "Titulo", "Descripcion", "Tipo", "Precio Unitario", "Cantidad", "Pagar"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -52,25 +57,67 @@ public class CarritoUI extends javax.swing.JFrame {
             carshopTable.getColumnModel().getColumn(0).setMaxWidth(0);
         }
 
+        labelCarrito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelCarrito.setText("Carrito de compras.");
+
+        labelSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelSubtotal.setText("Subtotal: $ 0.0");
+
+        labelEnvio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelEnvio.setText("Envío: $ 0.0");
+
+        labelTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTotal.setText("Total: $ 0.0");
+
+        jButton1.setText("Completar orden.");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelCarrito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                    .addComponent(labelSubtotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(labelEnvio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap()
+                .addComponent(labelCarrito)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelSubtotal)
+                .addGap(30, 30, 30)
+                .addComponent(labelEnvio)
+                .addGap(34, 34, 34)
+                .addComponent(labelTotal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
@@ -80,6 +127,36 @@ public class CarritoUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable carshopTable;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelCarrito;
+    private javax.swing.JLabel labelEnvio;
+    private javax.swing.JLabel labelSubtotal;
+    private javax.swing.JLabel labelTotal;
     // End of variables declaration//GEN-END:variables
+
+    public void calcularTotal() {
+        int rows= carshopTable.getRowCount();
+        boolean onlyEbooks = true;
+    
+        for (byte i = 0; i < rows; i++) {
+            if(carshopTable.getValueAt(i, 3).equals("Papel"))
+                onlyEbooks = false;
+            sub += (float) carshopTable.getValueAt(i, 6);
+        }
+        
+        if (sub > 499 || onlyEbooks){
+            labelEnvio.setText("Envío gratis");
+            envio = 0;
+            total = sub;
+        }else{
+            labelEnvio.setText("Envío: $ "+envio);
+            total = sub + envio;
+        }    
+        labelSubtotal.setText("Subtotal: $ "+sub);
+        labelTotal.setText("Total: $ "+total);
+        
+        
+        
+    }
 }

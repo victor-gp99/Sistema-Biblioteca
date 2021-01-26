@@ -210,6 +210,8 @@ public class MostrarLibro extends javax.swing.JFrame {
     }
 
     public boolean isAvailable() {
-        return Integer.parseInt(libro[8]) > 0;
+        if(libro[8] != null)
+            return Integer.parseInt(libro[8]) > 0;
+        else return false;
     }
 }

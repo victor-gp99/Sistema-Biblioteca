@@ -372,7 +372,7 @@ public class LogIn extends javax.swing.JFrame {
                                 lui.setVisible(true);
                                 break;
                             case "cliente":
-                                lui.getjButtonAdmin().setEnabled(false);
+                                lui.getjButtonAdmin().setVisible(false);
                                 lui.setVisible(true);
                                 break;
                             default:

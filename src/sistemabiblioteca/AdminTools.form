@@ -138,26 +138,25 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Cancelar" alignment="1" min="-2" pref="103" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="surtirAlmacenButton1" max="32767" attributes="0"/>
-                                  <Component id="jToggleButton1" pref="190" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="surtirAlmacenButton1" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
+                                  <Component id="jToggleButton1" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="registryAutorButton" max="32767" attributes="0"/>
-                                  <Component id="registryAlmacenButton" pref="190" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="registryAlmacenButton" min="-2" pref="190" max="-2" attributes="0"/>
+                                  <Component id="registryAutorButton" min="-2" pref="190" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButtonLocalidadNueva" pref="190" max="32767" attributes="0"/>
-                                  <Component id="jButtonRegistrarLibro" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jButtonLocalidadNueva" min="-2" pref="190" max="-2" attributes="0"/>
+                                  <Component id="jButtonRegistrarLibro" min="-2" pref="190" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="Cancelar" alignment="1" min="-2" pref="103" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="54" pref="54" max="-2" attributes="0"/>
                   </Group>

@@ -154,6 +154,7 @@ public class LibreriaUI extends javax.swing.JFrame {
         jButtonAdmin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonAdmin.setForeground(new java.awt.Color(236, 240, 241));
         jButtonAdmin.setText("ADMIN");
+        jButtonAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonAdmin.setFocusPainted(false);
         jButtonAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

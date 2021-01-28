@@ -88,6 +88,7 @@ public class FormularioLibro extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(92, 151, 191));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         exit1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         exit1.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,6 +115,7 @@ public class FormularioLibro extends javax.swing.JFrame {
         });
 
         jPanel3.setBackground(new java.awt.Color(34, 49, 63));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         jTextFieldTamaño.setBackground(new java.awt.Color(108, 122, 137));
         jTextFieldTamaño.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -448,7 +450,7 @@ public class FormularioLibro extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jSpinnerPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelPrecio))
-                        .addContainerGap(27, Short.MAX_VALUE))
+                        .addContainerGap(23, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)

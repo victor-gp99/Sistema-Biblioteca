@@ -57,6 +57,7 @@ public class FormularioLocalidad extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(92, 151, 191));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         exit1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         exit1.setForeground(new java.awt.Color(255, 255, 255));
@@ -83,6 +84,7 @@ public class FormularioLocalidad extends javax.swing.JFrame {
         });
 
         jPanel3.setBackground(new java.awt.Color(34, 49, 63));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         jTextFieldNombre.setBackground(new java.awt.Color(108, 122, 137));
         jTextFieldNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

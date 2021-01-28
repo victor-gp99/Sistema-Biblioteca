@@ -126,6 +126,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(92, 151, 191));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         exit1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         exit1.setForeground(new java.awt.Color(255, 255, 255));
@@ -152,6 +153,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
         });
 
         jPanel3.setBackground(new java.awt.Color(34, 49, 63));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(236, 240, 241));
@@ -219,7 +221,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(Cancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                                 .addComponent(jButtonAgregar))
                             .addComponent(jComboBoxLibro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(68, 68, 68))
@@ -313,7 +315,7 @@ public class SurtirAlmacen extends javax.swing.JFrame {
     }//GEN-LAST:event_minimize1MouseClicked
 
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
-        if(verificarStock())
+        if (verificarStock())
             lui.refill();
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
@@ -411,13 +413,8 @@ public class SurtirAlmacen extends javax.swing.JFrame {
     }
 
     public void agregarStock() {
-        
-        System.out.println("Agregar stock");
 
-        if (jSpinnerAgregar.getValue().equals(0)) {
-            JOptionPane.showMessageDialog(this, "Introduzca stock válido", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+        System.out.println("Agregar stock");
 
         try {
             Statement st = con.createStatement();
@@ -433,17 +430,23 @@ public class SurtirAlmacen extends javax.swing.JFrame {
     }
 
     public boolean verificarStock() {
+
+        if (jSpinnerAgregar.getValue().equals(0)) {
+            JOptionPane.showMessageDialog(this, "Introduzca stock válido", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         boolean vrf = false;
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT stock FROM almacen_almacena_libro WHERE id_libro = "+(jComboBoxLibro.getSelectedIndex() + 1));
+            ResultSet rs = st.executeQuery("SELECT stock FROM almacen_almacena_libro WHERE id_libro = " + (jComboBoxLibro.getSelectedIndex() + 1));
             while (rs.next()) {
                 vrf = true;
                 stockExistente = stockExistente + Integer.valueOf(rs.getString(1));
                 actualizarStock();
             }
-            if(!vrf)
+            if (!vrf) {
                 agregarStock();
+            }
             st.close();
             rs.close();
         } catch (SQLException ex) {
@@ -458,9 +461,9 @@ public class SurtirAlmacen extends javax.swing.JFrame {
         System.out.println("Actualizar");
         try {
             Statement st = con.createStatement();
-            stockExistente = stockExistente + (int)jSpinnerAgregar.getValue();
+            stockExistente = stockExistente + (int) jSpinnerAgregar.getValue();
             System.out.println(stockExistente);
-            st.executeUpdate("UPDATE almacen_almacena_libro SET stock = '" + stockExistente + "' WHERE (id_almacen = " + (jComboBoxAlmacen.getSelectedIndex()+1) + " and id_libro = " + (jComboBoxLibro.getSelectedIndex()+1)+ ")");
+            st.executeUpdate("UPDATE almacen_almacena_libro SET stock = '" + stockExistente + "' WHERE (id_almacen = " + (jComboBoxAlmacen.getSelectedIndex() + 1) + " and id_libro = " + (jComboBoxLibro.getSelectedIndex() + 1) + ")");
             JOptionPane.showMessageDialog(this, "Se actualizó stock correctamente");
             st.close();
             jSpinnerAgregar.setValue(0);

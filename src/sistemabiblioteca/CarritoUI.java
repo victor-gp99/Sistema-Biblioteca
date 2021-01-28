@@ -76,6 +76,7 @@ public class CarritoUI extends javax.swing.JFrame {
         buttonPagar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         buttonPagar.setForeground(new java.awt.Color(236, 240, 241));
         buttonPagar.setText("Completar orden");
+        buttonPagar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonPagarActionPerformed(evt);

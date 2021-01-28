@@ -125,6 +125,7 @@ public class CreditCardPayUI extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(236, 240, 241));
         jButton1.setText("Pagar");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -341,7 +342,7 @@ public class CreditCardPayUI extends javax.swing.JFrame {
         }
         
         if (numText.getText().length() != 16 ){
-            JOptionPane.showMessageDialog(this, "IF","Formato numero tarjeta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Faltan dígitos de la tarjeta, compruebe por favor","Formato numero tarjeta", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         numText.setText("");

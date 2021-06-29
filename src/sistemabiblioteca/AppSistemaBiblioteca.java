@@ -16,11 +16,11 @@ public class AppSistemaBiblioteca {
     public static void main(String[] args) {
         int seleccion;
         while(true){
-            String opciones[]={"Andy","Harry","PP","Victor","DB OFFLINE","Salir"};
+            String opciones[]={"maldo","Harry","PP","Victor","DB OFFLINE","Salir"};
             seleccion=JOptionPane.showOptionDialog(null, "¿Quién se conecta a la BD?", "MySQL", 0, JOptionPane.PLAIN_MESSAGE, null, opciones, null);
             switch(seleccion){
                 case 0:
-                    if(createConnection("andy", "prueba","25.13.55.58:3306"))
+                    if(createConnection("maldo", "prueba","25.10.232.19"))
                         break;
                     else{
                         JOptionPane.showMessageDialog(null, "Te equivocaste de botón", "Error", JOptionPane.ERROR_MESSAGE);
@@ -34,14 +34,14 @@ public class AppSistemaBiblioteca {
                         continue;
                     }   
                 case 2:
-                    if(createConnection("pepon", "admin","25.13.55.58:3306"))
+                    if(createConnection("pepon", "admin","25.10.232.19"))
                         break;
                     else{
                         JOptionPane.showMessageDialog(null, "Te equivocaste de botón", "Error", JOptionPane.ERROR_MESSAGE);
                         continue;
                     }
                 case 3:
-                    if(createConnection("victornsn", "admin","25.13.55.58:3306"))
+                    if(createConnection("victornsn", "admin","25.10.232.19"))
                         break;
                     else{
                         JOptionPane.showMessageDialog(null, "Te equivocaste de botón", "Error", JOptionPane.ERROR_MESSAGE);
